@@ -1,0 +1,20 @@
+{
+  "name": "academy-node-workshop",
+  "version": "1.0.0",
+  "description": "Node.js Workshop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agileactors/academy-node-workshop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agileactors/academy-node-workshop/issues"
+  },
+  "homepage": "https://github.com/agileactors/academy-node-workshop#readme"
+}
