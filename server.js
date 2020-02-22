@@ -4,6 +4,8 @@
 
 const http = require("http");
 
+const PORT = 8080;
+
 /**
  * Request handler
  * @param {*} req
@@ -18,4 +20,4 @@ const requestListener = (req, res) => {
 const server = http.createServer(requestListener);
 
 // start the server
-server.listen(8080);
+server.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
