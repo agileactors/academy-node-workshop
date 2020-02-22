@@ -9,7 +9,7 @@ const http = require("http");
  * @param {*} req
  * @param {*} res
  */
-const requestListener = function(req, res) {
+const requestListener = (req, res) => {
   res.writeHead(200);
   res.end("Hello, Node!");
 };
