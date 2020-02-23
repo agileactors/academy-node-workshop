@@ -3,8 +3,8 @@
  */
 
 const http = require("http");
-
-const PORT = 8080;
+const logger = require("./libraries/logger"); // task: move logger to module
+const PORT = process.argv[2] || 8080; // task: use process to get arguments from cli
 
 /**
  * Request handler
@@ -12,6 +12,7 @@ const PORT = 8080;
  * @param {*} res
  */
 const requestListener = (req, res) => {
+  // task: implement the handler
   res.writeHead(200);
   res.end("Hello, Node!");
 };
@@ -20,4 +21,6 @@ const requestListener = (req, res) => {
 const server = http.createServer(requestListener);
 
 // start the server
-server.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+server.listen(PORT, () => {
+  logger.log("SUCCESS", `Server listening on port ${PORT}`);
+});
