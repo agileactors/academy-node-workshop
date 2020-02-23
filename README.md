@@ -12,7 +12,7 @@ We are going to build a book application using Node. We have split the steps in 
 
 `todo: app image here`
 
-**Available Branches**
+### Available Branches
 
 `todo: branches setup`
 
