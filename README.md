@@ -20,16 +20,20 @@ We are going to build a book application using Node. We have split the steps in 
 
 ### ✔ 1 Install Node.JS LTS
 
-Install Node.JS LTS (any 12.0.X version and newest) [from nodejs official site](https://nodejs.org/en/) - just download and progress within the installation wizard
+Install Node.JS LTS from [nodejs official site](https://nodejs.org/en/download/)
 
-### ✔ 2 Ensure Node is installed correctly
+### ✔ 2 Ensure Node and npm are installed correctly
 
-Open your favourite terminal (Windows: command prompt) and type 'node - v'. The output should confirm that version (e.g. 12.0) is indeed installed
+Ensure node.js is installed by running the following command in a terminal, similar with npm.
 
-Run the command:
+Run the commands:
 
 ```
 node -v
+```
+
+```
+npm -v
 ```
 
 ### ✔ 3 Clone this repo
