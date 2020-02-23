@@ -37,7 +37,7 @@ node -v
 Run the command:
 
 ```
-git clone https://github.com/goldbergyoni/nodejs-course/
+git clone https://github.com/agileactors/academy-node-workshop/
 ```
 
 _If you do not have git install follow this link [How to install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to install it_
