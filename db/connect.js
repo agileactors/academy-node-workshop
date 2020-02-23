@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
+const config = require('../config');
+
+const { URI } = config || process.env;
 
 // local imports
 const logger = require('../libraries/logger');
 
-// constants
-const URI = process.env.MONGO_URI;
+// setup mongoose Promise usage
+mongoose.Promise = global.Promise;
 
 mongoose.connect(URI, {
   useNewUrlParser: true,
@@ -16,11 +19,11 @@ mongoose.connect(URI, {
 const db = mongoose.connection;
 
 function onOpen() {
-  logger.info('Database connected successfully.');
+  logger.log('Database connected successfully.');
 }
 
 function onError(err) {
-  logger.error('Database connection failed.', err);
+  logger.log('Database connection failed.', err);
 }
 
 db.on('open', onOpen);

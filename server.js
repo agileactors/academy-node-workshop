@@ -3,8 +3,8 @@
  */
 
 const http = require('http');
-const logger = require('./libraries/logger');
-// task: move logger to module
+const logger = require('./libraries/logger'); // task: move logger to module
+
 const PORT = process.argv[2] || 8080; // task: use process to get arguments from cli
 
 /**
@@ -14,6 +14,7 @@ const PORT = process.argv[2] || 8080; // task: use process to get arguments from
  */
 const requestListener = (req, res) => {
   // task: implement the handler
+  res.setHeader('Content-Type', 'text/html');
   res.writeHead(200);
   res.end('Hello, Node!');
 };
