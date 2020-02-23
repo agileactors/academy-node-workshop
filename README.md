@@ -18,25 +18,31 @@ We are going to build a book application using Node. We have split the steps in 
 
 ## Getting started
 
-Open a terminal and clone the repository to your local machine using the following command:
+### ✔ 1 Install Node.JS LTS
+
+Install Node.JS LTS (any 12.0.X version and newest) [from nodejs official site](https://nodejs.org/en/) - just download and progress within the installation wizard
+
+### ✔ 2 Ensure Node is installed correctly
+
+Open your favourite terminal (Windows: command prompt) and type 'NPM verson'. The output should confirm that version (e.g. 12.0) is indeed installed
+
+Run the command:
 
 ```
-git clone https://github.com/agileactors/academy-node-workshop.git
+node -v
 ```
 
-_If you do not have node install follow this link [How to install Node](https://nodejs.org/en/download/) to install it_
+### ✔ 3 Clone this repo
 
-ensure node is installed on your machine using the following command in a terminal
+Run the command:
 
-`node -v`
-
-you should see the node version installed on your machine
-e.g `v12.14.0`
+```
+git clone https://github.com/goldbergyoni/nodejs-course/
+```
 
 _If you do not have git install follow this link [How to install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to install it_
 
-Navigate into the directory and install application dependencies using npm or yarn
-with the following commands in a terminal
+Then navigate into the project directory and install all depedencies:
 
 ```
 cd academy-node-workshop // or wherever you clone the repo
@@ -45,7 +51,7 @@ cd academy-node-workshop // or wherever you clone the repo
 using npm
 
 ```
-    npm i
+    npm install
 ```
 
 using yarn
