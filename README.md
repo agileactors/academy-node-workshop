@@ -24,7 +24,7 @@ Install Node.JS LTS (any 12.0.X version and newest) [from nodejs official site](
 
 ### ✔ 2 Ensure Node is installed correctly
 
-Open your favourite terminal (Windows: command prompt) and type 'NPM verson'. The output should confirm that version (e.g. 12.0) is indeed installed
+Open your favourite terminal (Windows: command prompt) and type 'node - v'. The output should confirm that version (e.g. 12.0) is indeed installed
 
 Run the command:
 
