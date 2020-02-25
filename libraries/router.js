@@ -25,7 +25,7 @@ const Router = () => {
     const { pathname } = url.parse(request.url);
 
     const route = routes.find(
-      r => r.method === request.method && r.path === pathname
+      ({ method, path }) => method === request.method && path === pathname
     );
 
     if (route) {
@@ -42,7 +42,9 @@ const Router = () => {
   const run = ctx => {
     const dispatch = async i => {
       const currentMiddleware = middleware[i];
-      if (currentMiddleware) currentMiddleware(ctx, () => dispatch(i + 1));
+      if (currentMiddleware) {
+        currentMiddleware(ctx, () => dispatch(i + 1));
+      }
     };
     dispatch(0);
   };
