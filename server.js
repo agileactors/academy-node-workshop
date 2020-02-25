@@ -23,10 +23,20 @@ router.use(async (ctx, next) => {
 });
 
 // index route
-router.create('GET', '/', ({ response }) => {
+router.get('/', ({ response }) => {
   response.setHeader('Content-Type', 'text/html');
   response.writeHead(200);
-  response.end('Hello, Node!');
+  response.end('<h1>Hello, Node!</h1>');
+});
+
+// add routes as middleware
+router.use(router.routesMiddleware);
+
+// 404 not-found middleware - TODO: move middleware to another folder
+router.use(({ response }) => {
+  response.setHeader('Content-Type', 'text/plain');
+  response.writeHead(404);
+  response.end('Not Found');
 });
 
 // create HTTP server
