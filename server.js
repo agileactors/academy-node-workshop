@@ -3,10 +3,16 @@
  */
 
 const http = require('http');
+const dotenv = require('dotenv');
+
+const connect = require('./db/connect');
 const logger = require('./libraries/logger'); // task: move logger to module
 const Router = require('./libraries/router');
 
-const PORT = process.argv[2] || 8080; // task: use process to get arguments from cli
+// dotenv is a zero-dependency module that
+// loads environment variables from a .env file into process.env
+dotenv.config();
+const PORT = process.PORT || 8080;
 
 // initialize router
 const router = Router();
@@ -37,5 +43,10 @@ const server = http.createServer((request, response) => {
 
 // start the server
 server.listen(PORT, () => {
-  logger.log('SUCCESS', `Server listening on port ${PORT}`);
+  logger.log(`Server listening on port ${PORT}`);
+
+  // connect to database
+  connect()
+    .then(message => logger.log(message))
+    .catch(error => logger.log('DB_CONNECTION', error));
 });
