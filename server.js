@@ -10,6 +10,9 @@ const Router = require('./libraries/router');
 
 const PORT = process.env.PORT || 8080;
 
+// models
+const { Model: AuthorModel } = require('./models/author');
+
 // initialize router
 const router = Router();
 
@@ -29,6 +32,22 @@ router.get('/', ({ response }) => {
   response.setHeader('Content-Type', 'text/html');
   response.writeHead(200);
   response.end('<h1>Hello, Node!</h1>');
+});
+
+// WIP: GET /authors/list handler
+// TODO: move to authors services
+router.get('/authors/list', async ({ request }) => {
+  try {
+    AuthorModel.find({}, null, { skip: 10 }, (err, authors) =>
+      console.log(authors)
+    );
+
+    // or you can executing a query explicitly
+    // const query = AuthorModel.find({}, null, { skip: 10 });
+    // query.exec((err, authors) => console.log(authors));
+  } catch (error) {
+    logger.log('AuthorModel', error);
+  }
 });
 
 // add routes as middleware

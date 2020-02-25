@@ -16,6 +16,15 @@ const AuthorSchema = new Schema({
 
 const AuthorModel = mongoose.model('Author', AuthorSchema);
 
+/**
+ * Get all authors
+ */
+AuthorSchema.statics.findAllAuthors = async () => {
+  const authors = await AuthorModel.find({}, null, { skip: 10 });
+
+  return authors;
+};
+
 module.exports = {
   Model: AuthorModel,
   Schema: AuthorSchema,
