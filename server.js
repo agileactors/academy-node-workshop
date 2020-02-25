@@ -8,7 +8,7 @@ const connect = require('./db/connect');
 const logger = require('./libraries/logger'); // task: move logger to module
 const Router = require('./libraries/router');
 
-const PORT = process.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
 // initialize router
 const router = Router();
