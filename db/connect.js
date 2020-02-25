@@ -1,30 +1,37 @@
+/**
+ * Database connection file
+ */
+
 const mongoose = require('mongoose');
 const config = require('../config');
 
-const { URI } = config || process.env;
+const { URI } = config;
 
-// local imports
-const logger = require('../libraries/logger');
-
-// setup mongoose Promise usage
+// setup mongoose
 mongoose.Promise = global.Promise;
+mongoose.set('useCreateIndex', true);
 
-mongoose.connect(URI, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-});
+const connect = () => {
+  const db = mongoose.connection;
 
-const db = mongoose.connection;
+  const resultP = new Promise((resolve, reject) => {
+    mongoose
+      .connect(URI, {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+      })
+      .catch(err => reject(err.reason));
 
-function onOpen() {
-  logger.log('Database connected successfully.');
-}
+    db.on('error', error => reject(error));
 
-function onError(err) {
-  logger.log('Database connection failed.', err);
-}
+    db.once('open', () => {
+      resolve('Database connection: OK');
+    });
+  });
 
-db.on('open', onOpen);
-db.on('error', onError);
+  return resultP;
+};
+
+module.exports = connect;
