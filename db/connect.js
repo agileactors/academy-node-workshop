@@ -4,6 +4,7 @@
 
 const mongoose = require('mongoose');
 const config = require('../config');
+const logger = require('../libraries/logger');
 
 const { URI } = config;
 
@@ -15,14 +16,12 @@ const connect = () => {
   const db = mongoose.connection;
 
   const resultP = new Promise((resolve, reject) => {
-    mongoose
-      .connect(URI, {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false,
-      })
-      .catch(err => reject(err.reason));
+    mongoose.connect(URI, {
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+    });
 
     db.on('error', error => reject(error));
 

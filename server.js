@@ -54,5 +54,10 @@ server.listen(PORT, () => {
   // connect to database
   connect()
     .then(message => logger.log(message))
-    .catch(error => logger.log('DB_CONNECTION', error));
+    .catch(error => logger.log('DB_CONNECTION_ERROR', error.message));
+});
+
+process.on('unhandledRejection', error => {
+  logger.log(error);
+  process.exit(0);
 });
