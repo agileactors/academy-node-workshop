@@ -57,6 +57,11 @@ server.listen(PORT, () => {
     .catch(error => logger.log('DB_CONNECTION_ERROR', error.message));
 });
 
+process.on('uncaughtException', error => {
+  logger.log(error);
+  process.exit(0);
+});
+
 process.on('unhandledRejection', error => {
   logger.log(error);
   process.exit(0);
