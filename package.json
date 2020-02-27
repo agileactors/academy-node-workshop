@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node -r dotenv/config server.js",
-    "dev": "nodemon server.js",
+    "dev": "nodemon -r dotenv/config server.js",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "compose": "docker-compose up",
+    "compose:clear": "docker-compose down"
   },
   "repository": {
     "type": "git",
