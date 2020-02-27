@@ -37,7 +37,6 @@ router.get('/', ({ response }) => {
 // WIP: GET /authors/list handler
 // TODO: move to authors services
 router.get('/authors', async ({ request, response }) => {
-  // todo: move handler to separate file
   try {
     AuthorModel.find({}, (err, authors) => {
       const html = authors.reduce((htmlText, author) => {
