@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema: AuthorSchema } = require('./author');
 
-const NOW = new Date();
 const { Schema } = mongoose;
 const { String } = Schema.Types;
 
@@ -22,7 +21,7 @@ const BookSchema = Schema({
   },
   created_at: {
     type: Date,
-    default: NOW,
+    default: new Date(),
   },
 });
 

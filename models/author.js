@@ -12,6 +12,10 @@ const AuthorSchema = new Schema({
     type: String,
     required: [true, 'author `surname` is required'],
   },
+  created_at: {
+    type: Date,
+    default: new Date(),
+  },
 });
 
 const AuthorModel = mongoose.model('Author', AuthorSchema);
@@ -20,7 +24,7 @@ const AuthorModel = mongoose.model('Author', AuthorSchema);
  * Get all authors
  */
 AuthorSchema.statics.findAllAuthors = async () => {
-  const authors = await AuthorModel.find({}, null, { skip: 10 });
+  const authors = await AuthorModel.find({});
 
   return authors;
 };

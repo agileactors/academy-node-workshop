@@ -8,10 +8,10 @@ const connect = require('./db/connect');
 const logger = require('./libraries/logger'); // task: move logger to module
 const Router = require('./libraries/router');
 
-const PORT = process.env.PORT || 8080;
-
-// models
+// author model
 const { Model: AuthorModel } = require('./models/author');
+
+const PORT = process.env.PORT || 8080;
 
 // initialize router
 const router = Router();
@@ -36,11 +36,22 @@ router.get('/', ({ response }) => {
 
 // WIP: GET /authors/list handler
 // TODO: move to authors services
-router.get('/authors/list', async ({ request }) => {
+router.get('/authors', async ({ request, response }) => {
+  // todo: move handler to separate file
   try {
-    AuthorModel.find({}, null, { skip: 10 }, (err, authors) =>
-      console.log(authors)
-    );
+    AuthorModel.find({}, (err, authors) => {
+      const html = authors.reduce((htmlText, author) => {
+        const { name, surname } = author;
+        let text = htmlText;
+        text += `<div>${surname} ${name}</div>`;
+
+        return text;
+      }, '');
+
+      response.setHeader('Content-Type', 'text/html');
+      response.writeHead(200);
+      response.end(`<section>${html}</section>`);
+    });
 
     // or you can executing a query explicitly
     // const query = AuthorModel.find({}, null, { skip: 10 });
