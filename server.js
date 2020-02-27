@@ -5,7 +5,9 @@
 const http = require('http');
 
 const connect = require('./db/connect');
-const logger = require('./libraries/logger'); // task: move logger to module
+
+// task: move logger to module
+const logger = require('./libraries/logger');
 const Router = require('./libraries/router');
 
 // author model
