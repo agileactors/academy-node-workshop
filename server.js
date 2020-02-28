@@ -43,6 +43,8 @@ router.get('/', ({ response }) => {
 
 router.get('/authors', getAuthors);
 router.get('/books', bookHandler.get);
+router.get('/books/create', bookHandler.getCreateForm);
+router.post('/books', bookHandler.post);
 
 // add routes as middleware
 router.use(router.routesMiddleware);

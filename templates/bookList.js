@@ -1,17 +1,14 @@
 const template = books => {
   const html = books.reduce((htmlText, book) => {
-    const { title, subtitle, description, authors, isbn } = book;
+    const { title, subtitle, description, author, isbn } = book;
 
     let text = htmlText;
 
     text += `
       <br>
-      <div><b>${title}</b></div>
-      <div><b>${subtitle}</b></div>
+      <div><b>${title}</b>: ${subtitle}</div>
       <p>${description}</p>
-      <ul>
-        ${authors.map(({ name, surname }) => `<li>${name} ${surname}</li>`)}
-      </ul>
+      <div><b>${author.name} ${author.surname}</b></div><br />
       <div>${isbn}</div>
       <br><br>
     `;

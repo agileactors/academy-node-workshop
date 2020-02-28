@@ -1,17 +1,14 @@
 const template = book => {
-  const { title, subtitle, description, authors, isbn } = book;
+  const { title, subtitle, description, author, isbn } = book;
 
   const html = `
-        <br>
-        <div><b>${title}</b></div>
-        <div><b>${subtitle}</b></div>
-        <p>${description}</p>
-        <ul>
-          ${authors.map(({ name, surname }) => `<li>${name} ${surname}</li>`)}
-        </ul>
-        <div>${isbn}</div>
-        <br><br>
-      `;
+    <br>
+    <div><b>${title}</b>: ${subtitle}</div>
+    <p>${description}</p>
+    <div><b>${author.name} ${author.surname}</b></div><br />
+    <div>${isbn}</div>
+    <br><br>
+  `;
 
   return html;
 };
