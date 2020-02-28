@@ -1,16 +1,11 @@
 const { Model: AuthorModel } = require('../models/author');
 const logger = require('../libraries/logger');
+const templates = require('../templates');
 
 const get = async ({ response }) => {
   try {
-    const authors = await AuthorModel.getAll();
-    const html = authors.reduce((htmlText, author) => {
-      const { name, surname } = author;
-      let text = htmlText;
-      text += `<div>${surname} ${name}</div>`;
-
-      return text;
-    }, '');
+    const data = await AuthorModel.getAll();
+    const html = templates.authorList(data);
 
     response.setHeader('Content-Type', 'text/html');
     response.writeHead(200);
