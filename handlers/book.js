@@ -1,6 +1,6 @@
-const { Model: BookModel } = require('../models/book');
 const logger = require('../libraries/logger');
 const templates = require('../templates');
+const { Model: BookModel } = require('../models/book');
 
 const getBookList = async ({ response }) => {
   try {
@@ -30,6 +30,7 @@ const getByISBN = async ({ request, response }) => {
         return;
       }
 
+      // use template to build the html
       const html = templates.book(data);
 
       response.setHeader('Content-Type', 'text/html');
@@ -41,7 +42,7 @@ const getByISBN = async ({ request, response }) => {
   }
 };
 
-const get = async ctx => {
+const get = ctx => {
   const parsedUrl = new URL(ctx.request.url, 'http://example.com');
   const isbn = parsedUrl.searchParams.get('isbn');
 
