@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const logger = require('../libraries/logger');
 
 const { Schema } = mongoose;
 const { String } = Schema.Types;
@@ -17,6 +18,9 @@ const AuthorSchema = new Schema({
     default: new Date(),
   },
 });
+
+// eslint-disable-next-line
+AuthorSchema.statics.getAll = () => AuthorModel.find({});
 
 const AuthorModel = mongoose.model('Author', AuthorSchema);
 
