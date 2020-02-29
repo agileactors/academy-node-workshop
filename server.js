@@ -10,9 +10,6 @@ const connect = require('./db/connect');
 const logger = require('./libraries/logger');
 const Router = require('./libraries/router');
 
-// author model
-const { Model: AuthorModel } = require('./models/author');
-
 // handlers
 const { get: getAuthors } = require('./handlers/author');
 

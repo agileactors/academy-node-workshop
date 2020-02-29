@@ -18,8 +18,8 @@ const AuthorSchema = new Schema({
   },
 });
 
-// eslint-disable-next-line
 AuthorSchema.statics.getAll = () => {
+  // eslint-disable-next-line
   const query = AuthorModel.find({}, null, { skip: 0 });
 
   return query.exec();
