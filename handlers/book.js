@@ -106,8 +106,40 @@ const post = ({ request, response }) => {
   }
 };
 
+const deleteByISBN = async ({ request, response }) => {
+  try {
+    const { isbn } = request.query;
+
+    await BookModel.deleteOne({ isbn }).exec();
+
+    const html = `<div>Book deleted successfully. <a href="/books">Go back</a>.</div>`;
+
+    response.setHeader('Content-Type', 'text/html');
+    response.writeHead(200);
+    response.end(`<section style='width: 600px;'>${html}</section>`);
+  } catch (err) {
+    logger.log(err);
+  }
+};
+
+const del = ctx => {
+  const parsedUrl = new URL(ctx.request.url, 'http://example.com');
+  const isbn = parsedUrl.searchParams.get('isbn');
+
+  if (isbn) {
+    ctx.request.query = { isbn };
+    deleteByISBN(ctx);
+    return;
+  }
+
+  ctx.response.setHeader('Content-Type', 'text/html');
+  ctx.response.writeHead(400);
+  ctx.response.end('ISBN required to delete a book');
+};
+
 module.exports = {
   get,
   getCreateForm,
   post,
+  del,
 };

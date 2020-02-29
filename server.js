@@ -45,6 +45,7 @@ router.get('/authors', getAuthors);
 router.get('/books', bookHandler.get);
 router.get('/books/create', bookHandler.getCreateForm);
 router.post('/books', bookHandler.post);
+router.get('/books/delete', bookHandler.del);
 
 // add routes as middleware
 router.use(router.routesMiddleware);

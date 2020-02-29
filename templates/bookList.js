@@ -6,7 +6,7 @@ const template = books => {
 
     text += `
       <br>
-      <div><b>${title}</b>: ${subtitle}</div>
+      <div><b>${title}</b>: ${subtitle} (<a href="/books/delete?isbn=${isbn}">delete</a>)</div>
       <p>${description}</p>
       <div><b>${author.name} ${author.surname}</b></div><br />
       <div>${isbn}</div>
