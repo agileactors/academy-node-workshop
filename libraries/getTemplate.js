@@ -31,6 +31,10 @@ const getTemplate = (route, data, buildFn) => {
     const regxp = /\{(.*?)\}/g; // find all occurences between { }
     const matches = templateContentsHtml.match(regxp); // get the matches against the html template contents
 
+    if (!matches) {
+      return templateContentsHtml;
+    }
+
     const htmlResult = matches.reduce((acc, placeHolder) => {
       const prop = placeHolder.substring(1, placeHolder.length - 1); // remove markers {{ }}
       let html = acc;
