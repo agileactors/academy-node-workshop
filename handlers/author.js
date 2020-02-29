@@ -1,15 +1,18 @@
 const { Model: AuthorModel } = require('../models/author');
 const logger = require('../libraries/logger');
-const templates = require('../templates');
+const getTemplate = require('../libraries/getTemplate');
 
 const get = async ({ response }) => {
   try {
-    const data = await AuthorModel.getAll();
-    const html = templates.authorList(data);
+    const authors = await AuthorModel.getAll();
+    const html = await getTemplate('authors:list', {
+      authors,
+      generatedAt: new Date(),
+    });
 
     response.setHeader('Content-Type', 'text/html');
     response.writeHead(200);
-    response.end(`<section>${html}</section>`);
+    response.end(html);
   } catch (err) {
     logger.log(err);
   }

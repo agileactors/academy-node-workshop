@@ -37,7 +37,7 @@ router.get('/', ({ response }) => {
 });
 
 // authors routes
-router.get('/authors', getAuthors);
+router.get('/authors/list', getAuthors);
 
 // add routes as middleware
 router.use(router.routesMiddleware);
