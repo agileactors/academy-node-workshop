@@ -39,10 +39,9 @@ const getTemplate = (route, data, buildFn) => {
         return html;
       }
 
-      html = html.replace(
-        placeHolder,
-        buildFn ? buildFn.call(null, data[prop]) : ''
-      );
+      html = buildFn
+        ? html.replace(placeHolder, buildFn.call(null, data[prop]))
+        : html;
 
       return html;
     }, templateContentsHtml);
