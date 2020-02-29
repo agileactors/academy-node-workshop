@@ -1,11 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const logger = require('../libraries/logger');
-/**
- * Find html for specific route
- * @param {*} tpl
- * @param {*} data
- */
 
 // task: working with path, fs modules
 // task: use the process global
@@ -15,29 +10,7 @@ const rootDir = process.cwd();
 
 // get the templates folder
 const tplDir = path.join(rootDir, 'templates');
-
-/**
- * Build html with data
- * @param {*} data
- * data<Array | String | Number>
- */
-
-const buildHtml = (data, htmlTag = 'div') => {
-  const isArray = Array.isArray(data);
-  const html = isArray
-    ? data.reduce((htmlText, author) => {
-        const { name, surname } = author;
-
-        let text = htmlText;
-
-        text += `${name} ${surname}</${htmlTag}>`;
-
-        return text;
-      }, '')
-    : data;
-
-  return `<${htmlTag}>${html}</${htmlTag}>`;
-};
+const noop = function() {};
 
 /**
  * Get the template for the specified route
@@ -45,7 +18,7 @@ const buildHtml = (data, htmlTag = 'div') => {
  * @param {*} tpl
  * @param {*} data
  */
-const getTemplate = (route, data) => {
+const getTemplate = (route, data, buildFn = noop) => {
   try {
     const [parent, child] = route.split(':');
     const directory = path.join(tplDir, parent);
@@ -67,7 +40,7 @@ const getTemplate = (route, data) => {
         return html;
       }
 
-      html = html.replace(placeHolder, buildHtml(data[prop]));
+      html = html.replace(placeHolder, buildFn.call(null, data[prop]));
 
       return html;
     }, templateContentsHtml);
