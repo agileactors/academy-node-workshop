@@ -10,7 +10,6 @@ const rootDir = process.cwd();
 
 // get the templates folder
 const tplDir = path.join(rootDir, 'templates');
-const noop = function() {};
 
 /**
  * Get the template for the specified route
@@ -18,7 +17,7 @@ const noop = function() {};
  * @param {*} tpl
  * @param {*} data
  */
-const getTemplate = (route, data, buildFn = noop) => {
+const getTemplate = (route, data, buildFn) => {
   try {
     const [parent, child] = route.split(':');
     const directory = path.join(tplDir, parent);
@@ -40,7 +39,10 @@ const getTemplate = (route, data, buildFn = noop) => {
         return html;
       }
 
-      html = html.replace(placeHolder, buildFn.call(null, data[prop]));
+      html = html.replace(
+        placeHolder,
+        buildFn ? buildFn.call(null, data[prop]) : ''
+      );
 
       return html;
     }, templateContentsHtml);
