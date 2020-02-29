@@ -1,44 +1,23 @@
 const { Model: AuthorModel } = require('../models/author');
 const logger = require('../libraries/logger');
-const getTemplate = require('../libraries/getTemplate');
+const templates = require('../templates');
 
-const get = async ({ response }) => {
-  const buildHtml = data => {
-    const isArray = Array.isArray(data);
-    const html = isArray
-      ? data.reduce((htmlText, author) => {
-          const { name, surname } = author;
-
-          let text = htmlText;
-
-          text += `<div>${name} ${surname}</div>`;
-
-          return text;
-        }, '')
-      : data;
-
-    return html;
-  };
-
+const getAuthors = async ({ response }) => {
   try {
-    const authors = await AuthorModel.getAll();
-    const html = await getTemplate(
-      'authors:list',
-      {
-        authors,
-        generatedAt: new Date(),
-      },
-      buildHtml
-    );
+    const data = await AuthorModel.find({});
 
+    // use template to build the html
+    const html = templates.authors(data);
+
+    // send response
     response.setHeader('Content-Type', 'text/html');
     response.writeHead(200);
-    response.end(html);
+    response.end(`<section style='width: 600px;'>${html}</section>`);
   } catch (err) {
     logger.log(err);
   }
 };
 
 module.exports = {
-  get,
+  getAuthors,
 };

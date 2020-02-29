@@ -11,7 +11,7 @@ const logger = require('./libraries/logger');
 const Router = require('./libraries/router');
 
 // handlers
-const { get: getAuthors } = require('./handlers/author');
+const { getAuthors } = require('./handlers/author');
 
 const PORT = process.env.PORT || 8080;
 
@@ -37,7 +37,7 @@ router.get('/', ({ response }) => {
 });
 
 // authors routes
-router.get('/authors/list', getAuthors);
+router.get('/authors', getAuthors);
 
 // add routes as middleware
 router.use(router.routesMiddleware);
