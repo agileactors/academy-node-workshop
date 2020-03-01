@@ -24,6 +24,7 @@ const middleware = async ({ request, response }, next) => {
     // if path is not file continue the chain
     if (!stats.isFile()) {
       next();
+      return;
     }
 
     // read file's content
