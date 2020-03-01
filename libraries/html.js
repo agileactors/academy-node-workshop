@@ -20,7 +20,7 @@ const LOOP_VAR_REGEX = /\{%(?:(?!%\})(?:.|\n))*%\}/g;
 const clean = str => str.substring(2, str.length - 2).trim();
 
 const renderVars = (template = '', data = {}) => {
-  const matches = template.match(VAR_REGEX);
+  const matches = template.match(VAR_REGEX) || [];
 
   return matches.reduce((html, placeholder) => {
     const prop = clean(placeholder);
@@ -30,7 +30,7 @@ const renderVars = (template = '', data = {}) => {
 };
 
 const renderLoops = (template = '', data = {}) => {
-  const matches = template.match(LOOP_REGEX);
+  const matches = template.match(LOOP_REGEX) || [];
 
   return matches.reduce((html, loop) => {
     // get loop's variable name
@@ -66,9 +66,9 @@ const render = (filename, data = {}) => {
     encoding: 'utf8',
   });
 
-  const html = renderLoops(
+  const html = renderVars(
     // prettier-ignore
-    renderVars(template, data),
+    renderLoops(template, data),
     data
   );
   return html;
