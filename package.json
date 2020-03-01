@@ -35,6 +35,7 @@
     "chalk": "^3.0.0",
     "dotenv": "^8.2.0",
     "lodash": "^4.17.15",
-    "mongoose": "^5.9.2"
+    "mongoose": "^5.9.2",
+    "querystring": "^0.2.0"
   }
 }

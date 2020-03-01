@@ -4,7 +4,6 @@
 
 const mongoose = require('mongoose');
 const config = require('../config');
-const logger = require('../libraries/logger');
 
 const { URI } = config;
 

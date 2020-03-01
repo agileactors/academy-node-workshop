@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-const { Schema: AuthorSchema } = require('./author');
 
 const { Schema } = mongoose;
-const { String } = Schema.Types;
+const { String, ObjectId } = Schema.Types;
 
 const BookSchema = Schema({
   title: {
@@ -14,7 +13,7 @@ const BookSchema = Schema({
     type: String,
     required: [true, 'book `description` is required'],
   },
-  authors: [AuthorSchema],
+  author: { type: ObjectId, ref: 'Author' },
   isbn: {
     type: String,
     required: [true, 'book `isbn` is required'],

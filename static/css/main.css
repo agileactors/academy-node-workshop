@@ -10,6 +10,7 @@ body {
 
 .wrapper {
   margin: 0 auto;
+  width: 700px;
 }
 
 section {
@@ -30,13 +31,16 @@ ul {
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 h1.title {
   padding: 10px;
 }
 
 div.item {
   background: #34495e;
-  height: 69px;
   width: 100%;
   display: block;
   border-bottom: 1px solid #2c3e50;
@@ -59,4 +63,12 @@ div.item h2 span {
   text-transform: capitalize;
   font-weight: normal;
   color: #bdc3c7;
+}
+
+div.delete-item {
+  background-color: #7e2828;
+  color: #fff;
+  margin: 0 auto;
+  padding: 10px;
+  width: 300px;
 }
