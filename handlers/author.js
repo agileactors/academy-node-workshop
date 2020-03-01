@@ -7,7 +7,7 @@ const getAuthors = async ({ response }) => {
     const authors = await AuthorModel.find({});
 
     const data = {
-      title: 'This is a title',
+      title: 'Authors',
       authors,
     };
 

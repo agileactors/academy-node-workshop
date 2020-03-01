@@ -38,6 +38,10 @@
         padding: 0;
       }
 
+      h1.title {
+        padding: 10px
+      }
+
       div.item {
         background: #34495e;
         height: 69px;
@@ -71,7 +75,7 @@
 
   <body>
     <div class="wrapper">
-      <h1>Authors</h1>
+      <h1 class="title">{{ title }}</h1>
       <section>
         <ul>
           {% authors %}
