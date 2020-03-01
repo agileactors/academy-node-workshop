@@ -7,6 +7,7 @@ const http = require('http');
 const connect = require('./db/connect');
 const logger = require('./libraries/logger'); // task: move logger to module
 const Router = require('./libraries/router');
+const staticMiddleware = require('./middleware/static');
 
 const PORT = process.env.PORT || 8080;
 
@@ -23,6 +24,8 @@ router.use(async (ctx, next) => {
 
   logger.log(`${request.method} ${request.url} - ${duration}ms`);
 });
+
+router.use(staticMiddleware);
 
 // index route
 router.get('/', ({ response }) => {
