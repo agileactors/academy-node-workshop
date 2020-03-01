@@ -13,7 +13,12 @@ const staticMiddleware = require('./middleware/static');
 
 // handlers
 const { getAuthors } = require('./handlers/author');
-const bookHandler = require('./handlers/book');
+const {
+  getBooks,
+  getBookForm,
+  createBook,
+  deleteBook,
+} = require('./handlers/book');
 
 const PORT = process.env.PORT || 8080;
 
@@ -42,10 +47,10 @@ router.get('/', ({ response }) => {
 });
 
 router.get('/authors', getAuthors);
-router.get('/books', bookHandler.get);
-router.get('/books/create', bookHandler.getCreateForm);
-router.post('/books', bookHandler.post);
-router.get('/books/delete', bookHandler.del);
+router.get('/books', getBooks);
+router.get('/books/create', getBookForm);
+router.post('/books', createBook);
+router.get('/books/delete', deleteBook);
 
 // add routes as middleware
 router.use(router.routesMiddleware);

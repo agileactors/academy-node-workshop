@@ -1,7 +1,7 @@
 const { parse } = require('querystring');
 
 const logger = require('../libraries/logger');
-const templates = require('../templates');
+const templateEngine = require('../libraries/html');
 const { Model: BookModel } = require('../models/book');
 const { Model: AuthorModel } = require('../models/author');
 
@@ -10,12 +10,17 @@ const getBookList = async ({ response }) => {
     const data = await BookModel.find({})
       .populate('author')
       .exec();
+
     // use template to build the html
-    const html = templates.bookList(data);
+    const html = templateEngine.render('books', {
+      title: 'Book List',
+      books: data,
+    });
+
     // send response
     response.setHeader('Content-Type', 'text/html');
     response.writeHead(200);
-    response.end(`<section style='width: 600px;'>${html}</section>`);
+    response.end(html);
   } catch (err) {
     logger.log(err);
   }
@@ -28,6 +33,7 @@ const getByISBN = async ({ request, response }) => {
     const data = await BookModel.findOne({ isbn })
       .populate('author')
       .exec();
+
     // if book not in database respond with 404
     if (!data) {
       response.setHeader('Content-Type', 'text/html');
@@ -37,17 +43,17 @@ const getByISBN = async ({ request, response }) => {
     }
 
     // use template to build the html
-    const html = templates.book(data);
+    const html = templateEngine.render('book', data);
 
     response.setHeader('Content-Type', 'text/html');
     response.writeHead(200);
-    response.end(`<section style='width: 600px;'>${html}</section>`);
+    response.end(html);
   } catch (err) {
     logger.log(err);
   }
 };
 
-const get = ctx => {
+const getBooks = ctx => {
   const parsedUrl = new URL(ctx.request.url, 'http://example.com');
   const isbn = parsedUrl.searchParams.get('isbn');
 
@@ -60,21 +66,23 @@ const get = ctx => {
   getBookList(ctx);
 };
 
-const getCreateForm = async ({ response }) => {
+const getBookForm = async ({ response }) => {
   try {
     const data = await AuthorModel.find({}).exec();
 
-    const html = templates.bookForm(data);
+    const html = templateEngine.render('create', {
+      authors: data,
+    });
 
     response.setHeader('Content-Type', 'text/html');
     response.writeHead(200);
-    response.end(`<section>${html}</section>`);
+    response.end(html);
   } catch (err) {
     logger.log(err);
   }
 };
 
-const post = ({ request, response }) => {
+const createBook = ({ request, response }) => {
   try {
     const buffer = [];
 
@@ -93,13 +101,14 @@ const post = ({ request, response }) => {
         isbn,
       });
 
-      const html = templates.book(
+      const html = templateEngine.render(
+        'book',
         await newBook.populate('author').execPopulate()
       );
 
       response.setHeader('Content-Type', 'text/html');
       response.writeHead(200);
-      response.end(`<section style='width: 600px;'>${html}</section>`);
+      response.end(`${html}`);
     });
   } catch (err) {
     logger.log(err);
@@ -112,17 +121,17 @@ const deleteByISBN = async ({ request, response }) => {
 
     await BookModel.deleteOne({ isbn }).exec();
 
-    const html = `<div>Book deleted successfully. <a href="/books">Go back</a>.</div>`;
+    const html = templateEngine.render('delete');
 
     response.setHeader('Content-Type', 'text/html');
     response.writeHead(200);
-    response.end(`<section style='width: 600px;'>${html}</section>`);
+    response.end(html);
   } catch (err) {
     logger.log(err);
   }
 };
 
-const del = ctx => {
+const deleteBook = ctx => {
   const parsedUrl = new URL(ctx.request.url, 'http://example.com');
   const isbn = parsedUrl.searchParams.get('isbn');
 
@@ -138,8 +147,8 @@ const del = ctx => {
 };
 
 module.exports = {
-  get,
-  getCreateForm,
-  post,
-  del,
+  getBooks,
+  getBookForm,
+  createBook,
+  deleteBook,
 };
