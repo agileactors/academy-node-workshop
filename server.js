@@ -5,9 +5,14 @@
 const http = require('http');
 
 const connect = require('./db/connect');
-const logger = require('./libraries/logger'); // task: move logger to module
+
+// task: move logger to module
+const logger = require('./libraries/logger');
 const Router = require('./libraries/router');
 const staticMiddleware = require('./middleware/static');
+
+// handlers
+const { getAuthors } = require('./handlers/author');
 
 const PORT = process.env.PORT || 8080;
 
@@ -34,6 +39,9 @@ router.get('/', ({ response }) => {
   response.writeHead(200);
   response.end('<h1>Hello, Node!</h1>');
 });
+
+// authors routes
+router.get('/authors', getAuthors);
 
 // add routes as middleware
 router.use(router.routesMiddleware);
