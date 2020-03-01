@@ -46,7 +46,6 @@ div.item {
   font-size: 11px;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: all 0.7s ease;
   position: relative;
   padding: 10px 5px 5px 15px;
   box-sizing: border-box;
