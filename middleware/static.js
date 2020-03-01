@@ -19,7 +19,6 @@ const staticDir = path.join(rootDir, 'static');
 const middleware = async ({ request, response }, next) => {
   try {
     const staticPath = path.join(staticDir, request.url);
-
     const stats = await stat(staticPath);
 
     // if path is not file continue the chain
