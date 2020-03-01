@@ -25,6 +25,7 @@ router.use(async (ctx, next) => {
   logger.log(`${request.method} ${request.url} - ${duration}ms`);
 });
 
+// use static-file middleware
 router.use(staticMiddleware);
 
 // index route
