@@ -4,6 +4,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { get } = require('lodash');
 
 // get root directory
 const rootDir = process.cwd();
@@ -23,7 +24,8 @@ const renderVars = (template = '', data = {}) => {
 
   return matches.reduce((html, placeholder) => {
     const prop = clean(placeholder);
-    return data[prop] ? html.replace(placeholder, data[prop]) : html;
+    const value = get(data, prop); // get value even if it's nested
+    return value ? html.replace(placeholder, value) : html;
   }, template);
 };
 
