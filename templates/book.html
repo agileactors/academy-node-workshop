@@ -3,30 +3,28 @@
     <meta charset="utf-8" />
     <meta name="description" content="Node.js workshop - {{ title }}" />
     <title>Node.js workshop - {{ title }}</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
 
   <body>
-    <div class="wrapper">
-      <h1 class="title">{{ title }}</h1>
-      <section>
-        <div class="item">
-          <h2>{{ subtitle }}</h2>
-          <p>{{ description }}</p>
-          <h3>Written by {{ author.name }} {{ author.surname }}</h3>
-          <h4>{{ isbn }}</h4>
-        </div>
-
-        <a href="/books/delete?isbn={{isbn}}">
-          <div class="delete-item">
-            Delete
-          </div>
+    <div class="container">
+      <div class="book__title">
+        <a href="/books">
+          <img src="/images/back-arrow.png" />
         </a>
-      </section>
+        <h1>{{ title }}</h1>
+        <a href="/books/delete?isbn={{isbn}}" class="book__delete-button">
+          Delete
+        </a>
+      </div>
+      <div class="book__subtitle">{{ subtitle }}</div>
+      <div class="book__description">{{ description }}</div>
+      <div class="book__details">
+        {{ author.name }} {{ author.surname }}
+      </div>
+      <div class="book__details">
+        {{ isbn }}
+      </div>
     </div>
   </body>
 </html>

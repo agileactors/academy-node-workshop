@@ -13,7 +13,7 @@ const getBookList = async ({ response }) => {
 
     // use template to build the html
     const html = templateEngine.render('books', {
-      title: 'Book List',
+      title: 'The Book List',
       books: data,
     });
 
@@ -108,7 +108,7 @@ const createBook = ({ request, response }) => {
 
       response.setHeader('Content-Type', 'text/html');
       response.writeHead(200);
-      response.end(`${html}`);
+      response.end(html);
     });
   } catch (err) {
     logger.log(err);

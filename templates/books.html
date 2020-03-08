@@ -3,29 +3,21 @@
     <meta charset="utf-8" />
     <meta name="description" content="Node.js workshop - Books" />
     <title>Node.js workshop - Books</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
-
   <body>
-    <div class="wrapper">
-      <h1 class="title">{{ title }}</h1>
-      <section>
-        <ul>
-          {% books %}
+    <div class="container">
+      <h1>{{ title }}</h1>
+      <ul class="list">
+        {% books %}
+        <a href="/books?isbn={{isbn}}">
           <li>
-            <a href="/books?isbn={{isbn}}">
-              <div class="item">
-                <h2>{{ title }}</h2>
-              </div>
-            </a>
+            <div class="title">{{ title }}</div>
+            <div class="subtitle">{{ subtitle }}</div>
           </li>
-          {%}
-        </ul>
-      </section>
+        </a>
+        {%}
+      </ul>
     </div>
   </body>
 </html>
