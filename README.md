@@ -10,7 +10,14 @@ In this workshop we introduce the core concepts of node.js and how you can use t
 
 We are going to build a book application using Node. We have split the steps in several branches with each branch has its own tasks which you have to complete in order to proceed to the next branch.
 
-`todo: app image here`
+<div style="width: 100%; display: flex; justifyContent: space-between">
+  <div style="margin-right: 5px">
+    <img alt="node-app-1" src="./static/images/node-app-1.png" width="100%">
+  </div>
+  <div>
+  <img alt="node-app-1" src="./static/images/node-app-2.png" width="100%">
+  </div>
+</div>
 
 ### Available Branches
 
@@ -49,7 +56,7 @@ _If you do not have git install follow this link [How to install Git](https://gi
 Then navigate into the project directory and install all depedencies:
 
 ```
-cd academy-node-workshop // or wherever you clone the repo
+cd academy-node-workshop
 ```
 
 using npm
@@ -70,16 +77,4 @@ Run the application using the command in a terminal:
     npm start or yarn start
 ```
 
-You can preview the application using the following url: <a href="http://localhost:3000/" target="_blank">http://localhost:3000</a>
-
-## Branch description
-
-`todo: branch description`
-
-## Branch Tasks
-
-`todo: branch tasks`
-
-## Covers
-
-`todo: branch covers`
+You can preview the application using the following url: <a href="http://localhost:8000/books" target="_blank">http://localhost:8000/books</a>
