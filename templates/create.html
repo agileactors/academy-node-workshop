@@ -7,9 +7,13 @@
   </head>
   <body>
     <div class="container">
-      <form action="/books" method="POST" class="book-form">
+      <div class="book__title">
+        <a href="/books">
+          <img src="/images/back-arrow.png" />
+        </a>
         <h1 class="title">Add New Book</h1>
-
+      </div>
+      <form action="/books" method="POST" class="book-form">
         <label>Title</label>
         <input type="text" name="title" class="input" />
 
@@ -20,7 +24,7 @@
         <textarea name="description"></textarea>
 
         <label class="label-inline">Author</label>
-        <select name="author">
+        <select name="author" class="select">
           {% authors %}
           <option value="{{_id}}">{{ name }} {{ surname }}</option>
           {%}
@@ -29,7 +33,7 @@
         <label>ISBN</label>
         <input type="text" name="isbn" />
 
-        <input type="submit" value="submit" />
+        <input type="submit" value="submit" class="label-submit"/>
       </form>
     </div>
   </body>
