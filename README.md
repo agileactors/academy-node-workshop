@@ -10,7 +10,10 @@ In this workshop we introduce the core concepts of node.js and how you can use t
 
 We are going to build a book application using Node. We have split the steps in several branches with each branch has its own tasks which you have to complete in order to proceed to the next branch.
 
-`todo: app image here`
+<div style="width: 100%;">
+  <img alt="node-app-1" src="./static/images/node-app-1.png">
+  <img alt="node-app-1" src="./static/images/node-app-2.png">
+</p>
 
 ### Available Branches
 
