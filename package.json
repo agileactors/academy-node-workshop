@@ -1,0 +1,41 @@
+{
+  "name": "academy-node-workshop",
+  "version": "1.0.0",
+  "description": "Node.js Workshop",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r dotenv/config server.js",
+    "dev": "nodemon --inspect -r dotenv/config server.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "compose": "docker-compose up",
+    "compose:clear": "docker-compose down"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agileactors/academy-node-workshop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agileactors/academy-node-workshop/issues"
+  },
+  "homepage": "https://github.com/agileactors/academy-node-workshop#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1"
+  },
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "dotenv": "^8.2.0",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.9.2",
+    "querystring": "^0.2.0"
+  }
+}

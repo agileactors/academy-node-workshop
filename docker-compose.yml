@@ -1,0 +1,13 @@
+version: '3'
+services:
+  database:
+    image: 'bitnami/mongodb:latest'
+    container_name: 'mongo_db'
+    environment:
+      - MONGODB_USERNAME=academy
+      - MONGODB_PASSWORD=academy123
+      - MONGODB_DATABASE=aa_book_db
+    volumes:
+      - /tmp/db_data:/data/db
+    ports:
+      - '27017:27017'

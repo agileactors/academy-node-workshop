@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Node.js workshop - {{ title }}" />
+    <title>Node.js workshop - {{ title }}</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="book__title">
+        <a href="/books">
+          <img src="/images/back-arrow.png" />
+        </a>
+        <h1>{{ title }}</h1>
+        <a href="/books/delete?isbn={{isbn}}" class="book__delete-button">
+          Delete
+        </a>
+      </div>
+      <div class="book__subtitle">{{ subtitle }}</div>
+      <div class="book__description">{{ description }}</div>
+      <div class="book__details">
+        {{ author.name }} {{ author.surname }}
+      </div>
+      <div class="book__details">
+        {{ isbn }}
+      </div>
+    </div>
+  </body>
+</html>
