@@ -2,8 +2,6 @@
  * Basic http router with middleware support
  */
 
-const url = require('url');
-
 const Router = () => {
   const routes = [];
   const middleware = [];
@@ -22,7 +20,7 @@ const Router = () => {
   // find the appropriate route for the request
   const routesMiddleware = (ctx, next) => {
     const { request } = ctx;
-    const { pathname } = url.parse(request.url);
+    const { pathname } = new URL(request.url, 'http://example.com');
 
     const route = routes.find(
       ({ method, path }) => method === request.method && path === pathname
