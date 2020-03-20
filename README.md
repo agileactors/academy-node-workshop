@@ -4,7 +4,8 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will introduce REPL. REPL stands for Read-Evaluate-Print-Loop, and it's a great way to explore
+In this branch we will use the terminal to execute JavaScript.
+We will also introduce REPL. REPL stands for Read-Evaluate-Print-Loop, and it's a great way to explore
 the Node features in a quick way.
 
 ## Branch Tasks
@@ -19,4 +20,5 @@ the Node features in a quick way.
 ## Covers
 
 - Node basic usage
+- JavaScript terminal execution
 - REPL (Read-Evaluate-Print-Loop)
