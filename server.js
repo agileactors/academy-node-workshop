@@ -41,8 +41,7 @@ router.use(staticMiddleware);
 
 // index route
 router.get('/', ({ response }) => {
-  response.setHeader('Content-Type', 'text/html');
-  response.writeHead(200);
+  response.writeHead(200, { 'Content-Type': 'text/html' });
   response.end('<h1>Hello, Node!</h1>');
 });
 
@@ -57,8 +56,7 @@ router.use(router.routesMiddleware);
 
 // 404 not-found middleware - TODO: move middleware to another folder
 router.use(({ response }) => {
-  response.setHeader('Content-Type', 'text/plain');
-  response.writeHead(404);
+  response.writeHead(404, { 'Content-Type': 'text/plain' });
   response.end('Not Found');
 });
 

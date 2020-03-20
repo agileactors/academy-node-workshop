@@ -18,8 +18,7 @@ const getBookList = async ({ response }) => {
     });
 
     // send response
-    response.setHeader('Content-Type', 'text/html');
-    response.writeHead(200);
+    response.writeHead(200, { 'Content-Type': 'text/html' });
     response.end(html);
   } catch (err) {
     logger.log(err);
@@ -36,8 +35,7 @@ const getByISBN = async ({ request, response }) => {
 
     // if book not in database respond with 404
     if (!data) {
-      response.setHeader('Content-Type', 'text/html');
-      response.writeHead(404);
+      response.writeHead(404, { 'Content-Type': 'text/html' });
       response.end('Not Found');
       return;
     }
@@ -45,8 +43,7 @@ const getByISBN = async ({ request, response }) => {
     // use template to build the html
     const html = templateEngine.render('book', data);
 
-    response.setHeader('Content-Type', 'text/html');
-    response.writeHead(200);
+    response.writeHead(200, { 'Content-Type': 'text/html' });
     response.end(html);
   } catch (err) {
     logger.log(err);
@@ -74,8 +71,7 @@ const getBookForm = async ({ response }) => {
       authors: data,
     });
 
-    response.setHeader('Content-Type', 'text/html');
-    response.writeHead(200);
+    response.writeHead(200, { 'Content-Type': 'text/html' });
     response.end(html);
   } catch (err) {
     logger.log(err);
@@ -106,8 +102,7 @@ const createBook = ({ request, response }) => {
         await newBook.populate('author').execPopulate()
       );
 
-      response.setHeader('Content-Type', 'text/html');
-      response.writeHead(200);
+      response.writeHead(200, { 'Content-Type': 'text/html' });
       response.end(html);
     });
   } catch (err) {
@@ -123,8 +118,7 @@ const deleteByISBN = async ({ request, response }) => {
 
     const html = templateEngine.render('delete');
 
-    response.setHeader('Content-Type', 'text/html');
-    response.writeHead(200);
+    response.writeHead(200, { 'Content-Type': 'text/html' });
     response.end(html);
   } catch (err) {
     logger.log(err);
@@ -141,8 +135,7 @@ const deleteBook = ctx => {
     return;
   }
 
-  ctx.response.setHeader('Content-Type', 'text/html');
-  ctx.response.writeHead(400);
+  ctx.response.writeHead(400, { 'Content-Type': 'text/html' });
   ctx.response.end('ISBN required to delete a book');
 };
 
