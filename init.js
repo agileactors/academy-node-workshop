@@ -16,8 +16,8 @@ const getEnvContent = () => {
   /**
    * Task 2:
    *
-   * Get the command line arguments passed if an env value is passed
-   * e.g PORT=6001 use this value insted of the default
+   * Get the command line arguments passed. If an env value is passed
+   * e.g PORT=6001 use this value instead of the default
    */
   const envValues = env.reduce((acc, envValue) => {
     const { name, value } = envValue;
