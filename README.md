@@ -18,14 +18,14 @@ the Node features in a quick way.
 
 to the stdout. Then call that function.
 
-`
+```
 > .editor
 // Entering editor mode (^D to finish, ^C to cancel)
 
 /** write your code in here.. **/
 
 // Press <ctrl>-D to finish, <ctrl>-C to cancel
-`
+```
 
 ## Covers
 
