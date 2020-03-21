@@ -1,5 +1,6 @@
 const fs = require('fs');
 const initialEnvValues = require('./configuration');
+const path = require('path');
 
 /**
  * Task 1:
