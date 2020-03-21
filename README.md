@@ -20,11 +20,12 @@ to the stdout. Then call that function.
 
 ```
 > .editor
-// Entering editor mode (^D to finish, ^C to cancel)
+// Entering editor mode (^D <ctrl>-D to finish, ^C <ctrl>-C to cancel)
 
 /** write your code in here.. **/
 
-// Press <ctrl>-D to finish, <ctrl>-C to cancel
+// ^D
+'Hello Zoubi'
 ```
 
 ## Covers
