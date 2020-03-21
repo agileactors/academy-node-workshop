@@ -1,6 +1,8 @@
 const fs = require('fs');
 const initialEnvValues = require('./configuration');
 
+const ENV_PATH = '.env';
+
 const getEnvContent = () => {
   const { env } = initialEnvValues;
 
