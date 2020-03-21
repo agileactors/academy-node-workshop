@@ -11,7 +11,7 @@ for our application.
 
 1. Provide the checkEnv implementation which checks if the .env file exists in the root folder.
 2. Provide the readEnv implementation which reads the contents of .env if exists
-3. Provide the createEnv implmentation which creates the .env file
+3. Provide the createEnv implementation which creates the .env file
 
 ## Covers
 
