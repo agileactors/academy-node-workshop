@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const logger = require('./libraries/logger');
 const initialEnvValues = require('./configuration');
 
 const cwd = process.cwd();
@@ -40,6 +41,11 @@ const createEnv = () => {
       console.log('Finished .env configuration');
     });
   } catch (error) {
+    /**
+     * Task 1:
+     *
+     * Use the logger to log the error to debug.log
+     */
     console.error(error);
   }
 };
@@ -54,6 +60,11 @@ const readEnv = () => {
       console.log(`.env configuration: \n${data}\n`);
     });
   } catch (error) {
+    /**
+     * Task 2:
+     *
+     * Use the logger to log the error to debug.log
+     */
     console.error(error);
   }
 };
@@ -61,7 +72,12 @@ const readEnv = () => {
 const checkEnv = () => {
   fs.open(ENV_PATH, 'r+', err => {
     if (err) {
-      console.log('Starting configuration..');
+      /**
+       * Task 3:
+       *
+       * Use the logger to log the error to the debug.log
+       */
+      console.error(err);
       return createEnv();
     }
 
@@ -70,6 +86,11 @@ const checkEnv = () => {
 };
 
 process.on('uncaughtException', err => {
+  /**
+   * Task 4:
+   *
+   * Use the logger to log the error to debug.log
+   */
   console.error(err);
   process.exit();
 });
