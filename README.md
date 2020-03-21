@@ -22,7 +22,7 @@ __Hello ${name}__ to the stdout. Finally call that function.
 /** write your code in here.. **/
 
 // ^D
-'Hello Zoubi'
+'Hello Foo'
 ```
 
 ## Covers
