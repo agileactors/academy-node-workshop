@@ -1,26 +1,48 @@
 /**
- * Task 1
+ * Logger module
  *
- * Implement the logger log and debug methods. The logger must use asynchronous apis
- * and the debug.log file must be placed in the root folder.
+ * Desc: Writes debug statements in console or in debug.log file
+ * Usage: debug(value) -> value <Any> : debug('hello node') | dedug({ error: some error }) | dedug([one, two, three])
+ * Return: void
  *
- * 1. It writes debug statements in the console
- * 2. it writes debug statements in debug.log file
- * 3. It writes the timestamp at the beggining of each line
- * 3. Can handle multiple values and types such as <string | object | array> (bonus)
- *
- * Usage:
- * logger.log(value1, value2, value3)
- *
- * Result:
- * [timestamp, message].
- * e.g ["hours:minutes:seconds","some info" | { error: 'some error } | ['some item1', 'some item2']]
  */
+
+const fs = require('fs');
 
 const logger = {
   logToFile: true,
   logToConsole: true,
-  log(...args) {},
+  cnc(...args) {
+    const values = Object.values(args);
+
+    return values.reduce((txt, element) => {
+      let result = txt;
+      result += String(JSON.stringify(element));
+
+      return result;
+    }, '');
+  },
+  log(...args) {
+    const now = new Date();
+    const nowFormat = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}.${now.getMilliseconds()}`;
+
+    args.unshift(nowFormat);
+
+    if (this.logToFile) {
+      this.debug(args);
+    }
+
+    args.unshift('\n');
+
+    if (this.logToConsole) {
+      console.log.apply(null, args);
+    }
+  },
+  debug(args) {
+    const txt = this.cnc(args);
+
+    fs.writeFileSync('debug.log', `${txt}\n`, { flag: 'a' });
+  },
 };
 
 module.exports = logger;

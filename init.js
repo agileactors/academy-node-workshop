@@ -42,12 +42,7 @@ const createEnv = () => {
       console.log('Finished .env configuration');
     });
   } catch (error) {
-    /**
-     * Task 1:
-     *
-     * Use the logger to log the error to debug.log
-     */
-    console.error(error);
+    logger.log(error);
   }
 };
 
@@ -61,24 +56,14 @@ const readEnv = () => {
       console.log(`.env configuration: \n${data}\n`);
     });
   } catch (error) {
-    /**
-     * Task 2:
-     *
-     * Use the logger to log the error to debug.log
-     */
-    console.error(error);
+    logger.log(error);
   }
 };
 
 const checkEnv = () => {
   fs.open(ENV_PATH, 'r+', err => {
     if (err) {
-      /**
-       * Task 3:
-       *
-       * Use the logger to log the error to the debug.log
-       */
-      console.error(err);
+      logger.log(err);
       return createEnv();
     }
 
@@ -87,12 +72,7 @@ const checkEnv = () => {
 };
 
 process.on('uncaughtException', err => {
-  /**
-   * Task 4:
-   *
-   * Use the logger to log the error to debug.log
-   */
-  console.error(err);
+  logger.log(err);
   process.exit();
 });
 
