@@ -8,6 +8,10 @@ In this branch we will introduce some of the Node.js global objects and the path
 
 ## Branch Tasks
 
+1. Use the process global to get the current working directory.
+2. Get the passed command line arguments.
+3. Use the process global object to handle uncaught exception errors.
+
 ## Covers
 
 - Path module (path)
