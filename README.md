@@ -13,10 +13,8 @@ of our application. The logger file exists on the libraries folder.
 
 1. Continue the implementation of the logger.js module
 2. Use the logger in the init.js file to handle logging
-3. Use the setImmediate global when an I/O operation occurs
 
 ## Covers
 
 - Node.js module system
-- Node.js global (setImmediate)
 - Node.js debugging
