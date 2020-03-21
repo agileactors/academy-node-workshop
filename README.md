@@ -13,10 +13,7 @@ the Node features in a quick way.
 1. Execute the contents of the main.js file.
 2. In the terminal type ```node``` to start using the REPL. Follow the instructions to open the editor.
 3. In the editor mode write JavaScript code to create a function that takes one argument(string name) and prints the string 
-
-````Hello ${name} ````
-
-to the stdout. Then call that function.
+** Hello ${name} ** to the stdout. Finally call that function.
 
 ```
 > .editor
