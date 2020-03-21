@@ -1,28 +1,27 @@
 const fs = require('fs');
-const initialEnvValues = require('./configuration');
 const path = require('path');
+const initialEnvValues = require('./configuration');
 
-/**
- * Task 1:
- *
- * Use the process global to get the current working directory (cwd)
- * Update .env path using the path module and the cwd
- */
-const ENV_PATH = '.env';
+const cwd = process.cwd();
+const ENV_PATH = path.join(cwd, '.env');
 
 const getEnvContent = () => {
   const { env } = initialEnvValues;
 
-  /**
-   * Task 2:
-   *
-   * Get the command line arguments passed. If an env value is passed
-   * e.g PORT=6001 use this value instead of the default
-   */
+  const argsArr = process.argv.slice(2, process.argv.length).map(arg => {
+    const [name, value] = arg.split('=');
+
+    return {
+      paramName: name,
+      paramValue: value,
+    };
+  });
+
   const envValues = env.reduce((acc, envValue) => {
     const { name, value } = envValue;
+    const arg = argsArr.find(({ paramName }) => paramName === name);
 
-    acc.push(`${name}=${value}`);
+    acc.push(`${name}=${arg ? arg.paramValue : value}`);
     return acc;
   }, []);
 
@@ -70,12 +69,10 @@ const checkEnv = () => {
   });
 };
 
-/**
- * Task 3:
- *
- * use the process global object to handle uncaught exception errors
- * you should terminate the process after an error occurs
- */
+process.on('uncaughtException', err => {
+  console.error(err);
+  process.exit();
+});
 
 setTimeout(() => {
   console.log('starting application..\n');
