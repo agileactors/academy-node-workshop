@@ -17,4 +17,4 @@ __Tip__: use the debugger to debug your code.
 ## Covers
 
 - Node.js module system
-- Node.js debbuging
+- Node.js debugging
