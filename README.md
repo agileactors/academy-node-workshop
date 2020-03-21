@@ -4,7 +4,7 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will introduce some of node.js global objects and the path module
+In this branch we will introduce some of the Node.js global objects and the path module
 
 ## Branch Tasks
 
