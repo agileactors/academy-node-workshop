@@ -8,8 +8,9 @@ const ENV_PATH = path.join(cwd, '.env');
 
 const getEnvContent = () => {
   const { env } = initialEnvValues;
+  const args = process.argv;
 
-  const argsArr = process.argv.slice(2, process.argv.length).map(arg => {
+  const argsArr = args.slice(2, process.argv.length).map(arg => {
     const [name, value] = arg.split('=');
 
     return {
