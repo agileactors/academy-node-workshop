@@ -9,7 +9,7 @@ of our application. The logger file exists on the libraries folder.
 
 ## Branch Tasks
 
-1. Create the logger.js module
+1. Continue the implementation of the logger.js module
 2. Use the logger in the init.js file to handle logging
 
 ## Covers
