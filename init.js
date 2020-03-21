@@ -1,6 +1,6 @@
 const fs = require('fs');
-const initialEnvValues = require('./configuration');
 const path = require('path');
+const initialEnvValues = require('./configuration');
 
 /**
  * Task 1:
@@ -16,7 +16,7 @@ const getEnvContent = () => {
   /**
    * Task 2:
    *
-   * Get the command line arguments passed. 
+   * Get the command line arguments passed.
    * If a value matches an env value (e.g PORT | NODE_ENV)
    * e.g PORT=6001 use this value instead of the default
    */
