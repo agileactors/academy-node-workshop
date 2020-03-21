@@ -4,21 +4,15 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will use the terminal to execute JavaScript.
-We will also introduce REPL. REPL stands for Read-Evaluate-Print-Loop, and it's a great way to explore
-the Node features in a quick way.
+In this branch we will use the File System(fs) module to create a .env file
+for our application.
 
 ## Branch Tasks
 
-1. Open a terminal and print the installed node.js version
-2. Execute the contents of the main.js file.
-3. In the terminal start using the REPL.
-4. In the editor mode write JavaScript code to map throught an array of data and use the console to print each item to the stdout. (when you are done type .exit)
-
-`const data = ['Hello Node.js', 'Node is fun', 'I love Nodel.js']`
+1. Provide the checkEnv implementation which checks if the .env file exists in the root folder.
+2. Provide the readEnv implementation which reads the contents of .env if exists
+3. Provide the createEnv implmentation which creates the .env file
 
 ## Covers
 
-- Node basic usage
-- JavaScript terminal execution
-- REPL (Read-Evaluate-Print-Loop)
+- File System module (fs)

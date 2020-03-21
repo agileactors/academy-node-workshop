@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "init": "node init.js",
-    "start": "node -r dotenv/config server.js",
+    "start": "npm run init && node -r dotenv/config server.js",
     "dev": "nodemon --inspect -r dotenv/config server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
