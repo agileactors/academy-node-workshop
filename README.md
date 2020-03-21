@@ -7,6 +7,8 @@ Node.js Workshop
 In this branch we will implement a custom module named **logger.js** to handle the logging
 of our application. The logger file exists on the libraries folder.
 
+__Tip__: use the debugger to debug your code.
+
 ## Branch Tasks
 
 1. Continue the implementation of the logger.js module
@@ -15,3 +17,4 @@ of our application. The logger file exists on the libraries folder.
 ## Covers
 
 - Node.js module system
+- Node.js debbuging
