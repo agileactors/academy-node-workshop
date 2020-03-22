@@ -1,4 +1,3 @@
-const fs = require('fs');
 const initialEnvValues = require('./configuration');
 
 const ENV_PATH = '.env';
@@ -15,18 +14,6 @@ const getEnvContent = () => {
 
   return envValues.join('\n');
 };
-
-/**
- * Task 1: checkEnv implementation
- *
- * Use the fs synchonous api to check if the .env file exists in the project root folder.
- * If the file does not exists print the message "Starting configuration.." to the console and call the createEnv function
- * If exists call the readEnv function.
- *
- * Hint: use appropriate flag for read and writing
- */
-
-const checkEnv = () => {};
 
 /**
  * Task 2: createEnv implementation
@@ -57,5 +44,17 @@ const createEnv = () => {
  */
 
 const readEnv = () => {};
+
+/**
+ * Task 1: checkEnv implementation
+ *
+ * Use the fs module synchonous api to check if the .env file exists in the project root folder.
+ * If the file does not exists print the message "Creating configuration.." to the console and call the createEnv function
+ * If the file exists print the message "Reading configuration.." to the console and call the readEnv function.
+ *
+ * Hint: use appropriate flag for read and writing
+ */
+
+const checkEnv = () => {};
 
 checkEnv();
