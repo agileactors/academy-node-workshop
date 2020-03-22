@@ -5,7 +5,14 @@ Node.js Workshop
 ## Branch description
 
 In this branch we will use the File System(fs) module to create a .env file
-for our application.
+for our application. The .env holds the environmental variables that our app needs to run.
+It must has the following format:
+
+NODE_ENV=development
+DB_HOST=cluster0-diifo.mongodb.net/aa_book_db
+DB_USER=aa_user
+DB_PASSWORD=lWjUsESlmmLxvaLg
+PORT=8001
 
 ## Branch Tasks
 
