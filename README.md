@@ -4,13 +4,28 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will introduce the __process__ global object in Node.js and the Path module.
+In this branch we will introduce the **process** global object in Node.js and the Path module.
+
+The path module provides utilities for working with file and directory paths. It can be accessed using:
+
+```
+const path = require('path);
+
+```
+
+The process object is a global that provides information about, and control over, the current Node.js process.
+
+Docs:
+
+    - https://nodejs.org/dist/latest-v13.x/docs/api/path.html#path_path
+    - https://nodejs.org/dist/latest-v13.x/docs/api/globals.html
 
 ## Branch Tasks
 
-1. Use the __process__ global to get the current working directory.
-2. Get the command line arguments.
-3. Use the __process__ global object to handle uncaught exception errors.
+1. Use the **process** global to get the current working directory.
+2. Use the **path** module to update the .env (ENV_PATH) path using the current working directory.
+3. Use the **process** global to read the command line arguments.
+4. Use the **process** global object to handle uncaught exception errors.
 
 ## Covers
 
