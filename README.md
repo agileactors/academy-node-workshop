@@ -4,15 +4,16 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will use the File System(fs) module to create a .env file
-for our application. The .env holds the environmental variables that our app needs to run.
-It must has the following format:
+In this branch we will introduce the File System(fs) and the path module. 
 
-NODE_ENV=development
-DB_HOST=cluster0-diifo.mongodb.net/aa_book_db
-DB_USER=aa_user
-DB_PASSWORD=lWjUsESlmmLxvaLg
-PORT=8001
+The fs module provides an API for interacting with the file system. The path module provides utilities for working with file and directory paths
+
+Usage:
+```
+const fs = require('fs);
+```
+
+We will use the fs to create a .env file for our application. The .env holds the environmental variables that our app needs to run.
 
 ## Branch Tasks
 
