@@ -20,6 +20,7 @@ const getEnvContent = () => {
  *
  * use the fs synchonous api to write the content values(data) to a file with name .env in the root folder.
  * Print the message 'Finish configuration.' to the console.
+ * If an error occurs throw an exception.
  
  * Hint: use utf8 encoding
  */
