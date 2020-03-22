@@ -6,7 +6,7 @@ Node.js Workshop
 
 In this branch we will introduce the File System(fs) and the path module. 
 
-The fs module provides an API for interacting with the file system. The path module provides utilities for working with file and directory paths
+The fs module provides an API for interacting with the file system. The path module provides utilities for working with file and directory paths.
 
 Usage:
 ```
