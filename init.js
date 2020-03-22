@@ -73,12 +73,6 @@ const readEnv = () => {
 const checkEnv = () => {
   fs.open(ENV_PATH, 'r+', err => {
     if (err) {
-      /**
-       * Task 3:
-       *
-       * Use the logger to log the error to the debug.log
-       */
-      console.error(err);
       return createEnv();
     }
 
