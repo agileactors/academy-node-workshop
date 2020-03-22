@@ -81,6 +81,6 @@ const checkEnv = () => {
 /**
  * Task 5:
  *
- * If in cliArgs the paremeter BYPASS exists skip the checkEnv
+ * If in cliArgs the paremeter 'BYPASS' exists skip the checkEnv
  */
 checkEnv();
