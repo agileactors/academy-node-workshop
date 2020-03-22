@@ -7,9 +7,11 @@ Node.js Workshop
 In this branch we will introduce the EventEmitter class and the available timers
 in Node.js
 
-**Tip**: use the debugger to debug your code.
-
 ## Branch Tasks
+
+1.
+2.
+3.
 
 ## Covers
 

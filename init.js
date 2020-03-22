@@ -63,7 +63,6 @@ const readEnv = () => {
 const checkEnv = () => {
   fs.open(ENV_PATH, 'r+', err => {
     if (err) {
-      logger.log(err);
       return createEnv();
     }
 
