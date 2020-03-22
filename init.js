@@ -5,12 +5,13 @@ const initialEnvValues = require('./configuration');
 
 const cwd = process.cwd();
 const ENV_PATH = path.join(cwd, '.env');
+const args = process.argv.slice(2, process.argv.length);
+const bypassCheck = args.some(arg => arg === 'BYPASS');
 
 const getEnvContent = () => {
   const { env } = initialEnvValues;
-  const args = process.argv;
 
-  const argsArr = args.slice(2, process.argv.length).map(arg => {
+  const argsArr = args.map(arg => {
     const [name, value] = arg.split('=');
 
     return {
@@ -90,4 +91,6 @@ process.on('uncaughtException', err => {
   process.exit();
 });
 
-checkEnv();
+if (!bypassCheck) {
+  checkEnv();
+}
