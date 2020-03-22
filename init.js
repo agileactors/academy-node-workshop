@@ -32,33 +32,25 @@ const getEnvContent = () => {
 };
 
 const createEnv = () => {
-  try {
-    const data = getEnvContent();
+  const data = getEnvContent();
 
-    fs.writeFile(ENV_PATH, data, 'utf8', err => {
-      if (err) {
-        throw err;
-      }
+  fs.writeFile(ENV_PATH, data, 'utf8', err => {
+    if (err) {
+      throw err;
+    }
 
-      console.log('Finished .env configuration');
-    });
-  } catch (error) {
-    logger.log(error);
-  }
+    console.log('Finished .env configuration');
+  });
 };
 
 const readEnv = () => {
-  try {
-    fs.readFile(ENV_PATH, 'utf8', (err, data) => {
-      if (err) {
-        throw err;
-      }
+  fs.readFile(ENV_PATH, 'utf8', (err, data) => {
+    if (err) {
+      throw err;
+    }
 
-      console.log(`.env configuration: \n${data}\n`);
-    });
-  } catch (error) {
-    logger.log(error);
-  }
+    console.log(`.env configuration: \n${data}\n`);
+  });
 };
 
 const checkEnv = () => {
