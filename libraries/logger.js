@@ -8,6 +8,10 @@
  */
 
 const fs = require('fs');
+const path = require('path');
+
+const cwd = process.cwd();
+const DEBUG_PATH = path.join(cwd, 'debug.log');
 
 const logger = {
   logToFile: true,
@@ -41,7 +45,17 @@ const logger = {
   debug(args) {
     const txt = this.cnc(args);
 
-    fs.writeFileSync('debug.log', `${txt}\n`, { flag: 'a' });
+    fs.writeFile(
+      DEBUG_PATH,
+      txt,
+      'utf8',
+      err => {
+        if (err) {
+          throw err;
+        }
+      },
+      { flag: 'a' }
+    );
   },
 };
 
