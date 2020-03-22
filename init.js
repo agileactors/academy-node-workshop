@@ -82,7 +82,7 @@ const checkEnv = () => {
 
 process.on('uncaughtException', err => {
   /**
-   * Task 4:
+   * Task 3:
    *
    * Use the logger to log the error to debug.log
    */
