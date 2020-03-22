@@ -42,7 +42,6 @@ const createEnv = () => {
     const data = getEnvContent();
 
     /** provide your implementation * */
-    
   } catch (error) {
     console.error(error);
   }
