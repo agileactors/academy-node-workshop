@@ -96,7 +96,4 @@ process.on('uncaughtException', err => {
   process.exit();
 });
 
-setTimeout(() => {
-  console.log('starting application..\n');
-  checkEnv();
-}, 1500);
+checkEnv();
