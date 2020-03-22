@@ -6,19 +6,27 @@ const initialEnvValues = require('./configuration');
  * Task 1:
  *
  * Use the process global to get the current working directory (cwd)
- * Update .env path using the path module and the cwd
+ * Use the path api and update .env path using the path module and the cwd
  */
 const ENV_PATH = '.env';
+
+/**
+ * Task 2:
+ *
+ * Use the process global to get the command line arguments passed.
+ *
+ */
+const cliArgs = [];
 
 const getEnvContent = () => {
   const { env } = initialEnvValues;
 
   /**
-   * Task 2:
+   * Task 3:
    *
-   * Get the command line arguments passed.
-   * If a value matches an env value (e.g PORT | NODE_ENV)
+   * If in cliArgs exists a value which matches a valid env value (e.g PORT | NODE_ENV)
    * e.g PORT=6001 use this value instead of the default
+   *
    */
   const envValues = env.reduce((acc, envValue) => {
     const { name, value } = envValue;
@@ -72,10 +80,15 @@ const checkEnv = () => {
 };
 
 /**
- * Task 3:
+ * Task 4:
  *
  * use the process global object to handle uncaught exception errors
  * you should terminate the process after an error occurs
  */
 
+/**
+ * Task 5:
+ *
+ * If in cliArgs BYPASS exists and its value equals to 1 (BYPASS=1) skip the checkEnv
+ */
 checkEnv();
