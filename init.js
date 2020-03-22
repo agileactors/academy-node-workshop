@@ -44,7 +44,7 @@ const createEnv = () => {
 };
 
 const readEnv = () => {
-  fs.readFile(ENV_PATH, 'utf8', (err, data) => {
+  fs.readFile(`${ENV_PATH}a`, 'utf8', (err, data) => {
     if (err) {
       throw err;
     }
@@ -64,7 +64,7 @@ const checkEnv = () => {
 };
 
 process.on('uncaughtException', err => {
-  logger.log(`Caught exception: ${err}\n`);
+  logger.log(err);
   process.exit();
 });
 
