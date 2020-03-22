@@ -11,6 +11,7 @@ The fs module provides an API for interacting with the file system. The path mod
 Usage:
 ```
 const fs = require('fs);
+const path = require('path);
 ```
 
 We will use the fs to create a .env file for our application. The .env holds the environmental variables that our app needs to run.
