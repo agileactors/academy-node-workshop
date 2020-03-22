@@ -78,7 +78,4 @@ const checkEnv = () => {
  * you should terminate the process after an error occurs
  */
 
-setTimeout(() => {
-  console.log('starting application..\n');
-  checkEnv();
-}, 1500);
+checkEnv();
