@@ -87,7 +87,7 @@ process.on('uncaughtException', err => {
    *
    * Use the logger to log the error to debug.log
    */
-  console.error(err);
+  console.error(`Caught exception: ${err}\n`);
   process.exit();
 });
 
