@@ -1,12 +1,6 @@
 const fs = require('fs');
 const initialEnvValues = require('./configuration');
 
-/**
- * Task 1:
- *
- * Use the process global to get the current working directory (cwd)
- * Update .env path using the path module and the cwd
- */
 const ENV_PATH = '.env';
 
 const getEnvContent = () => {
@@ -23,10 +17,10 @@ const getEnvContent = () => {
 };
 
 /**
- * Task 2: checkEnv implementation
+ * Task 1: checkEnv implementation
  *
- * Use the fs.open api to check if the file .env exists in the project root folder.
- * If not exists print the message '"Starting configuration.." to the console and call createEnv function after 2 seconds and return'
+ * Use the fs api to check if the file .env exists in the project root folder.
+ * If not exists print the message '"Starting configuration.." to the console and call createEnv'
  * If exists call the readEnv function.
  *
  * Hint: use appropriate flag for read and writing
@@ -35,11 +29,10 @@ const getEnvContent = () => {
 const checkEnv = () => {};
 
 /**
- * Task 4: createEnv implementation
+ * Task 2: createEnv implementation
  *
- * Use the getEnvContent to get the .env content values
- * use the fs.writeFile to write the content values to a file with name .env in the root folder.
- * Print 
+ * use the fs api to write the content values(data) to a file with name .env in the root folder.
+ * Print the message 'Finish configuration.' to the console.
  
  * Hint: use utf8 encoding
  */
@@ -49,6 +42,7 @@ const createEnv = () => {
     const data = getEnvContent();
 
     /** provide your implementation * */
+    
   } catch (error) {
     console.error(error);
   }
@@ -57,8 +51,7 @@ const createEnv = () => {
 /**
  * Task 3: readEnv implementation
  *
- * Use the fs.readFile api to read the contents of the .env file
- * and print the contents of the file to the stdout.
+ * Use the fs.readFile api to read the contents of the .env file and print the contents of the file to the console.
  * If an error occurs throw an exception.
  *
  * Hint: use utf8 encoding
