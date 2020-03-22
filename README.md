@@ -4,7 +4,7 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will introduce the File System(fs). 
+In this branch we will introduce the File System module(fs). 
 
 The fs module provides an API for interacting with the file system.
 
