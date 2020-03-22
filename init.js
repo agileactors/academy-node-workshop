@@ -25,7 +25,7 @@ const getEnvContent = () => {
    * Task 3:
    *
    * If in cliArgs exists a value which matches a valid env value (e.g PORT | NODE_ENV)
-   * e.g PORT=6001 use this value instead of the default
+   * e.g PORT=6001, NODE_ENV=development use this value instead of the default.
    *
    */
   const envValues = env.reduce((acc, envValue) => {
@@ -81,6 +81,6 @@ const checkEnv = () => {
 /**
  * Task 5:
  *
- * If in cliArgs BYPASS exists and its value equals to 1 (BYPASS=1) skip the checkEnv
+ * If in cliArgs the paremeter BYPASS exists skip the checkEnv
  */
 checkEnv();

@@ -4,7 +4,7 @@
   "description": "Node.js Workshop",
   "main": "index.js",
   "scripts": {
-    "init": "node init.js NODE_ENV=prod PORT=8001 BYPASS=1",
+    "init": "node init.js NODE_ENV=prod PORT=8001 BYPASS",
     "start": "npm run init && node -r dotenv/config server.js",
     "dev": "nodemon --inspect -r dotenv/config server.js",
     "lint": "eslint .",
