@@ -72,7 +72,7 @@ const checkEnv = () => {
 };
 
 process.on('uncaughtException', err => {
-  logger.log(err);
+  logger.log(`Caught exception: ${err}\n`);
   process.exit();
 });
 
