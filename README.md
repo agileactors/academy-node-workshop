@@ -24,6 +24,12 @@ Use the fs api to create a .env file for our application. The .env holds the env
 2. Provide the **readEnv** implementation which reads the contents of .env if exists (synchronous).
 3. Provide the **createEnv** implementation which creates the .env file (synchronous).
 
+To start the application and test your code issue the command:
+
+```
+npm run init
+```
+
 **Note:** You must use the synchronous api methods of the File System module.
 
 ## Covers
