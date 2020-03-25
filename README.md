@@ -4,11 +4,11 @@ Welcome to Node.js Workshop!
 
 ## Introduction
 
-In this workshop we introduce the core concepts of node.js and how you can use them to develop a modern node application.
+In this workshop we will introduce the core concepts of Node.js and how you can use them to develop a modern node application.
 
 ## What we will build
 
-We are going to build a book application using Node. We have split the steps in several branches with each branch has its own tasks which you have to complete in order to proceed to the next branch.
+We are going to build a chat app using Node and a real time board for chat analytics. We have split the steps in several branches with each branch has its own tasks which you have to complete in order to proceed to the next branch.
 
 <div style="width: 100%; display: flex; justifyContent: space-between">
   <div style="margin-right: 5px">
