@@ -1,6 +1,6 @@
 const socketIO = require('socket.io');
-const { messagesPerMinute } = require('./utilities');
 const { Model: MessageModel } = require('./models/message');
+const { messagesPerMinute } = require('./utilities');
 
 const init = async server => {
   // server start time
@@ -14,7 +14,7 @@ const init = async server => {
     mpm: 0, // messages per minute
   };
 
-  // calculate messages-per-minute once every minute
+  // calculate messages-per-minute in regular interval
   setInterval(async () => {
     const messages = await MessageModel.find({ timestamp: { $gte: startTime } })
       .sort({ timestamp: 1 })
