@@ -77,4 +77,4 @@ Run the application using the command in a terminal:
     npm start or yarn start
 ```
 
-You can preview the application using the following url: <a href="http://localhost:8000/books" target="_blank">http://localhost:8000/books</a>
+You can preview the application using the following url: <a href="http://localhost:8001/chat" target="_blank">http://localhost:8001/chat</a>
