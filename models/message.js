@@ -12,8 +12,8 @@ const MessageSchema = Schema({
     required: [true, 'chat `username` is required'],
   },
   timestamp: {
-    type: Date,
-    default: new Date(),
+    type: Number,
+    default: Math.ceil(new Date().getTime() / 1000),
   },
 });
 

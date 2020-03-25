@@ -8,8 +8,6 @@ const protocol = DB_LOCAL === 'true' ? 'mongodb' : 'mongodb+srv';
 
 const URI = `${protocol}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}?retryWrites=true&w=majority`;
 
-console.log(URI);
-
 const config = {
   URI,
 };

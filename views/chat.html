@@ -66,6 +66,10 @@
           renderMessage(message);
         });
 
+        socket.on('server:analytics', data => {
+          console.log(data);
+        });
+
         $('#form').on('submit', event => {
           event.preventDefault();
 
