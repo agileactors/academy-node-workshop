@@ -8,80 +8,12 @@
   <body>
     <h1>Chat Application</h1>
     <ul id="messages"></ul>
-    <form id="form">
-      <input type="text" name="text" />
-      <input type="submit" />
-    </form>
+    <div class="form">
+      <input type="text" name="text" class="message-text" />
+      <button class="send-button">Send message</button>
+    </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-    <script>
-      $(document).ready(async () => {
-        //
-        function renderMessage(message) {
-          if (message.username === username) {
-            $('#messages').append(`
-              <li style="color: green;">
-                ${message.username}: ${message.text}
-              </li>
-            `);
-          } else {
-            $('#messages').append(`
-              <li style="color: red;">
-                ${message.username}: ${message.text}
-              </li>
-            `);
-          }
-        }
-
-        const URI = window.location.href;
-        const socketURI = window.location.href
-          .split('/')
-          .slice(0, -1)
-          .join('/');
-
-        let username = window.localStorage.getItem('academy_chat_username');
-
-        if (!username) {
-          const data = await fetch(`${URI}/username`).then(response =>
-            response.json()
-          );
-
-          console.log(`Got username ${data.username}`);
-
-          window.localStorage.setItem('academy_chat_username', data.username);
-          username = data.username;
-        }
-
-        const history = await fetch(`${URI}/messages`).then(response =>
-          response.json()
-        );
-
-        history.forEach(message => {
-          renderMessage(message);
-        });
-
-        const socket = io(socketURI);
-
-        socket.on('server:message', message => {
-          renderMessage(message);
-        });
-
-        socket.on('server:analytics', data => {
-          console.log(data);
-        });
-
-        $('#form').on('submit', event => {
-          event.preventDefault();
-
-          const input = $("[name='text']");
-          const text = input.val();
-
-          if (text) {
-            socket.emit('client:message', { text, username });
-            input.val(''); // clear input
-          }
-        });
-      });
-    </script>
+    <script src="js/chat.js"></script>
   </body>
 </html>
