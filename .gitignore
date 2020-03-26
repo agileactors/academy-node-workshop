@@ -3,3 +3,6 @@ debug.log
 
 # environment variables
 .env
+.env-dev
+
+notes.txt
