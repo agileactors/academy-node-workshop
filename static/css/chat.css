@@ -6,25 +6,11 @@
   --right-msg-bg: #579ffb;
 }
 
-html {
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
-
-body {
+.chat-container {
   display: flex;
+  height: 100%;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-image: var(--body-bg);
-  font-family: Helvetica, sans-serif;
 }
 
 .msger {
