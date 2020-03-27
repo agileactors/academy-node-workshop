@@ -59,7 +59,7 @@ const checkEnv = () => {
       return createEnv();
     }
 
-    readEnv();
+    return readEnv();
   });
 };
 

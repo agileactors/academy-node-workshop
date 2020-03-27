@@ -30,7 +30,7 @@ const middleware = async ({ request, response }, next) => {
     // read file's content
     const content = await readFile(staticPath);
 
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
+    response.writeHead(200, { 'Content-Type': 'text/css' });
     response.end(content);
   } catch (err) {
     next();

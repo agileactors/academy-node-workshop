@@ -9,19 +9,99 @@ const socket = io(socketURI);
 
 let usernameFromLocalStorage = localStorage.getItem('academy_chat_username');
 
+function createElement(options) {
+  let el, a, i;
+
+  if (!options.tagName) {
+    el = document.createDocumentFragment();
+  } else {
+    el = document.createElement(options.tagName);
+
+    if (options.className) {
+      el.className = options.className;
+    }
+
+    if (options.attributes) {
+      for (a in options.attributes) {
+        el.setAttribute(a, options.attributes[a]);
+      }
+    }
+
+    if (options.html !== undefined) {
+      el.innerHTML = options.html;
+    }
+  }
+
+  if (options.text) {
+    el.appendChild(document.createTextNode(options.text));
+  }
+
+  if (options.childs && options.childs.length) {
+    for (i = 0; i < options.childs.length; i++) {
+      el.appendChild(
+        options.childs[i] instanceof window.HTMLElement
+          ? options.childs[i]
+          : createElement(options.childs[i])
+      );
+    }
+  }
+
+  return el;
+}
+
 async function init() {
-  const formElement = document.querySelector('#form');
-  const messagesElement = document.querySelector('#messages');
-  const textElement = document.querySelector('input.message-text');
-  const buttonElement = document.querySelector('button.send-button');
+  const messagesElement = document.querySelector('.msger-chat');
+  const textElement = document.querySelector('.msger-input');
+  const buttonElement = document.querySelector('button.msger-send-btn');
 
   function renderMessage(message) {
-    const { username } = message;
-    const messageElement = document.createElement('li');
+    const { username, text: messageText, timestamp } = message;
+    const messagesLength = messagesElement.querySelectorAll('.msg').length;
+    const messageTimestamp = new Date(timestamp);
+    const messageTimeFormat = `${messageTimestamp.getHours()}:${messageTimestamp.getMinutes()}`;
+    const position = messagesLength % 2 === 0 ? 'left' : 'right';
 
-    messageElement.innerHTML = `${message.username}: ${message.text}`;
-    messageElement.style['color'] =
-      usernameFromLocalStorage === username ? 'green' : 'red';
+    const messageElement = createElement({
+      tagName: 'div',
+      className: `msg ${position}-msg`,
+      childs: [
+        {
+          tagName: 'div',
+          className: 'msg-img',
+          attributes: {
+            style: 'background-image: url(images/avatar.svg)',
+          },
+        },
+        {
+          tagName: 'div',
+          className: 'msg-bubble',
+          childs: [
+            {
+              tagName: 'div',
+              className: 'msg-info',
+              childs: [
+                {
+                  tagName: 'div',
+                  className: 'msg-info-name',
+                  html: username,
+                },
+                {
+                  tagName: 'div',
+                  className: 'msg-info-time',
+                  html: messageTimeFormat,
+                },
+              ],
+            },
+            {
+              tagName: 'div',
+              className: 'msg-text',
+              html: messageText,
+            },
+          ],
+        },
+      ],
+    });
+
     messagesElement.appendChild(messageElement);
   }
 
@@ -29,8 +109,6 @@ async function init() {
     const data = await fetch(`${URI}/username`).then(response =>
       response.json()
     );
-
-    console.log(`Got username ${data.username}`);
 
     localStorage.setItem('academy_chat_username', data.username);
     usernameFromLocalStorage = data.username;
@@ -40,7 +118,9 @@ async function init() {
     response.json()
   );
 
-  history.forEach(message => renderMessage(message));
+  history.forEach((message, idx) =>
+    renderMessage(message, idx % 2 > 0 ? 'right' : 'left')
+  );
 
   buttonElement.addEventListener('click', event => {
     event.preventDefault();
@@ -52,6 +132,7 @@ async function init() {
         text,
         username: usernameFromLocalStorage,
       });
+
       textElement.value = '';
     }
 

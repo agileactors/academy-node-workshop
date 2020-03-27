@@ -26,8 +26,10 @@ const init = async server => {
   io.on('connection', socket => {
     // update connected clients
     analytics.connected += 1;
+
     // send updated analytics to everyone
     io.emit('server:analytics', analytics);
+
     // when a socket disconnects update analytics
     socket.on('disconnect', () => {
       analytics.connected -= 1;
@@ -40,11 +42,13 @@ const init = async server => {
         text: data.text,
         username: data.username,
       });
+
       // broadcast new message to everyone
       io.emit('server:message', message);
 
       // update analytics
       analytics.messages += 1;
+
       io.emit('server:analytics', analytics);
     });
   });
