@@ -4,32 +4,19 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will learn about Node.js streams and the JSON global object.
+In this branch we will build a middleware that handles static files
 
-Usage:
+Some request want to just access a file in our servers and not hit an endpoint.
+The static middleware is responsible to inspect the request, see if the request is for a file and if it is load and return the file to client otherwise continue with the next middleware in the pipeline.
 
-```js
-const fs = require('fs');
-
-const readStream = fs.createReadStream('some-file');
-const writeStream = fs.createWriteStream('some-file-copy');
-
-readStream.on('data', (chunk) => {
-  writeStream.write(chunk);
-});
-
-```
-
-Docs:
-- https://nodejs.org/api/stream.html
-- https://nodejs.org/en/knowledge/javascript-conventions/what-is-json/
 
 ## Branch Tasks
-1. Create a handler that responds with html (using streams)
+
+1. Create variables that point to specific folders
    
-2. Create a handler that responds with JSON
+2. Write the static middleware
 
 ## Covers
 
-- Streams
-- JSON
+- File System Module
+- Util Module

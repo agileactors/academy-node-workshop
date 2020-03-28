@@ -3,62 +3,55 @@
  */
 
 const http = require('http');
-const url = require('url');
 
+const Router = require('./libraries/router');
 const logger = require('./libraries/logger');
+const templateEngine = require('./libraries/html');
+const staticMiddleware = require('./middleware/static');
 const chatHandler = require('./handlers/chat');
 
-const server = http.createServer();
+// initialize router
+const router = Router();
 
-const PORT = process.env.PORT || 8001;
+// watcher middleware - TODO: move middleware to another folder
+router.use(async (ctx, next) => {
+  const { request } = ctx;
 
-// server's handler function
-server.on('request', (request, response) => {
-  const { pathname } = url.parse(request.url);
+  const start = Date.now();
+  await next();
+  const duration = Date.now() - start;
 
-  if (pathname === '/') {
-    response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.end('<h1>Index Page</h1>');
-    response.end('<h1>About Page</h1>');
-    return;
-  }
-
-  if (pathname === '/about') {
-    response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.end('<h1>About Page</h1>');
-    return;
-  }
-
-  // Uncomment for next task
-  //
-  // if (pathname === '/chat') {
-  //   const ctx = { request, response };
-  //   chatHandler.get(ctx);
-  //   return;
-  // }
-
-  // if (pathname === '/chat/username') {
-  //   const ctx = { request, response };
-  //   chatHandler.getUsername(ctx);
-  //   return;
-  // }
-
-  response.writeHead(404, { 'Content-Type': 'text/plain' });
-  response.end('Not Found!');
+  logger.log(`${request.method} ${request.url} - ${duration}ms`);
 });
 
-// start server
-server.listen(PORT, () => {
-  logger.log(`Server listening on port ${PORT}`);
+// use static-file middleware
+router.use(staticMiddleware);
+
+// index route
+router.get('/', ({ response }) => {
+  response.setHeader('Content-Type', 'text/html');
+  response.writeHead(200);
+  response.end(templateEngine.render('welcome'));
 });
 
-// listen for unhandled errors
-process.on('uncaughtException', error => {
-  logger.log(error);
-  process.exit(0);
+// chat routes
+router.get('/chat', chatHandler.get);
+router.get('/chat/username', chatHandler.getUsername);
+
+// add routes as middleware
+router.use(router.routesMiddleware);
+
+// 404 not-found middleware - TODO: move middleware to another folder
+router.use(({ response }) => {
+  response.setHeader('Content-Type', 'text/plain');
+  response.writeHead(404);
+  response.end('Not Found');
 });
 
-process.on('unhandledRejection', error => {
-  logger.log(error);
-  process.exit(0);
+// create HTTP server
+const server = http.createServer((request, response) => {
+  const ctx = { request, response };
+  router.run(ctx);
 });
+
+module.exports = server;
