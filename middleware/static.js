@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const { promisify } = require('util');
 const logger = require('../libraries/logger');
-const { MIMETYPES } = require('../contants');
+const { MIMETYPES } = require('../constants');
 
 // promisify readFile utility
 const stat = promisify(fs.stat);

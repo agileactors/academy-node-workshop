@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const logger = require('./libraries/logger');
-const initialEnvValues = require('./configuration');
+const { ENVVALUES } = require('./constants');
 
 const cwd = process.cwd();
 const ENV_PATH = path.join(cwd, '.env');
@@ -9,8 +9,6 @@ const args = process.argv.slice(2, process.argv.length);
 const bypassCheck = args.some(arg => arg === 'BYPASS');
 
 const getEnvContent = () => {
-  const { env } = initialEnvValues;
-
   const argsArr = args.map(arg => {
     const [name, value] = arg.split('=');
 
@@ -20,7 +18,7 @@ const getEnvContent = () => {
     };
   });
 
-  const envValues = env.reduce((acc, envValue) => {
+  const envValues = ENVVALUES.reduce((acc, envValue) => {
     const { name, value } = envValue;
     const arg = argsArr.find(({ paramName }) => paramName === name);
 

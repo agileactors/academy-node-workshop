@@ -1,4 +1,26 @@
 const constants = {
+  ENVVALUES: [
+    {
+      name: 'NODE_ENV',
+      value: 'DEVELOPMENT',
+    },
+    {
+      name: 'DB_HOST',
+      value: 'cluster0-diifo.mongodb.net/aa_book_db',
+    },
+    {
+      name: 'DB_USER',
+      value: 'aa_user',
+    },
+    {
+      name: 'DB_PASSWORD',
+      value: 'lWjUsESlmmLxvaLg',
+    },
+    {
+      name: 'PORT',
+      value: '8001',
+    },
+  ],
   MIMETYPES: {
     '.html': 'text/html',
     '.js': 'text/javascript',
@@ -8,8 +30,6 @@ const constants = {
     '.jpg': 'image/jpg',
     '.gif': 'image/gif',
     '.svg': 'image/svg+xml',
-    '.wav': 'audio/wav',
-    '.mp4': 'video/mp4',
     '.woff': 'application/font-woff',
     '.ttf': 'application/font-ttf',
     '.eot': 'application/vnd.ms-fontobject',
