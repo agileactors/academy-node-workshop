@@ -3,8 +3,11 @@ const { Model: MessageModel } = require('./models/message');
 const { messagesPerMinute } = require('./utilities');
 
 const init = async server => {
-  const startTime = Math.round(new Date().getTime() / 1000); // server start time
-  const io = socketIO(server); // initialize socket.io
+  // server start time
+  const startTime = Math.round(new Date().getTime() / 1000);
+
+  // initialize socket.io
+  const io = socketIO(server);
 
   // initialize analytics object
   const analytics = {
