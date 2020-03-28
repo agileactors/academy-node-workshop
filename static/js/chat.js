@@ -57,12 +57,17 @@ async function init() {
   const perMinnuteElement = document.querySelector('b.per-minute');
   const totalMessagesElement = document.querySelector('b.total-messages');
 
+  function scrollToBottom() {
+    const div = messagesElement;
+    div.scrollTop = div.scrollHeight - div.clientHeight;
+  }
+
   function renderMessage(message) {
     const { username, text: messageText, timestamp } = message;
-    const messagesLength = messagesElement.querySelectorAll('.msg').length;
-    const messageTimestamp = new Date(timestamp);
+    // const messagesLength = messagesElement.querySelectorAll('.msg').length;
+    const messageTimestamp = new Date(timestamp * 1000);
     const messageTimeFormat = `${messageTimestamp.getHours()}:${messageTimestamp.getMinutes()}`;
-    const position = messagesLength % 2 === 0 ? 'left' : 'right';
+    const position = username === usernameFromLocalStorage ? 'left' : 'right';
 
     const messageElement = createElement({
       tagName: 'div',
@@ -106,6 +111,7 @@ async function init() {
     });
 
     messagesElement.appendChild(messageElement);
+    scrollToBottom();
   }
 
   if (!usernameFromLocalStorage) {
@@ -121,9 +127,7 @@ async function init() {
     response.json()
   );
 
-  history.forEach((message, idx) =>
-    renderMessage(message, idx % 2 > 0 ? 'right' : 'left')
-  );
+  history.forEach(message => renderMessage(message));
 
   buttonElement.addEventListener('click', event => {
     event.preventDefault();

@@ -6,7 +6,7 @@ const constants = {
     },
     {
       name: 'DB_HOST',
-      value: 'cluster0-diifo.mongodb.net/aa_book_db',
+      value: 'cluster0-diifo.mongodb.net/aa_chat_db',
     },
     {
       name: 'DB_USER',

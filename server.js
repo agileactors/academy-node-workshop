@@ -6,6 +6,7 @@ const http = require('http');
 
 const Router = require('./libraries/router');
 const logger = require('./libraries/logger');
+const templateEngine = require('./libraries/html');
 const staticMiddleware = require('./middleware/static');
 const chatHandler = require('./handlers/chat');
 
@@ -30,7 +31,7 @@ router.use(staticMiddleware);
 router.get('/', ({ response }) => {
   response.setHeader('Content-Type', 'text/html');
   response.writeHead(200);
-  response.end('<h1>Hello, Node.JS!</h1>');
+  response.end(templateEngine.render('welcome'));
 });
 
 // chat routes
