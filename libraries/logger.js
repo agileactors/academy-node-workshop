@@ -8,10 +8,6 @@
  */
 
 const fs = require('fs');
-const path = require('path');
-
-const cwd = process.cwd();
-const DEBUG_PATH = path.join(cwd, 'debug.log');
 
 const logger = {
   logToFile: true,
