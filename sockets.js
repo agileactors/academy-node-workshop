@@ -51,8 +51,7 @@ const init = async server => {
       io.emit('server:message', message);
 
       // update analytics
-      analytics.messages += 1;
-
+      analytics.totalMessages += 1;
       io.emit('server:analytics', analytics);
     });
   });
