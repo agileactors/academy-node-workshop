@@ -5,4 +5,7 @@ debug.log
 .env
 .env-dev
 
+# MacOS
+.DS_Store
+
 notes.txt
