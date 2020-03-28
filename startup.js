@@ -4,7 +4,7 @@ const connect = require('./db/connect');
 const logger = require('./libraries/logger');
 
 // PORT env variable
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8001;
 
 // hook socket.io to server
 sockets.init(server);
