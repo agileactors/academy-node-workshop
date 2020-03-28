@@ -3,15 +3,14 @@ const { Model: MessageModel } = require('./models/message');
 const { messagesPerMinute } = require('./utilities');
 
 const init = async server => {
-  // server start time
-  const startTime = Math.round(new Date().getTime() / 1000);
-  // initialize socket.io
-  const io = socketIO(server);
+  const startTime = Math.round(new Date().getTime() / 1000); // server start time
+  const io = socketIO(server); // initialize socket.io
+
   // initialize analytics object
   const analytics = {
     connected: 0,
-    messages: await MessageModel.countDocuments({}).exec(),
-    mpm: 0, // messages per minute
+    totalMessages: 0,
+    perMinute: 0,
   };
 
   // calculate messages-per-minute in regular interval
@@ -19,7 +18,12 @@ const init = async server => {
     const messages = await MessageModel.find({ timestamp: { $gte: startTime } })
       .sort({ timestamp: 1 })
       .exec();
-    analytics.mpm = messagesPerMinute(messages);
+
+    const totalMessages = await MessageModel.countDocuments({}).exec();
+
+    analytics.totalMessages = totalMessages;
+    analytics.perMinute = messagesPerMinute(messages).toFixed(2);
+
     io.emit('server:analytics', analytics);
   }, 5000);
 

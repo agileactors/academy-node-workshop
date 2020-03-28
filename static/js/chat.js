@@ -53,6 +53,9 @@ async function init() {
   const messagesElement = document.querySelector('.msger-chat');
   const textElement = document.querySelector('.msger-input');
   const buttonElement = document.querySelector('button.msger-send-btn');
+  const usersConnectedElement = document.querySelector('b.connected-users');
+  const perMinnuteElement = document.querySelector('b.per-minute');
+  const totalMessagesElement = document.querySelector('b.total-messages');
 
   function renderMessage(message) {
     const { username, text: messageText, timestamp } = message;
@@ -140,7 +143,11 @@ async function init() {
   });
 
   socket.on('server:message', message => renderMessage(message));
-  socket.on('server:analytics', data => console.log);
+  socket.on('server:analytics', ({ connected, perMinute, totalMessages }) => {
+    usersConnectedElement.innerHTML = connected;
+    perMinnuteElement.innerHTML = perMinute;
+    totalMessagesElement.innerHTML = totalMessages;
+  });
 }
 
 document.addEventListener(
