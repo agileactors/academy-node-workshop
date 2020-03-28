@@ -6,21 +6,9 @@ const http = require('http');
 
 const Router = require('./libraries/router');
 const logger = require('./libraries/logger');
-const connect = require('./db/connect');
-
-// middleware
+const templateEngine = require('./libraries/html');
 const staticMiddleware = require('./middleware/static');
-
-// handlers
-const { getAuthors } = require('./handlers/author');
-const {
-  getBooks,
-  getBookForm,
-  createBook,
-  deleteBook,
-} = require('./handlers/book');
-
-const PORT = process.env.PORT || 8080;
+const chatHandler = require('./handlers/chat');
 
 // initialize router
 const router = Router();
@@ -43,14 +31,13 @@ router.use(staticMiddleware);
 router.get('/', ({ response }) => {
   response.setHeader('Content-Type', 'text/html');
   response.writeHead(200);
-  response.end('<h1>Hello, Node!</h1>');
+  response.end(templateEngine.render('welcome'));
 });
 
-router.get('/authors', getAuthors);
-router.get('/books', getBooks);
-router.get('/books/create', getBookForm);
-router.post('/books', createBook);
-router.get('/books/delete', deleteBook);
+// chat routes
+router.get('/chat', chatHandler.get);
+router.get('/chat/username', chatHandler.getUsername);
+router.get('/chat/messages', chatHandler.getMessages);
 
 // add routes as middleware
 router.use(router.routesMiddleware);
@@ -68,22 +55,4 @@ const server = http.createServer((request, response) => {
   router.run(ctx);
 });
 
-// start the server
-server.listen(PORT, () => {
-  logger.log(`Server listening on port ${PORT}`);
-
-  // connect to database
-  connect()
-    .then(message => logger.log(message))
-    .catch(error => logger.log('DB_CONNECTION_ERROR', error.message));
-});
-
-process.on('uncaughtException', error => {
-  logger.log(error);
-  process.exit(0);
-});
-
-process.on('unhandledRejection', error => {
-  logger.log(error);
-  process.exit(0);
-});
+module.exports = server;

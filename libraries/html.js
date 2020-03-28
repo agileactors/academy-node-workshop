@@ -10,7 +10,7 @@ const { get } = require('lodash');
 const rootDir = process.cwd();
 
 // get templates folder
-const templateDir = path.join(rootDir, 'templates');
+const templateDir = path.join(rootDir, 'views');
 
 const VAR_REGEX = /\{\{(?:(?!\}\})(?:.|\n))*\}\}/g;
 const LOOP_REGEX = /\{%(?:(?!%\})(?:.|\n))*%\}(?:(?!\{%\})(?:.|\n))*\{%\}/g;

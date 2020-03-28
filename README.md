@@ -4,18 +4,18 @@ Welcome to Node.js Workshop!
 
 ## Introduction
 
-In this workshop we introduce the core concepts of node.js and how you can use them to develop a modern node application.
+In this workshop we will introduce the core concepts of Node.js and how you can use them to develop a modern node application.
 
 ## What we will build
 
-We are going to build a book application using Node. We have split the steps in several branches with each branch has its own tasks which you have to complete in order to proceed to the next branch.
+We are going to build a chat app using Node and a real time board for chat analytics. We have split the steps in several branches with each branch has its own tasks which you have to complete in order to proceed to the next branch.
 
 <div style="width: 100%; display: flex; justifyContent: space-between">
   <div style="margin-right: 5px">
-    <img alt="node-app-1" src="./static/images/node-app-1.png" width="100%">
+    <img alt="node-app-3" src="./static/images/node-app-3.png" width="100%">
   </div>
   <div>
-  <img alt="node-app-1" src="./static/images/node-app-2.png" width="100%">
+ 
   </div>
 </div>
 
@@ -77,4 +77,4 @@ Run the application using the command in a terminal:
     npm start or yarn start
 ```
 
-You can preview the application using the following url: <a href="http://localhost:8000/books" target="_blank">http://localhost:8000/books</a>
+You can preview the application using the following url: <a href="http://localhost:8001/chat" target="_blank">http://localhost:8001/chat</a>

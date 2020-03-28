@@ -4,9 +4,9 @@ services:
     image: 'bitnami/mongodb:latest'
     container_name: 'mongo_db'
     environment:
-      - MONGODB_USERNAME=academy
-      - MONGODB_PASSWORD=academy123
-      - MONGODB_DATABASE=aa_book_db
+      MONGODB_USERNAME: academy
+      MONGODB_PASSWORD: academy123
+      MONGODB_DATABASE: aa_chat_db
     volumes:
       - /tmp/db_data:/data/db
     ports:

@@ -1,4 +1,11 @@
 node_modules
 debug.log
 
+# environment variables
 .env
+.env-dev
+
+# MacOS
+.DS_Store
+
+notes.txt

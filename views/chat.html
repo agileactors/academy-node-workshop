@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Academy - Chat App</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/analytics.css" />
+    <link rel="stylesheet" href="css/chat.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div class="analytics-container">
+        <div class="stati turquoise ">
+          <div>
+            <b class="connected-users">0</b>
+            <span>connected</span>
+          </div>
+        </div>
+        <div class="stati turquoise ">
+          <div>
+            <b class="total-messages">0</b>
+            <span>messages</span>
+          </div>
+        </div>
+        <div class="stati turquoise ">
+          <div>
+            <b class="per-minute">0</b>
+            <span>average/minute</span>
+          </div>
+        </div>
+      </div>
+      <div class="chat-container">
+        <section class="msger">
+          <header class="msger-header">
+            <div class="msger-header-title">
+              <i class="fas fa-comment-alt"></i> Academy Node.js chat
+            </div>
+            <div class="msger-header-options">
+              <span><i class="fas fa-cog"></i></span>
+            </div>
+          </header>
+          <main class="msger-chat"></main>
+          <form class="msger-input-area">
+            <input
+              type="text"
+              class="msger-input"
+              placeholder="Enter your message..."
+            />
+            <button class="msger-send-btn">Send</button>
+          </form>
+        </section>
+      </div>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/efeb466a56.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script src="js/chat.js"></script>
+  </body>
+</html>
