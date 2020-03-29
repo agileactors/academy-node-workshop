@@ -1,6 +1,6 @@
+const { fork } = require('child_process');
 const socketIO = require('socket.io');
 const { Model: MessageModel } = require('./models/message');
-const { messagesPerMinute } = require('./utilities');
 
 const init = async server => {
   // server start time
@@ -16,18 +16,40 @@ const init = async server => {
     perMinute: 0,
   };
 
+  // is a child process already running
+  let childProcessRunning = false;
+
   // calculate messages-per-minute in regular interval
   setInterval(async () => {
-    const messages = await MessageModel.find({ timestamp: { $gte: startTime } })
-      .sort({ timestamp: 1 })
-      .exec();
+    if (!childProcessRunning) {
+      // start heavy computation on child process
+      const runningTask = fork('./utilities/messagesPerMinute.js');
+      childProcessRunning = true;
 
-    const totalMessages = await MessageModel.countDocuments({}).exec();
+      const totalMessages = await MessageModel.countDocuments({}).exec();
 
-    analytics.totalMessages = totalMessages;
-    analytics.perMinute = messagesPerMinute(messages).toFixed(2);
+      const messages = await MessageModel.find({
+        timestamp: { $gte: startTime },
+      })
+        .sort({ timestamp: 1 })
+        .exec();
 
-    io.emit('server:analytics', analytics);
+      // send data to child process
+      runningTask.send(messages);
+
+      runningTask.on('message', async messagesPerMinute => {
+        // update analytics
+        analytics.totalMessages = totalMessages;
+        analytics.perMinute = messagesPerMinute.toFixed(2);
+
+        // shutdown child process
+        runningTask.kill();
+        childProcessRunning = false;
+
+        // send new analytics to connected users
+        io.emit('server:analytics', analytics);
+      });
+    }
   }, 5000);
 
   io.on('connection', socket => {

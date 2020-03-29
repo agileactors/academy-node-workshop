@@ -1,6 +1,18 @@
-module.exports = messages => {
+// block the event loop for x msec
+function delay(msec) {
+  const start = new Date();
+  while (new Date() - start < msec) {
+    // ahhh doing nothing...
+  }
+}
+
+process.on('message', messages => {
+  // simulate long running task
+  delay(5000);
+
   if (messages.length === 0) {
-    return 0;
+    process.send(0);
+    return;
   }
   // get current time
   const now = Math.round(new Date().getTime() / 1000);
@@ -17,5 +29,5 @@ module.exports = messages => {
   const sum = frequency.reduce((acc, value) => acc + value, 0);
   const total = frequency.length;
 
-  return sum / total;
-};
+  process.send(sum / total);
+});
