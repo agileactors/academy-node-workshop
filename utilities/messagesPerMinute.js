@@ -1,3 +1,5 @@
+const { parentPort } = require('worker_threads');
+
 // block the event loop for x msec
 function delay(msec) {
   const start = new Date();
@@ -6,12 +8,15 @@ function delay(msec) {
   }
 }
 
-process.on('message', messages => {
+parentPort.on('message', async data => {
+  // parse json to create messages array
+  const messages = await JSON.parse(data);
+
   // simulate long running task
   delay(5000);
 
   if (messages.length === 0) {
-    process.send(0);
+    parentPort.postMessage(0);
     return;
   }
   // get current time
@@ -29,5 +34,5 @@ process.on('message', messages => {
   const sum = frequency.reduce((acc, value) => acc + value, 0);
   const total = frequency.length;
 
-  process.send(sum / total);
+  parentPort.postMessage(sum / total);
 });
