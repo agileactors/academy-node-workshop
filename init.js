@@ -1,5 +1,5 @@
 const fs = require('fs');
-const initialEnvValues = require('./configuration');
+const { ENVVALUES } = require('./constants');
 
 /**
  * Task 1:
@@ -18,8 +18,6 @@ const ENV_PATH = '.env';
 const cliArgs = [];
 
 const getEnvContent = () => {
-  const { env } = initialEnvValues;
-
   /**
    * Task 3:
    *
@@ -27,7 +25,7 @@ const getEnvContent = () => {
    * e.g PORT=6001, NODE_ENV=development use this value instead of the default.
    *
    */
-  const envValues = env.reduce((acc, envValue) => {
+  const envValues = ENVVALUES.reduce((acc, envValue) => {
     const { name, value } = envValue;
 
     acc.push(`${name}=${value}`);
@@ -38,9 +36,9 @@ const getEnvContent = () => {
 };
 
 const createEnv = () => {
-  const data = getEnvContent();
+  const envFileContent = getEnvContent();
 
-  fs.writeFile(ENV_PATH, data, 'utf8', err => {
+  fs.writeFile(ENV_PATH, envFileContent, 'utf8', err => {
     if (err) {
       throw err;
     }
