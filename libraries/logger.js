@@ -9,6 +9,14 @@
 
 const fs = require('fs');
 
+const formatDate = date => {
+  const dateFormat = `${date.getDate()}/${date.getMonth() +
+    1}/${date.getFullYear()}`;
+  const timeFormat = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+
+  return [dateFormat, timeFormat].join(' ');
+};
+
 const logger = {
   logToFile: true,
   logToConsole: true,
@@ -24,7 +32,7 @@ const logger = {
   },
   log(...args) {
     const now = new Date();
-    const nowFormat = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}.${now.getMilliseconds()}`;
+    const nowFormat = formatDate(now);
 
     args.unshift(nowFormat);
 
