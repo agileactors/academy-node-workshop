@@ -13,7 +13,6 @@ The path module provides utilities for working with file and directory paths. It
 
 ```
 const path = require('path);
-
 ```
 
 Docs:
