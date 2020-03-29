@@ -19,8 +19,8 @@ const path = require('path);
 
 Docs:
 
-    - [path](https://nodejs.org/dist/latest-v13.x/docs/api/path.html#path_path)
-    - [process](https://nodejs.org/api/process.html)
+- [path](https://nodejs.org/dist/latest-v13.x/docs/api/path.html#path_path)
+- [process](https://nodejs.org/api/process.html)
 
 ## Branch Tasks
 
