@@ -4,7 +4,10 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will introduce the **process** global object in Node.js and the Path module.
+In this branch we will introduce the **process** global object in Node.js and the **Path** build-in module.
+
+The process object is a global that provides information about, and control over, the current Node.js process.
+It is global so you can use it directly in the code.
 
 The path module provides utilities for working with file and directory paths. It can be accessed using:
 
@@ -12,8 +15,6 @@ The path module provides utilities for working with file and directory paths. It
 const path = require('path);
 
 ```
-
-The process object is a global that provides information about, and control over, the current Node.js process.
 
 Docs:
 
