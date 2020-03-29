@@ -1,11 +1,10 @@
-const initialEnvValues = require('./configuration');
+const { ENVVALUES } = require('./constants');
 
+// path to the .env file
 const ENV_PATH = '.env';
 
 const getEnvContent = () => {
-  const { env } = initialEnvValues;
-
-  const envValues = env.reduce((acc, envValue) => {
+  const envValues = ENVVALUES.reduce((acc, envValue) => {
     const { name, value } = envValue;
 
     acc.push(`${name}=${value}`);
