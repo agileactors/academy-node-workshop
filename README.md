@@ -4,8 +4,7 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will introduce the File System module(fs).
-
+In this branch we will introduce the File System build-in module (fs).
 The fs module provides an API for interacting with the file system. It can be accessed using:
 
 ```
@@ -14,7 +13,7 @@ const fs = require('fs');
 
 Docs:
 
-- https://nodejs.org/dist/latest-v13.x/docs/api/fs.html#fs_file_system
+- [fs_file_system](https://nodejs.org/dist/latest-v13.x/docs/api/fs.html#fs_file_system)
 
 ## Branch Tasks
 
