@@ -26,7 +26,7 @@ const getEnvContent = () => {
 
 const createEnv = () => {
   try {
-    const data = getEnvContent();
+    const envFileContent = getEnvContent();
 
     /** provide your implementation * */
   } catch (error) {
