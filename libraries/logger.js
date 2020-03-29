@@ -10,9 +10,16 @@
 const fs = require('fs');
 
 const formatDate = date => {
-  const dateFormat = `${date.getDate()}/${date.getMonth() +
-    1}/${date.getFullYear()}`;
-  const timeFormat = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  const dateFormat = [
+    date.getDate(),
+    date.getMonth() + 1,
+    date.getFullYear(),
+  ].join('/');
+  const timeFormat = [
+    date.getHours(),
+    date.getMinutes(),
+    date.getSeconds(),
+  ].join(':');
 
   return [dateFormat, timeFormat].join(' ');
 };
