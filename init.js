@@ -17,8 +17,8 @@ const getEnvContent = () => {
 /**
  * Task 2: createEnv implementation
  *
- * use the fs synchonous api to write the content values(data) to a file with name .env in the root folder.
- * Print the message 'Finish configuration.' to the console.
+ * Use the fs synchonous api to write the content values(envFileContent variable) to a file with name .env in the root folder.
+ * When the operation completed print the message 'Finish configuration.' to the console.
  * If an error occurs throw an exception.
  
  * Hint: use utf8 encoding
@@ -28,7 +28,8 @@ const createEnv = () => {
   try {
     const envFileContent = getEnvContent();
 
-    /** provide your implementation * */
+    /** TODO: provide implementation **/
+    
   } catch (error) {
     console.error(error);
   }
@@ -37,7 +38,7 @@ const createEnv = () => {
 /**
  * Task 3: readEnv implementation
  *
- * Use the fs synchonous api to read the contents of the .env file and print the contents of the file to the console.
+ * Use the fs synchonous api to read the content of the .env file and print it to the console.
  * If an error occurs throw an exception.
  *
  * Hint: use utf8 encoding
