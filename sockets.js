@@ -23,7 +23,7 @@ const init = async server => {
   setInterval(async () => {
     if (!childProcessRunning) {
       // start heavy computation on child process
-      const runningTask = fork('./utilities/messagesPerMinute.js');
+      const child = fork('./utilities/messagesPerMinute.js');
       childProcessRunning = true;
 
       const totalMessages = await MessageModel.countDocuments({}).exec();
@@ -35,15 +35,15 @@ const init = async server => {
         .exec();
 
       // send data to child process
-      runningTask.send(messages);
+      child.send(messages);
 
-      runningTask.on('message', async messagesPerMinute => {
+      child.on('message', async messagesPerMinute => {
         // update analytics
         analytics.totalMessages = totalMessages;
         analytics.perMinute = messagesPerMinute.toFixed(2);
 
         // shutdown child process
-        runningTask.kill();
+        child.kill();
         childProcessRunning = false;
 
         // send new analytics to connected users
