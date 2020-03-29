@@ -18,7 +18,7 @@ Docs:
 
 ## Branch Tasks
 
-Use the fs api to create a .env file for our application. The .env holds the environmental variables that our app needs to run such as PORT, NODE_ENV etc.
+Use the fs synchronous api to create a .env file for our application. The .env holds the environmental variables that our app needs to run such as PORT, NODE_ENV etc.
 
 1. Provide the **checkEnv** implementation which checks if the .env file exists in the root folder (synchronous).
 2. Provide the **readEnv** implementation which reads the contents of .env if exists (synchronous).
