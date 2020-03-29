@@ -25,7 +25,6 @@ Use the fs **synchronous** api to create a .env file for our application. The .e
 3. Provide the **createEnv** implementation which creates the .env file (synchronous).
 
 Open the ***init.js*** file placed in the root folder of the app to start writing your code.
-
 To start the application and test your code issue the following command in a terminal:
 
 ```
