@@ -5,7 +5,9 @@ Node.js Workshop
 ## Branch description
 
 In this branch we will introduce the File System build-in module (fs).
-The fs module provides an API for interacting with the file system. It can be accessed using:
+The fs module provides an API for interacting with the file system.
+
+Usage:
 
 ```js
 const fs = require('fs');
