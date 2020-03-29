@@ -13,14 +13,32 @@
  * logger.log(value1, value2, value3)
  *
  * Result:
- * [timestamp, message].
+ * [now, message].
  * e.g ["day/month/year hours:minutes","some info" | { error: 'some error } | ['some item1', 'some item2']]
  */
+
+const formatDate = date => {
+  const dateFormat = [
+    date.getDate(),
+    date.getMonth() + 1,
+    date.getFullYear(),
+  ].join('/');
+  const timeFormat = [
+    date.getHours(),
+    date.getMinutes(),
+    date.getSeconds(),
+  ].join(':');
+
+  return [dateFormat, timeFormat].join(' ');
+};
 
 const logger = {
   logToFile: true,
   logToConsole: true,
   log(...args) {
+    const now = new Date();
+    const nowFormat = formatDate(now);
+
     /** TODO: provide implementation */
   },
 };
