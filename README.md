@@ -4,19 +4,33 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will build a middleware that handles static files
+In this branch we will learn about web-sockets
 
-Some request want to just access a file in our servers and not hit an endpoint.
-The static middleware is responsible to inspect the request, see if the request is for a file and if it is load and return the file to client otherwise continue with the next middleware in the pipeline.
+In application like a chat app realtime communication between the client and the server is a must have. This kind of communications can be achieved by a technology called **Web Sockets** (https://en.wikipedia.org/wiki/WebSocket). In node.js we can easily work with web-sockets using a popular library called socket.io
 
+Usage:
+
+```js
+const io = require('socket.io')();
+
+// a client connected
+io.on('connection', socket => {
+  // send the client a message
+  socket.emit('server:message', {
+    greeting: 'Hello there!',
+  });
+
+  // receive a message from client
+  socket.on('client:message', data => {
+    console.log(data);
+  });
+});
+```
 
 ## Branch Tasks
 
-1. Create variables that point to specific folders
-   
-2. Write the static middleware
+1. Use socket.io to receive/send realtime messages
 
 ## Covers
 
-- File System Module
-- Util Module
+- Web Sockets (socket.io)
