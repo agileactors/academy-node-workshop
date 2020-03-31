@@ -1,29 +1,41 @@
 const fs = require('fs');
 const path = require('path');
 const { promisify } = require('util');
+const { MIMETYPES } = require('../constants');
 
 // promisify readFile utility
 const stat = promisify(fs.stat);
 const readFile = promisify(fs.readFile);
 
-/**
- * Task 1: Create variables that point to specific folders
- *
- * Create a variable that points to the project's root directory and another variable
- * that points to the 'static' folder.
- */
+// get root directory
+const rootDir = process.cwd();
+
+// get static-files folder
+const staticDir = path.join(rootDir, 'static');
 
 const middleware = async ({ request, response }, next) => {
-  /**
-   * Task 2: Write the static middleware
-   *
-   * When a request comes in, get the URL and try to open (from the 'static' folder)
-   * a file with the URL as the filename. If the file exists send the contents to the
-   * client else call the next middleware
-   *
-   */
+  try {
+    const { url: filepath } = request;
+    const staticPath = path.join(staticDir, filepath);
+    const stats = await stat(staticPath);
 
-  next(); // remove before start the task
+    // if path is not file continue the chain
+    if (!stats.isFile()) {
+      next();
+      return;
+    }
+
+    const extname = String(path.extname(filepath)).toLowerCase();
+    const contentType = MIMETYPES[extname] || 'application/octet-stream';
+
+    // read file's content
+    const content = await readFile(staticPath);
+
+    response.writeHead(200, { 'Content-Type': contentType });
+    response.end(content);
+  } catch (err) {
+    next();
+  }
 };
 
 module.exports = middleware;
