@@ -3,6 +3,7 @@ const path = require('path');
 const shortid = require('shortid');
 
 const logger = require('../libraries/logger');
+const { Model: MessageModel } = require('../models/message');
 
 const rootDir = process.cwd();
 
@@ -23,4 +24,14 @@ const getUsername = async ({ response }) => {
   );
 };
 
-module.exports = { get, getUsername };
+const getMessages = async ({ response }) => {
+  try {
+    const data = await MessageModel.find({}).exec();
+    response.writeHead(200, { 'Content-Type': 'application/json' });
+    response.end(await JSON.stringify(data));
+  } catch (err) {
+    logger.log(err);
+  }
+};
+
+module.exports = { get, getUsername, getMessages };

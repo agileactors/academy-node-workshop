@@ -37,6 +37,7 @@ router.get('/', ({ response }) => {
 // chat routes
 router.get('/chat', chatHandler.get);
 router.get('/chat/username', chatHandler.getUsername);
+router.get('/chat/messages', chatHandler.getMessages);
 
 // add routes as middleware
 router.use(router.routesMiddleware);
