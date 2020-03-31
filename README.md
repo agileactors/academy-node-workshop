@@ -6,7 +6,7 @@ Node.js Workshop
 
 In this branch we will learn about web-sockets
 
-In application like a chat app realtime communication between the client and the server is a must have. This kind of communications can be achieved by a technology called **Web Sockets** (https://en.wikipedia.org/wiki/WebSocket). In node.js we can easily work with web-sockets using a popular library called socket.io
+In applications like a chat app realtime communication between the client and the server is a must have. This kind of communications can be achieved by a technology called **Web Sockets** (https://en.wikipedia.org/wiki/WebSocket). In node.js we can easily work with web-sockets using a popular library called socket.io
 
 Usage:
 
