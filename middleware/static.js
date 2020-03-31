@@ -19,9 +19,7 @@ const staticDir = path.join(rootDir, 'static');
 
 const middleware = async ({ request, response }, next) => {
   try {
-    const { url: filePath } = request;
-    const extname = String(path.extname(filePath)).toLowerCase();
-    const contentType = MIMETYPES[extname] || 'application/octet-stream';
+    const { url: filepath } = request;
     const staticPath = path.join(staticDir, request.url);
     const stats = await stat(staticPath);
 
@@ -30,6 +28,9 @@ const middleware = async ({ request, response }, next) => {
       next();
       return;
     }
+
+    const extname = String(path.extname(filepath)).toLowerCase();
+    const contentType = MIMETYPES[extname] || 'application/octet-stream';
 
     // read file's content
     const content = await readFile(staticPath);
