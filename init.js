@@ -49,9 +49,10 @@ const readEnv = () => {};
 /**
  * Task 1: checkEnv implementation
  *
- * Use the fs module synchonous api to check if the .env file exists in the project root folder.
+ * Use the fs module synchonous api to check if the .env file exists in the app root directory.
  * If the file does not exists print the message "Creating configuration.." to the console and call the createEnv function
  * If the file exists print the message "Reading configuration.." to the console and call the readEnv function.
+ * Check if a folder with name logs exists in the app root directory.
  *
  * Hint: use appropriate flag for read and writing
  */
