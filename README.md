@@ -13,7 +13,6 @@ The static middleware is responsible to inspect the request, see if the request 
 ## Branch Tasks
 
 1. Create variables that point to specific folders
-   
 2. Write the static middleware
 
 ## Covers
