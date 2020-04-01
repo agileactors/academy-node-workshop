@@ -25,8 +25,8 @@ Docs:
 - https://nodejs.org/en/knowledge/javascript-conventions/what-is-json/
 
 ## Branch Tasks
+
 1. Create a handler that responds with html (using streams)
-   
 2. Create a handler that responds with JSON
 
 ## Covers
