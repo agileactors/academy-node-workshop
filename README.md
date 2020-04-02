@@ -31,11 +31,11 @@ We are going to build a chat app using Node and a real time board for chat analy
 
 ## Getting started
 
-### ✔ 1 Install Node.JS LTS
+### 1. Install Node.JS LTS
 
 Install Node.JS LTS from [nodejs official site](https://nodejs.org/en/download/)
 
-### ✔ 2 Ensure Node and npm are installed correctly
+### 2. Ensure Node and npm are installed correctly
 
 Ensure node.js is installed by running the following command in a terminal, similar with npm.
 
@@ -45,11 +45,7 @@ Run the commands:
 node -v
 ```
 
-```
-npm -v
-```
-
-### ✔ 3 Clone this repo
+### 3. Clone this repo
 
 Run the command:
 
