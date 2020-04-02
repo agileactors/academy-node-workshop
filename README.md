@@ -23,9 +23,12 @@ We are going to build a chat app using Node and a real time board for chat analy
 
 node--01--repl
 node--02--fs-sync
-node--03--fs-async
-node--04--fs-globals
+node--02--fs-async
+node--03--fs-globals
+node--04--modules
 node--05--http
+node--06--http-handlers
+node--06--http-middleware
 
 ## Getting started
 
