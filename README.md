@@ -12,9 +12,6 @@ We are going to build a chat app using Node and a real time board for chat analy
 
 <div style="width: 100%; display: flex; justifyContent: space-between">
   <div style="margin-right: 5px">
-    <img alt="node-app-1" src="./static/images/img-1.png" width="100%">
-  </div>
-  <div style="margin-right: 5px">
     <img alt="node-app-1" src="./static/images/img-2.png" width="100%">
   </div>
 </div>
