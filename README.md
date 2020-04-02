@@ -21,7 +21,16 @@ We are going to build a chat app using Node and a real time board for chat analy
 
 ### Available Branches
 
-`todo: branches setup`
+node--01--repl
+node--02--fs-sync
+node--03--fs-async
+node--04--fs-globals
+node--05--modules
+node--06--http
+node--07--http-handlers
+node--08--http-middleware
+node--09--socket-io
+node--10--child-process
 
 ## Getting started
 
