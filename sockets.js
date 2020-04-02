@@ -5,6 +5,17 @@ const { Worker } = require('worker_threads');
 const logger = require('./libraries/logger');
 const { Model: MessageModel } = require('./models/message');
 
+const runWorker = (p, cb, data) => {
+  const worker = new Worker(p, { workerData: data });
+  worker.on('message', result => cb(null, result));
+  worker.on('error', cb);
+  worker.on('exit', code => {
+    if (code !== 0) {
+      cb(new Error(`Worker has stopped with code ${code}`));
+    }
+  });
+};
+
 const init = async server => {
   // server start time
   const startTime = Math.round(new Date().getTime() / 1000);
@@ -19,47 +30,26 @@ const init = async server => {
     perMinute: 0,
   };
 
-  // is a child process already running
-  let workerThreadRunning = false;
+  // update totalMessages
+  analytics.totalMessages = await MessageModel.countDocuments({}).exec();
 
-  // calculate messages-per-minute in regular interval
-  setInterval(async () => {
-    if (!workerThreadRunning) {
-      // start heavy computation on a worker thread
-      const worker = new Worker(
-        path.join(__dirname, '/utilities/messagesPerMinute.js')
-      );
-      workerThreadRunning = true;
-
-      const totalMessages = await MessageModel.countDocuments({}).exec();
-
-      const messages = await MessageModel.find({
-        timestamp: { $gte: startTime },
-      })
-        .sort({ timestamp: 1 })
-        .exec();
-
-      // send data to worker
-      worker.postMessage(await JSON.stringify(messages));
-
-      worker.on('message', async messagesPerMinute => {
-        // update analytics
-        analytics.totalMessages = totalMessages;
-        analytics.perMinute = messagesPerMinute.toFixed(2);
-
-        // update worker flag
-        workerThreadRunning = false;
-
-        // send new analytics to connected users
-        io.emit('server:analytics', analytics);
-      });
-
-      // log any errors thrown in worker
-      worker.on('error', err => {
+  // run heavy task on different thread
+  runWorker(
+    path.join(__dirname, '/utilities/messagesPerMinute.js'),
+    (err, result) => {
+      if (err) {
         logger.log(err);
-      });
+        return;
+      }
+      // update analytics
+      analytics.perMinute = result.toFixed(2);
+      // send new analytics to connected users
+      io.emit('server:analytics', analytics);
+    },
+    {
+      startTime,
     }
-  }, 5000);
+  );
 
   io.on('connection', socket => {
     // update connected clients

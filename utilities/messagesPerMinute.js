@@ -1,4 +1,7 @@
-const { parentPort } = require('worker_threads');
+const { parentPort, workerData } = require('worker_threads');
+
+const connect = require('../db/connect');
+const { Model: MessageModel } = require('../models/message');
 
 // block the event loop for x msec
 function delay(msec) {
@@ -8,9 +11,17 @@ function delay(msec) {
   }
 }
 
-parentPort.on('message', async data => {
-  // parse json to create messages array
-  const messages = await JSON.parse(data);
+// connect to database
+connect().catch(() => process.exit(1));
+
+const { startTime } = workerData;
+
+setInterval(async () => {
+  const messages = await MessageModel.find({
+    timestamp: { $gte: startTime },
+  })
+    .sort({ timestamp: 1 })
+    .exec();
 
   // simulate long running task
   delay(5000);
@@ -35,4 +46,4 @@ parentPort.on('message', async data => {
   const total = frequency.length;
 
   parentPort.postMessage(sum / total);
-});
+}, 5000);
