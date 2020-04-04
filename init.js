@@ -54,10 +54,10 @@ const createEnv = () => {
 /**
  * Task 1: checkEnv implementation
  *
+ * Check if a folder with name logs exists (LOGS_DIR) in the app root directory. If not exists create it.
  * Use the fs apis to check if the .env file exists in the app root directory.
  * If the file does not exists print the message "Creating configuration.." to the console and call the createEnv function
  * If the file exists print the message "Reading configuration.." to the console and call the readEnv function.
- * Check if a folder with name logs exists (LOGS_DIR) in the app root directory. If not exists create it.
  *
  * Hint: use appropriate flag for read and writing
  */
