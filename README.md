@@ -38,3 +38,4 @@ npm run init
 ## Covers
 
 - File System module (fs)
+- Console
