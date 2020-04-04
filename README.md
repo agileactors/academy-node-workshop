@@ -19,15 +19,14 @@ We are going to build a chat app using Node and a real time board for chat analy
 ### Available Branches
 
 1. node--01--repl
-2. node--02--fs-sync
-3. node--03--fs-async
-4. node--04--globals
-5. node--05--modules
-6. node--06--http
-7. node--07--http-handlers
-8. node--08--http-middleware
-9. node--09--socket-io
-10. node--10--child-process
+2. node--02--fs
+4. node--03--globals
+5. node--04--modules
+6. node--05--http
+7. node--06--http-handlers
+8. node--07--http-middleware
+9. node--08--socket-io
+10. node--09--child-process
 
 ## Getting started
 
