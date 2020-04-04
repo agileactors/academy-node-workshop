@@ -34,19 +34,15 @@ const nwsGetEnvContent = () => {
 };
 
 const createEnv = () => {
-  try {
-    const envFileContent = nwsGetEnvContent();
+  const envFileContent = nwsGetEnvContent();
 
-    fs.writeFile(ENV_PATH, envFileContent, 'utf8', err => {
-      if (err) {
-        throw err;
-      }
+  fs.writeFile(ENV_PATH, envFileContent, 'utf8', err => {
+    if (err) {
+      throw err;
+    }
 
-      console.log('Finished configuration');
-    });
-  } catch (error) {
-    console.error(error);
-  }
+    console.log('Finished .env configuration');
+  });
 };
 
 const readEnv = () => {
