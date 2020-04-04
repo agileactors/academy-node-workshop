@@ -6,7 +6,7 @@
   "scripts": {
     "setup": "node init.js NODE_ENV=prod PORT=8001",
     "start": "npm run setup && node -r dotenv/config startup.js",
-    "dev": "npm run init && nodemon --inspect -r dotenv/config startup.js",
+    "dev": "npm run startup && nodemon --inspect -r dotenv/config startup.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "compose": "docker-compose up",
