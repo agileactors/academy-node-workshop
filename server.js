@@ -16,35 +16,32 @@ const PORT = process.env.PORT || 8001;
 server.on('request', (request, response) => {
   const { pathname } = url.parse(request.url);
 
-  if (pathname === '/') {
-    response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.end('<h1>Index Page</h1>');
-    response.end('<h1>About Page</h1>');
-    return;
+  switch (pathname) {
+    case '/':
+      response.writeHead(200, { 'Content-Type': 'text/html' });
+      response.end('<h1>Index Page</h1>');
+      break;
+    case '/about':
+      response.writeHead(200, { 'Content-Type': 'text/html' });
+      response.end('<h1>About Page</h1>');
+      break;
+    //
+    // Uncomment for next tasks
+    //
+    // case '/chat': {
+    //   const ctx = { request, response };
+    //   chatHandler.get(ctx);
+    //   break;
+    // }
+    // case '/chat/username': {
+    //   const ctx = { request, response };
+    //   chatHandler.getUsername(ctx);
+    //   break;
+    // }
+    default:
+      response.writeHead(404, { 'Content-Type': 'text/plain' });
+      response.end('Not Found!');
   }
-
-  if (pathname === '/about') {
-    response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.end('<h1>About Page</h1>');
-    return;
-  }
-
-  // Uncomment for next task
-  //
-  // if (pathname === '/chat') {
-  //   const ctx = { request, response };
-  //   chatHandler.get(ctx);
-  //   return;
-  // }
-
-  // if (pathname === '/chat/username') {
-  //   const ctx = { request, response };
-  //   chatHandler.getUsername(ctx);
-  //   return;
-  // }
-
-  response.writeHead(404, { 'Content-Type': 'text/plain' });
-  response.end('Not Found!');
 });
 
 // start server
