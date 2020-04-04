@@ -29,6 +29,8 @@ Use the fs **synchronous** api to create a .env file for our application. The .e
 Open the ***init.js*** file placed in the root folder of the app to start writing your code.
 To start the application and test your code issue the following command in a terminal:
 
+**Note**: The functions which have a prefix `nws` are only for internal use. You do not have to edit them.
+
 ```
 npm run init
 ```

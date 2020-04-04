@@ -2,9 +2,12 @@ const { ENVVALUES } = require('./constants');
 
 // path to the .env file
 const ENV_PATH = '.env';
+
+// path to the logs directory
 const LOGS_DIR = './logs';
 
-const getEnvContent = () => {
+// Do not edit
+const nwsGetEnvContent = () => {
   const envValues = ENVVALUES.reduce((acc, envValue) => {
     const { name, value } = envValue;
 
@@ -16,30 +19,10 @@ const getEnvContent = () => {
 };
 
 /**
- * Task 2: createEnv implementation
- *
- * Use the fs synchonous api to write the content values(envFileContent variable) to a file with name .env in the root folder.
- * When the operation completed print the message 'Finish configuration.' to the console.
- * If an error occurs throw an exception.
- 
- * Hint: use utf8 encoding
- */
-
-const createEnv = () => {
-  try {
-    const envFileContent = getEnvContent();
-
-    /** TODO: provide implementation **/
-    
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-/**
  * Task 3: readEnv implementation
  *
- * Use the fs synchonous api to read the content of the .env file and print it to the console.
+ * Use the fs synchonous api to read the content of the .env file and print it to
+ * the console. Each value has to be printed in a new line.
  * If an error occurs throw an exception.
  *
  * Hint: use utf8 encoding
@@ -48,16 +31,38 @@ const createEnv = () => {
 const readEnv = () => {};
 
 /**
+ * Task 2: createEnv implementation
+ *
+ * Use the fs synchonous api to write the content values (envFileContent variable) 
+ * to a file with name .env in the app root folder.
+ * When the operation completes print the message 'Finish configuration.' to the console.
+ * If an error occurs throw an exception.
+ 
+ * Hint: use utf8 encoding
+ */
+
+const createEnv = () => {
+  try {
+    const envFileContent = nwsGetEnvContent();
+
+    // TODO: provide implementation
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+/**
  * Task 1: checkEnv implementation
  *
- * Use the fs module synchonous api to check if the .env file exists in the app root directory.
+ * Use the fs synchonous api to check if the .env file exists in the app root directory.
  * If the file does not exists print the message "Creating configuration.." to the console and call the createEnv function
  * If the file exists print the message "Reading configuration.." to the console and call the readEnv function.
- * Check if a folder with name logs exists (LOGS_DIR) in the app root directory. If not the folder exists create it.
+ * Check if a folder with name logs exists (LOGS_DIR) in the app root directory. If not exists create it.
  *
  * Hint: use appropriate flag for read and writing
  */
 
 const checkEnv = () => {};
 
+// starting point
 checkEnv();
