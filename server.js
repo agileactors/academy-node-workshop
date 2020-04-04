@@ -21,11 +21,4 @@ const http = require('http');
  *
  * Hint: The response here is in html format so you need to
  * set the appropriate headers before sending the response.
- *
- * Task 3: Catch unhandled errors
- *
- * Use the global process object and catch the 'uncaughtException' and
- * 'unhandledRejection' errors, use the logger to log them to the console
- * and exit the process.
- *
  */
