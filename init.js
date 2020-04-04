@@ -65,5 +65,3 @@ process.on('uncaughtException', err => {
 if (!bypassCheck) {
   checkEnv();
 }
-
-logger.log({ v: 'test' });
