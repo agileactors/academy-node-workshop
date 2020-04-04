@@ -5,9 +5,14 @@ const { ENVVALUES } = require('./constants');
  * Task 1:
  *
  * Use the process global to get the current working directory (cwd)
- * Use the path api and update .env path using the path module and the cwd
+ * Use the path api and update .env path and logs path using the cwd
  */
+
+// path to the .env file
 const ENV_PATH = '.env';
+
+// path to the logs directory
+const LOGS_DIR = './logs';
 
 /**
  * Task 2:
@@ -17,14 +22,7 @@ const ENV_PATH = '.env';
  */
 const cliArgs = [];
 
-const getEnvContent = () => {
-  /**
-   * Task 3:
-   *
-   * If in cliArgs exists a value which matches a valid env value (e.g PORT | NODE_ENV)
-   * e.g PORT=6001, NODE_ENV=development use this value instead of the default.
-   *
-   */
+const nwsGetEnvContent = () => {
   const envValues = ENVVALUES.reduce((acc, envValue) => {
     const { name, value } = envValue;
 
@@ -36,36 +34,41 @@ const getEnvContent = () => {
 };
 
 const createEnv = () => {
-  const envFileContent = getEnvContent();
+  try {
+    const envFileContent = nwsGetEnvContent();
 
-  fs.writeFile(ENV_PATH, envFileContent, 'utf8', err => {
-    if (err) {
-      throw err;
-    }
+    fs.writeFile(ENV_PATH, envFileContent, 'utf8', err => {
+      if (err) {
+        throw err;
+      }
 
-    console.log('Finished .env configuration');
-  });
+      console.log('Finished configuration');
+    });
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const readEnv = () => {
-  fs.readFile(ENV_PATH, 'utf8', (err, data) => {
-    if (err) {
-      throw err;
-    }
+  try {
+    const data = fs.readFileSync(ENV_PATH, 'utf8');
 
-    console.log(`.env configuration: \n${data}\n`);
-  });
+    console.log(`Found configuration: \n${data}\n`);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const checkEnv = () => {
-  fs.open(ENV_PATH, 'r+', err => {
-    if (err) {
-      console.log('Starting configuration..');
-      return createEnv();
-    }
+  if (fs.existsSync(ENV_PATH)) {
+    return readEnv();
+  }
 
-    readEnv();
-  });
+  if (!fs.existsSync(LOGS_DIR)) {
+    fs.mkdirSync(LOGS_DIR);
+  }
+
+  createEnv();
 };
 
 /**
@@ -78,6 +81,6 @@ const checkEnv = () => {
 /**
  * Task 5:
  *
- * If in cliArgs the paremeter 'BYPASS' exists skip the checkEnv
+ * If a command line argument with name 'BYPASS' exists skip the checkEnv
  */
 checkEnv();
