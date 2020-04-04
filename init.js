@@ -81,6 +81,6 @@ const checkEnv = () => {
 /**
  * Task 5:
  *
- * If a command line argument with name 'BYPASS' exists skip the checkEnv
+ * If a command line argument with name 'BYPASS' passed skip the checkEnv
  */
 checkEnv();

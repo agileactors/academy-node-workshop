@@ -17,7 +17,7 @@ Usage:
 const path = require('path);
 ```
 
-Docs:
+Documentation:
 
 - [path](https://nodejs.org/dist/latest-v13.x/docs/api/path.html#path_path)
 - [process](https://nodejs.org/api/process.html)
@@ -25,11 +25,11 @@ Docs:
 ## Branch Tasks
 
 1. Use the **process** global to get the current working directory.
-2. Use the **path** module to update the .env (ENV_PATH) path using the current working directory.
-3. Use the **process** global to read the command line arguments.
+2. Use the **path** module to update the .env (ENV_PATH) and logs(LOGS_DIR) paths using the current working directory.
+3. Use the **process** global to read the command line arguments passed.
 4. Use the **process** global object to handle uncaught exception errors.
 
 ## Covers
 
 - Path module (path)
-- Node.js globals (process)
+- Globals (process)
