@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "setup": "node init.js NODE_ENV=prod PORT=8001 BYPASS",
-    "start": "npm run init && node -r dotenv/config startup.js",
-    "dev": "npm run init && nodemon --inspect -r dotenv/config startup.js",
+    "start": "npm run startup && node -r dotenv/config startup.js",
+    "dev": "npm run startup && nodemon --inspect -r dotenv/config startup.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "compose": "docker-compose up",
