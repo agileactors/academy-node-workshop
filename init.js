@@ -5,24 +5,16 @@ const { ENVVALUES } = require('./constants');
 
 const cwd = process.cwd();
 const ENV_PATH = path.join(cwd, '.env');
+const LOGS_DIR = path.join(cwd, 'logs');
 const args = process.argv.slice(2, process.argv.length);
 const bypassCheck = args.some(arg => arg === 'BYPASS');
 
-const getEnvContent = () => {
-  const argsArr = args.map(arg => {
-    const [name, value] = arg.split('=');
-
-    return {
-      paramName: name,
-      paramValue: value,
-    };
-  });
-
+// Do not edit
+const nwsGetEnvContent = () => {
   const envValues = ENVVALUES.reduce((acc, envValue) => {
     const { name, value } = envValue;
-    const arg = argsArr.find(({ paramName }) => paramName === name);
 
-    acc.push(`${name}=${arg ? arg.paramValue : value}`);
+    acc.push(`${name}=${value}`);
     return acc;
   }, []);
 
@@ -31,57 +23,49 @@ const getEnvContent = () => {
 
 const createEnv = () => {
   try {
-    const envFileContent = getEnvContent();
+    const envFileContent = nwsGetEnvContent();
 
     fs.writeFile(ENV_PATH, envFileContent, 'utf8', err => {
       if (err) {
         throw err;
       }
 
-      console.log('Finished .env configuration');
+      /**
+       * Task 1: Use the logger to log the message
+       *
+       * */
+      console.log('Finished configuration');
     });
   } catch (error) {
-    /**
-     * Task 1:
-     *
-     * Use the logger to log the error to debug.log
-     */
     console.error(error);
   }
 };
 
 const readEnv = () => {
   try {
-    fs.readFile(ENV_PATH, 'utf8', (err, data) => {
-      if (err) {
-        throw err;
-      }
+    const data = fs.readFileSync(ENV_PATH, 'utf8');
 
-      console.log(`.env configuration: \n${data}\n`);
-    });
+    console.log(`Found configuration: \n${data}\n`);
   } catch (error) {
-    /**
-     * Task 2:
-     *
-     * Use the logger to log the error to debug.log
-     */
     console.error(error);
   }
 };
 
 const checkEnv = () => {
-  fs.open(ENV_PATH, 'r+', err => {
-    if (err) {
-      return createEnv();
-    }
+  if (!fs.existsSync(LOGS_DIR)) {
+    fs.mkdirSync(LOGS_DIR);
+  }
 
-    readEnv();
-  });
+  if (fs.existsSync(ENV_PATH)) {
+    return readEnv();
+  }
+
+  createEnv();
 };
 
 process.on('uncaughtException', err => {
   /**
-   * Task 3:
+   * Task 2:
    *
    * Use the logger to log the error to debug.log
    */
@@ -89,6 +73,6 @@ process.on('uncaughtException', err => {
   process.exit();
 });
 
-if (!bypassCheck) {
+if (bypassCheck) {
   checkEnv();
 }
