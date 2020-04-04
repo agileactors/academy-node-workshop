@@ -60,12 +60,12 @@ const readEnv = () => {
 };
 
 const checkEnv = () => {
-  if (fs.existsSync(ENV_PATH)) {
-    return readEnv();
-  }
-
   if (!fs.existsSync(LOGS_DIR)) {
     fs.mkdirSync(LOGS_DIR);
+  }
+
+  if (fs.existsSync(ENV_PATH)) {
+    return readEnv();
   }
 
   createEnv();
