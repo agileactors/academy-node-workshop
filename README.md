@@ -35,6 +35,17 @@ npm run init
 
 **Note**: The functions which have a prefix `nws` are only for internal use. You do not have to edit them.
 
+The project directory should be:
+
+ <pre>
+ |--root
+    |-- .env
+    |-- README.md
+    |-- constants.js
+    |-- init.js
+    |-- logs
+</pre>
+
 ## Covers
 
 - File System module (fs)
