@@ -5,24 +5,16 @@ const { ENVVALUES } = require('./constants');
 
 const cwd = process.cwd();
 const ENV_PATH = path.join(cwd, '.env');
+const LOGS_DIR = path.join(cwd, 'logs');
 const args = process.argv.slice(2, process.argv.length);
 const bypassCheck = args.some(arg => arg === 'BYPASS');
 
-const getEnvContent = () => {
-  const argsArr = args.map(arg => {
-    const [name, value] = arg.split('=');
-
-    return {
-      paramName: name,
-      paramValue: value,
-    };
-  });
-
+// Do not edit
+const nwsGetEnvContent = () => {
   const envValues = ENVVALUES.reduce((acc, envValue) => {
     const { name, value } = envValue;
-    const arg = argsArr.find(({ paramName }) => paramName === name);
 
-    acc.push(`${name}=${arg ? arg.paramValue : value}`);
+    acc.push(`${name}=${value}`);
     return acc;
   }, []);
 
@@ -30,7 +22,7 @@ const getEnvContent = () => {
 };
 
 const createEnv = () => {
-  const envFileContent = getEnvContent();
+  const envFileContent = nwsGetEnvContent();
 
   fs.writeFile(ENV_PATH, envFileContent, 'utf8', err => {
     if (err) {
@@ -59,6 +51,10 @@ const checkEnv = () => {
 
     readEnv();
   });
+
+  if (!fs.existsSync(LOGS_DIR)) {
+    fs.mkdirSync(LOGS_DIR);
+  }
 };
 
 process.on('uncaughtException', err => {
@@ -69,3 +65,5 @@ process.on('uncaughtException', err => {
 if (!bypassCheck) {
   checkEnv();
 }
+
+logger.log({ v: 'test' });
