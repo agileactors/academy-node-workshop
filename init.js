@@ -22,23 +22,19 @@ const nwsGetEnvContent = () => {
 };
 
 const createEnv = () => {
-  try {
-    const envFileContent = nwsGetEnvContent();
+  const envFileContent = nwsGetEnvContent();
 
-    fs.writeFile(ENV_PATH, envFileContent, 'utf8', err => {
-      if (err) {
-        throw err;
-      }
+  fs.writeFile(ENV_PATH, envFileContent, 'utf8', err => {
+    if (err) {
+      throw err;
+    }
 
-      /**
-       * Task 1: Use the logger to log the message
-       *
-       * */
-      console.log('Finished configuration');
-    });
-  } catch (error) {
-    console.error(error);
-  }
+    /**
+     * Task 1: Use the logger to log the message
+     *
+     * */
+    console.log('Finished .env configuration');
+  });
 };
 
 const readEnv = () => {
@@ -52,15 +48,17 @@ const readEnv = () => {
 };
 
 const checkEnv = () => {
+  fs.open(ENV_PATH, 'r+', err => {
+    if (err) {
+      return createEnv();
+    }
+
+    readEnv();
+  });
+
   if (!fs.existsSync(LOGS_DIR)) {
     fs.mkdirSync(LOGS_DIR);
   }
-
-  if (fs.existsSync(ENV_PATH)) {
-    return readEnv();
-  }
-
-  createEnv();
 };
 
 process.on('uncaughtException', err => {
