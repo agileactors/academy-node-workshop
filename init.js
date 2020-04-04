@@ -56,15 +56,17 @@ const readEnv = () => {
 };
 
 const checkEnv = () => {
+  fs.open(ENV_PATH, 'r+', err => {
+    if (err) {
+      return createEnv();
+    }
+
+    readEnv();
+  });
+
   if (!fs.existsSync(LOGS_DIR)) {
     fs.mkdirSync(LOGS_DIR);
   }
-
-  if (fs.existsSync(ENV_PATH)) {
-    return readEnv();
-  }
-
-  createEnv();
 };
 
 /**
