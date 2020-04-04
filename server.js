@@ -13,7 +13,7 @@ const http = require('http');
  *
  * Task 2: Create a simple http router
  *
- * Using the url module to get the 'pathname' from the request URL
+ * Using the url module, get the 'pathname' from the request URL
  * and create the following endpoints:
  *
  *  1. '/' => <h1>Index Page</h1>
