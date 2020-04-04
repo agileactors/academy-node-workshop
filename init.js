@@ -22,9 +22,9 @@ const nwsGetEnvContent = () => {
 };
 
 const createEnv = () => {
-  const data = nwsGetEnvContent();
+  const envFileContent = nwsGetEnvContent();
 
-  fs.writeFile(ENV_PATH, data, 'utf8', err => {
+  fs.writeFile(ENV_PATH, envFileContent, 'utf8', err => {
     if (err) {
       throw err;
     }
