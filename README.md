@@ -30,7 +30,7 @@ Open the **init.js** file placed in the root directory of the app to start writi
 To start the application and test your code issue the following command in a terminal:
 
 ```
-npm run init
+npm run setup
 ```
 
 **Note**: The functions which have a prefix `nws` are only for internal use. You do not have to edit them.
