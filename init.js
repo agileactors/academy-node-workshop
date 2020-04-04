@@ -29,7 +29,7 @@ const createEnv = () => {
       throw err;
     }
 
-    console.log('Finished .env configuration');
+    logger.log('Finished .env configuration');
   });
 };
 
