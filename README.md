@@ -14,13 +14,22 @@ The path module provides utilities for working with file and directory paths.
 Usage:
 
 ```js
-const path = require('path);
+const path = require('path');
 ```
 
 Documentation:
 
 - [path](https://nodejs.org/dist/latest-v13.x/docs/api/path.html#path_path)
 - [process](https://nodejs.org/api/process.html)
+
+Open the **init.js** file placed in the root directory of the app to start writing your code.
+To start the application and test your code issue the following command in a terminal:
+
+```
+npm run setup
+```
+
+**Note**: The functions which have a prefix `nws` are only for internal use. You do not have to edit them.
 
 ## Branch Tasks
 
