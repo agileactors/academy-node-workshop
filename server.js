@@ -51,14 +51,3 @@ server.on('request', (request, response) => {
 server.listen(PORT, () => {
   logger.log(`Server listening on port ${PORT}`);
 });
-
-// listen for unhandled errors
-process.on('uncaughtException', error => {
-  logger.log(error);
-  process.exit(0);
-});
-
-process.on('unhandledRejection', error => {
-  logger.log(error);
-  process.exit(0);
-});
