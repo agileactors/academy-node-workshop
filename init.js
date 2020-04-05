@@ -65,5 +65,8 @@ process.on('uncaughtException', err => {
 if (!bypassCheck) {
   checkEnv();
 } else {
-  logger.log('Bypass configuration');
+  /**
+   * Task 1: Use the logger to log the message
+   */
+  console.log('Bypass configuration');
 }
