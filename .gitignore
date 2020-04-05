@@ -1,5 +1,5 @@
+logs
 node_modules
-debug.log
 
 # environment variables
 .env
