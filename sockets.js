@@ -5,27 +5,17 @@ const init = async server => {
   // initialize socket.io
   const io = socketIO(server);
 
-  /**
-   * Task 1: Use socket.io to receive/send realtime messages
-   *
-   * Use the socket.io library to listen for any new messages
-   * coming throw web-sockets. If it does, create a new message
-   * from the data received (see Hint 1) and then broadcast
-   * the new message to all connected clients (see Hint 2).
-   *
-   * Hint 1: Use the following code to create new message.
-   *
-   *  const message = await MessageModel.create({
-   *    text: data.text,
-   *    username: data.username,
-   *  });
-   *
-   *  Hint 2: Use the io.emit() method to broadcast a message
-   *  to all connected clients.
-   */
-
   io.on('connection', socket => {
-    // implementation
+    socket.on('client:message', async data => {
+      // create and save new message to database
+      const message = await MessageModel.create({
+        text: data.text,
+        username: data.username,
+      });
+
+      // broadcast new message to everyone
+      io.emit('server:message', message);
+    });
   });
 };
 
