@@ -1,5 +1,5 @@
+logs
 node_modules
-debug.log
 
 # environment variables
 .env
@@ -8,5 +8,4 @@ debug.log
 # MacOS
 .DS_Store
 
-directoryList.md
 notes.txt
