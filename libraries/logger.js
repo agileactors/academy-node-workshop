@@ -2,11 +2,10 @@
  * Task 1
  *
  * Implement the logger log function.
- * The function must use asynchronous apis and the debug.log file must be placed in the root folder.
  *
- * 1. It writes debug statements to the console
- * 2. it writes debug statements to the debug.log file
- * 3. It writes the timestamp at the beggining of each line
+ * 1. It should writes debug statements to the console
+ * 2. it should writes debug statements to the debug.log file
+ * 3. It should writes the timestamp at the beggining of each line
  * 3. Can handle multiple values and types such as <string | object | array> (bonus)
  *
  * Usage:
