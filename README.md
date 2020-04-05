@@ -13,17 +13,21 @@ __REPL stands for Read-Evaluate-Print-Loop__
 
 1. Execute the contents of the init.js file.
 2. In the terminal type ```node``` to start using the REPL. Follow the instructions to open the editor.
-3. In the editor mode write JavaScript code to create a function that takes one argument(name:string) and prints the name
-__Hello ${name}__ to the stdout. Finally call that function.
+3. In the editor mode write the code below.
 
 ```
 > .editor
-// Entering editor mode (^D <ctrl>-D to finish, ^C <ctrl>-C to cancel)
+// Entering editor mode (^D to finish, ^C to cancel)
 
-/** write your code in here.. **/
+function welcome(name) {
+  return `Hello ${name}!`;
+}
+
+welcome('Node.js User');
 
 // ^D
-'Hello Foo'
+'Hello Node.js User!'
+>
 ```
 
 ## Covers
