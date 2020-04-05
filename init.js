@@ -22,6 +22,7 @@ const LOGS_DIR = './logs';
  */
 const cliArgs = [];
 
+// Do not edit
 const nwsGetEnvContent = () => {
   const envValues = ENVVALUES.reduce((acc, envValue) => {
     const { name, value } = envValue;
