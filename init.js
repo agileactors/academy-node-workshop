@@ -64,4 +64,6 @@ process.on('uncaughtException', err => {
 
 if (!bypassCheck) {
   checkEnv();
+} else {
+  logger.log('Bypass configuration');
 }
