@@ -30,4 +30,4 @@ npm start
 
 ## Covers
 
-- HTTP Module
+- http Module
