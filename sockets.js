@@ -16,15 +16,16 @@ const init = async server => {
     perMinute: 0,
   };
 
+  // get total messages when server starts
+  const totalMessages = await MessageModel.countDocuments({}).exec();
+  analytics.totalMessages = totalMessages;
+
   // calculate messages-per-minute in regular interval
   setInterval(async () => {
     const messages = await MessageModel.find({ timestamp: { $gte: startTime } })
       .sort({ timestamp: 1 })
       .exec();
 
-    const totalMessages = await MessageModel.countDocuments({}).exec();
-
-    analytics.totalMessages = totalMessages;
     analytics.perMinute = messagesPerMinute(messages).toFixed(2);
 
     io.emit('server:analytics', analytics);
