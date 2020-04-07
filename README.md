@@ -6,7 +6,7 @@ Welcome to Node.js Workshop!
 
 In this workshop we will introduce the core concepts of Node.js and how you can use them to develop a modern node application. 
 
-We will start from the very beginning, from "I don't even know how use it..and why would I“ to actually understanding how Node.js and javascript works and use its power.
+We will start from the very beginning, from "I don't even know how to use it..and why would I?“ to actually understanding how Node.js works and use its power.
 
 You will learn all the logic and practice behind Node.js in different modules, and as we advance through the workshop we will be increasing the difficulty.
 
@@ -58,7 +58,7 @@ git clone https://github.com/agileactors/academy-node-workshop/
 
 _If you do not have git install follow this link [How to install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to install it_
 
-Then navigate into the project directory and install all depedencies:
+Then navigate into the project directory and install all the depedencies:
 
 ```
 cd academy-node-workshop
