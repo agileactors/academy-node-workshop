@@ -4,11 +4,15 @@ Welcome to Node.js Workshop!
 
 ## Introduction
 
-In this workshop we will introduce the core concepts of Node.js and how you can use them to develop a modern node application.
+In this workshop we will introduce the core concepts of Node.js and how you can use them to develop a modern node application. 
 
-## What we will build
+We will start from the very beginning, from "I don't even know how use it..and why would I“ to actually understanding how Node.js and javascript works and use its power.
 
-We are going to build a chat app using Node and a real time board for chat analytics. We have split the steps in several branches with each branch has its own tasks which you have to complete in order to proceed to the next branch.
+You will learn all the logic and practice behind Node.js in different modules, and as we advance through the workshop we will be increasing the difficulty.. :sunglasses:
+
+## What We'll build
+
+We are going to build a chat app using Node.js and a real time board for chat analytics. We have split the steps in several branches with each branch has its own tasks which you have to complete in order to proceed to the next branch.
 
 <div style="width: 100%; display: flex; justifyContent: space-between">
   <div style="margin-right: 5px">
@@ -16,7 +20,7 @@ We are going to build a chat app using Node and a real time board for chat analy
   </div>
 </div>
 
-### Available Branches
+## Branches
 
 1. node--01--repl
 2. node--02--fs
@@ -60,22 +64,10 @@ Then navigate into the project directory and install all depedencies:
 cd academy-node-workshop
 ```
 
-using npm
+using npm/yarn
 
 ```
-    npm install
+    npm install / yarn 
 ```
 
-using yarn
-
-```
-    yarn
-```
-
-Run the application using the command in a terminal:
-
-```
-    npm start or yarn start
-```
-
-You can preview the application using the following url: <a href="http://localhost:8001/chat" target="_blank">http://localhost:8001/chat</a>
+Lets get started! :tada:
