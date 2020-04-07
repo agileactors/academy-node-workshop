@@ -8,7 +8,7 @@ In this workshop we will introduce the core concepts of Node.js and how you can 
 
 We will start from the very beginning, from "I don't even know how use it..and why would I“ to actually understanding how Node.js and javascript works and use its power.
 
-You will learn all the logic and practice behind Node.js in different modules, and as we advance through the workshop we will be increasing the difficulty.. :sunglasses:
+You will learn all the logic and practice behind Node.js in different modules, and as we advance through the workshop we will be increasing the difficulty.
 
 ## What We'll build
 
