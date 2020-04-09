@@ -22,7 +22,7 @@ The os module provides operating system-related utility methods and properties.
 Usage:
 
 ```js
-const path = require('os');
+const os = require('os');
 ```
 
 
