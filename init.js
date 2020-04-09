@@ -73,13 +73,6 @@ const checkEnv = () => {
 /**
  * Task 4:
  *
- * use the process global object to handle uncaught exception errors
- * you should terminate the process after an error occurs
- */
-
-/**
- * Task 5:
- *
  * If a command line argument with name 'BYPASS' passed skip the checkEnv
  */
 checkEnv();
