@@ -4,7 +4,7 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will introduce the **process** global object in Node.js and the **Path** build-in module.
+In this branch we will introduce the **process** global object in Node.js and the **Path** and **os** build-in modules.
 
 The process object is a global that provides information about, and control over, the current Node.js process.
 It is global so you can use it directly in the code.
@@ -17,9 +17,19 @@ Usage:
 const path = require('path');
 ```
 
+The os module provides operating system-related utility methods and properties.
+
+Usage:
+
+```js
+const path = require('os');
+```
+
+
 Documentation:
 
 - [path](https://nodejs.org/dist/latest-v13.x/docs/api/path.html#path_path)
+- [os](https://nodejs.org/api/os.html#os_os)
 - [process](https://nodejs.org/api/process.html)
 
 Open the **init.js** file placed in the root directory of the app to start writing your code.
@@ -35,10 +45,12 @@ npm run setup
 
 1. Use the **process** global to get the current working directory.
 2. Use the **path** module to update the .env (ENV_PATH) and logs(LOGS_DIR) paths using the current working directory.
+3. Use the **os** module to print operating system information the console.
 3. Use the **process** global to read the command line arguments passed.
 4. Use the **process** global object to handle uncaught exception errors.
 
 ## Covers
 
-- Path module (path)
 - Globals (process)
+- Path module (path)
+- os module (os)
