@@ -68,6 +68,13 @@ const checkEnv = () => {
   if (!fs.existsSync(LOGS_DIR)) {
     fs.mkdirSync(LOGS_DIR);
   }
+  
+  /**
+  * Task 4:
+  *
+  * use the os module and print the following information to the console:
+  * e.g console.log(`running on darwin x64 56% of your RAM is free. }`);
+  */
 };
 
 /**
