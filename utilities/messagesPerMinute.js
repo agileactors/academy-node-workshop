@@ -1,4 +1,12 @@
-module.exports = messages => {
+// block the event loop for x msec
+function delay(msec) {
+  const start = new Date();
+  while (new Date() - start < msec) {
+    // ahhh doing nothing...
+  }
+}
+
+function perMinute(messages) {
   if (messages.length === 0) {
     return 0;
   }
@@ -17,5 +25,10 @@ module.exports = messages => {
   const sum = frequency.reduce((acc, value) => acc + value, 0);
   const total = frequency.length;
 
+  // simulate long running task
+  delay(5000);
+
   return sum / total;
-};
+}
+
+module.exports = perMinute;
