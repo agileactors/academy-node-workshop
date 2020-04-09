@@ -1,4 +1,4 @@
-module.exports = messages => {
+function perMinute(messages) {
   if (messages.length === 0) {
     return 0;
   }
@@ -18,4 +18,6 @@ module.exports = messages => {
   const total = frequency.length;
 
   return sum / total;
-};
+}
+
+module.exports = perMinute;
