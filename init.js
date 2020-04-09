@@ -20,7 +20,7 @@ const LOGS_DIR = './logs';
  * Use the process global to get the command line arguments passed.
  *
  */
-const cliArgs = [];
+const args = [];
 
 // Do not edit
 const nwsGetEnvContent = () => {
@@ -68,18 +68,18 @@ const checkEnv = () => {
   if (!fs.existsSync(LOGS_DIR)) {
     fs.mkdirSync(LOGS_DIR);
   }
-
-  /**
-   * Task 4:
-   *
-   * use the os module and print the following information to the console:
-   * e.g console.log(`running on darwin x64 56% of your RAM is free. }`);
-   */
 };
 
 /**
- * Task 4:
+ * Task 3:
  *
  * If a command line argument with name 'BYPASS' passed skip the checkEnv
  */
 checkEnv();
+
+/**
+ * Task 4:
+ *
+ * use the os module and print the following information to the console:
+ * e.g console.log(`running on darwin x64 v19.0.3 and you have 56% of your RAM is free. }`);
+ */
