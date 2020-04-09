@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { platform, arch, release, totalmem, freemem } = require('os');
 const path = require('path');
 const logger = require('./libraries/logger');
 const { ENVVALUES } = require('./constants');
@@ -57,11 +58,6 @@ const checkEnv = () => {
   }
 };
 
-process.on('uncaughtException', err => {
-  logger.error(`Caught exception: ${err}\n`);
-  process.exit();
-});
-
 if (!bypassCheck) {
   checkEnv();
 } else {
@@ -70,3 +66,11 @@ if (!bypassCheck) {
    */
   console.log('Bypass configuration');
 }
+
+// log some information about the operating system
+console.log(`Your Operating System: ${platform()} ${arch()} ${release()}`);
+
+// log some information about the memory (ram) (number is rounded to two decimals)
+console.log(
+  `${((freemem() / totalmem()) * 100).toFixed(2)} % of your RAM is free.\n`
+);
