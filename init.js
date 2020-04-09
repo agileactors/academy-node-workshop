@@ -81,5 +81,5 @@ checkEnv();
  * Task 4:
  *
  * use the os module and print the following information to the console:
- * e.g console.log(`running on darwin x64 v19.0.3 and you have 56% of your RAM is free. }`);
+ * `running on darwin x64 v19.0.3 and you have 56% of your RAM is free. }`;
  */
