@@ -20,34 +20,30 @@ const init = async server => {
   const totalMessages = await MessageModel.countDocuments({}).exec();
   analytics.totalMessages = totalMessages;
 
-  /**
-   *
-   *  Task 1: Update analytics and notify the connected clients.
-   *
-   *  The analytics object holds some metrics about the chat server.
-   *  When a client connects/disconnects or sends a new message
-   *  update the analytics and broadcast them to all clients.
-   *
-   *  Task 2: Update the 'messagesPerMinute' metric in regular intervals.
-   *
-   *  Calculating the messagesPerMinute metric after every new message will
-   *  probably decrease the server's performance. For that reason move the
-   *  messagesPerMinute calculation into a 5 sec period and then broadcast
-   *  the updated analytics to the clients.
-   *
-   *  **Hints**
-   *
-   *  - Use the following code to calculate the messagesPerMinute metric
-   *
-   *  const messages = await MessageModel.find({ timestamp: { $gte: startTime } })
-   *   .sort({ timestamp: 1 })
-   *   .exec();
-   *
-   *  const mpm = messagesPerMinute(messages).toFixed(2);
-   *
-   */
+  // calculate messages-per-minute in regular interval
+  setInterval(async () => {
+    // get all messages from the server's start time to now
+    const messages = await MessageModel.find({ timestamp: { $gte: startTime } })
+      .sort({ timestamp: 1 })
+      .exec();
+
+    analytics.perMinute = messagesPerMinute(messages).toFixed(2);
+    io.emit('server:analytics', analytics);
+  }, 5000);
 
   io.on('connection', socket => {
+    // update connected clients
+    analytics.connected += 1;
+
+    // send updated analytics to everyone
+    io.emit('server:analytics', analytics);
+
+    // when a socket disconnects update analytics
+    socket.on('disconnect', () => {
+      analytics.connected -= 1;
+      io.emit('server:analytics', analytics);
+    });
+
     socket.on('client:message', async data => {
       // create and save new message to database
       const message = await MessageModel.create({
@@ -57,6 +53,10 @@ const init = async server => {
 
       // broadcast new message to everyone
       io.emit('server:message', message);
+
+      // update analytics
+      analytics.totalMessages += 1;
+      io.emit('server:analytics', analytics);
     });
   });
 };
