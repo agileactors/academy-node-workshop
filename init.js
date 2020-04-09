@@ -27,8 +27,7 @@ const nwsGetEnvContent = () => {
   const envValues = ENVVALUES.reduce((acc, envValue) => {
     const { name, value } = envValue;
 
-    acc.push(`${name}=${value}`);
-    return acc;
+    return [...acc, `${name}=${value}`];
   }, []);
 
   return envValues.join('\n');
