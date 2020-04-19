@@ -29,6 +29,9 @@ const createEnv = () => {
       throw err;
     }
 
+    /**
+     * Task 1: Use the logger to log the message
+     */
     console.log('Finished .env configuration');
   });
 };
@@ -60,10 +63,7 @@ const checkEnv = () => {
 if (!bypassCheck) {
   checkEnv();
 } else {
-  /**
-   * Task 1: Use the logger to log the message
-   */
-  console.log('Bypass configuration');
+  console.log('Bypassing configuration..');
 }
 
 process.on('uncaughtException', err => {

@@ -13,9 +13,9 @@
  *
  * Result:
  * [now, message].
+ *
  * e.g
- * ["day/month/year hours:minutes","some info" | { error: 'some error } | ['some item1', 'some item2']]
- * ["day/month/year hours:minutes","another info" | { error: 'another error } | ['some item3', 'some item4']]
+ * ["day:month:year hours:minutes","some info" | { error: 'some error } | ['some item1', 'some item2']]
  */
 
 // Do not edit
