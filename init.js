@@ -6,7 +6,7 @@ const { ENVVALUES } = require('./constants');
  * Task 1:
  *
  * Use the process global to get the current working directory (cwd)
- * Use the path api and update .env path and logs path using the cwd
+ * Use the path api and update the paths using the cwd
  */
 
 // path to the .env file
