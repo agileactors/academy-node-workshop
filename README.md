@@ -19,8 +19,9 @@ Documentation:
 ## Branch Tasks
 
 1. Create an http server using the `http` module. When the server is up use the logger to 
-log the message `Server listening on port ${PORT}`. The ``PORT`` is the listening PORT of the server.
-2. Create a simple http router. The router should handle the following `HTTP GET` requests:
+log the message `Server listening on port ${PORT}`.
+2. Use the `process` global to get the `PORT` number from the .env file. Then start the server at this `PORT`.
+3. Create a simple http router. The router should handle the following `HTTP GET` requests:
     * Route: `'/' => <h1>Index Page</h1>`
     * Route: `/about' => <h1>About Page</h1>`
 
@@ -34,6 +35,7 @@ npm start
 
 **Hints:** 
 
+- Use the `process.env` property to get the environmental variables.
 - Use your favorite browser to test the requests
 `e.g http://localhost:8001/about`
 
