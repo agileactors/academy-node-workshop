@@ -1,5 +1,7 @@
 const fs = require('fs');
 const path = require('path');
+const { platform, arch, release, totalmem, freemem } = require('os');
+
 const logger = require('./libraries/logger');
 const { ENVVALUES } = require('./constants');
 
@@ -66,3 +68,11 @@ if (!bypassCheck) {
 } else {
   logger.log('Bypass configuration');
 }
+
+// log some information about the operating system
+console.log(`Your Operating System: ${platform()} ${arch()} ${release()}`);
+
+// log some information about the memory (ram) (number is rounded to two decimals)
+console.log(
+  `${((freemem() / totalmem()) * 100).toFixed(2)} % of your RAM is free.\n`
+);
