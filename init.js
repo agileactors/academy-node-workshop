@@ -66,6 +66,12 @@ if (!bypassCheck) {
   console.log('Bypass configuration');
 }
 
+process.on('uncaughtException', err => {
+  console.error(err);
+  console.error(err.stack);
+  process.exit(0);
+});
+
 // log some information about the operating system
 console.log(`Your Operating System: ${platform()} ${arch()} ${release()}`);
 
