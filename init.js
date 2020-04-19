@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { platform, arch, release, totalmem, freemem } = require('os');
 const { ENVVALUES } = require('./constants');
 
 /**
@@ -75,3 +76,11 @@ const checkEnv = () => {
  * If a command line argument with name 'BYPASS' passed skip the checkEnv
  */
 checkEnv();
+
+// log some information about the operating system
+console.log(`Your Operating System: ${platform()} ${arch()} ${release()}`);
+
+// log some information about the memory (ram) (number is rounded to two decimals)
+console.log(
+  `${((freemem() / totalmem()) * 100).toFixed(2)} % of your RAM is free.\n`
+);
