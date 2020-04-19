@@ -20,7 +20,6 @@ Documentation:
 
 1. Create an http server using the `http` module. When the server is up use the logger to 
 log the message `Server listening on port ${PORT}`. The ``PORT`` is the listening PORT of the server.
-
 2. Create a simple http router. The router should handle the following `HTTP GET` requests:
     * Route: `'/' => <h1>Index Page</h1>`
     * Route: `/about' => <h1>About Page</h1>`
