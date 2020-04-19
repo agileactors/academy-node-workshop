@@ -75,10 +75,3 @@ const checkEnv = () => {
  * If a command line argument with name 'BYPASS' passed skip the checkEnv
  */
 checkEnv();
-
-/**
- * Task 4:
- *
- * use the os module and print the following information to the console:
- * `running on darwin x64 v19.0.3 and you have 56% of your RAM is free. }`;
- */
