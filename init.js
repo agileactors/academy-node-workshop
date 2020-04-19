@@ -77,6 +77,12 @@ const checkEnv = () => {
  */
 checkEnv();
 
+/**
+ * Task 4:
+ *
+ * Use the process to handle uncaught exception errors
+ */
+
 // log some information about the operating system
 console.log(`Your Operating System: ${platform()} ${arch()} ${release()}`);
 

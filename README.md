@@ -43,8 +43,8 @@ npm run setup
 
 1. Use the **process** global to get the current working directory.
 2. Use the **path** module to update the .env (`ENV_PATH`) and logs(`LOGS_DIR`) paths using the current working directory.
-2. Use the **process** global to read the command line arguments passed.
-3. Use the **process** global object to handle uncaught exception errors.
+3. Use the **process** global to read the command line arguments passed.
+4. Use the **process** global object to handle uncaught exception errors.
 
 ## Covers
 
