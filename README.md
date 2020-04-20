@@ -4,7 +4,7 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will learn about Node.js streams and the JSON global object.
+In this branch we will learn about Node.js streams.
 
 Usage:
 
@@ -21,20 +21,21 @@ readStream.on('data', (chunk) => {
 ```
 
 Docs:
-- https://nodejs.org/api/stream.html
-- https://nodejs.org/en/knowledge/javascript-conventions/what-is-json/
+- [Streams](https://nodejs.org/api/stream.html)
 
 ## Branch Tasks
 
 1. Create a handler that responds with html (using streams)
 2. Create a handler that responds with JSON
 
-Open the handlers folder and go to **chat.js** file to start writing your code. You should also update
-the **server.js** file after you create the chat handler.
+Open the handlers folder and go to **chat.js** file to start writing your code. 
+
+**Note:** You should also update the **server.js** file after you create the chat handler.
+
 To start the application and test your code issue the following command in a terminal:
 
 ```
-npm run setup
+npm start
 ```
 
 ## Covers
