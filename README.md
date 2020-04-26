@@ -37,12 +37,12 @@ npm start
 
 - Use the `process.env` property to get the environmental variables.
 
+- Use the `DevTools` to debug your code.
+
 - Use your favorite browser to test the requests
   `e.g http://localhost:8001/about`
-
-- Use curl to test the requests
-  `e.g curl localhost:8001/about`
 
 ## Covers
 
 - http module
+- debugging
