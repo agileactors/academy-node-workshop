@@ -4,10 +4,10 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will introduce the fs, path and os buildins module.
+In this branch we will introduce the `fs`, and `os` build-in modules.
 
 
-The fs module provides an API for interacting with the file system.
+The __fs module__ provides an API for interacting with the file system.
 
 Usage:
 
@@ -15,7 +15,7 @@ Usage:
 const fs = require('fs');
 ```
 
-The os module provides operating system-related utility methods and properties.
+The __os module__ provides operating system-related utility methods and properties.
 
 Usage:
 
@@ -30,12 +30,13 @@ Documentation:
 
 ## Branch Tasks
 
-Use the fs apis (synchronous or asynchronous) to create a `.env` file for our application. The .env holds the environmental variables that our app needs to run such as PORT, NODE_ENV etc. 
+Use the fs apis (synchronous or asynchronous) to create a `.env` file for our application. The .env holds the environmental variables that our app needs to run such as the DB_USER, DB_PASSWORD, PORT etc.
 
-1. Provide the **checkEnv** implementation which checks if the .env file exists and if a directory with name `logs` exists at the root directory of the app.
-2. Provide the **readEnv** implementation which reads the contents of .env if exists.
-3. Provide the **createEnv** implementation which creates the .env file.
-4. Use the **os** module to print operating system information the console.
+1. Provide the **checkEnv** implementation which checks if a `.env` file exists.
+2. Also in the **checkEnv** implementation check if a directory with name `logs` exists at the root directory of the app.
+3. Provide the **createEnv** implementation which creates the .env file if not exists.
+4. Provide the **readEnv** implementation which read the contents of .env if exists.
+5. Use the **os** module to print operating system information the console.
 
 Open the **init.js** file placed in the root directory of the app to start writing your code.
 
