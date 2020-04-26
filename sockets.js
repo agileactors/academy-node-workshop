@@ -20,6 +20,12 @@ const init = async server => {
   const totalMessages = await MessageModel.countDocuments({}).exec();
   analytics.totalMessages = totalMessages;
 
+  const messages = await MessageModel.find({ timestamp: { $gte: startTime } })
+    .sort({ timestamp: 1 })
+    .exec();
+
+  const perMinuteMessages = messagesPerMinute(messages).toFixed(2);
+
   /**
    *
    *  Task 1: Update analytics and notify the connected clients.
@@ -34,17 +40,6 @@ const init = async server => {
    *  probably decrease the server's performance. For that reason move the
    *  messagesPerMinute calculation into a 5 sec period and then broadcast
    *  the updated analytics to the clients.
-   *
-   *  **Hints**
-   *
-   *  - Use the following code to calculate the messagesPerMinute metric
-   *
-   *  const messages = await MessageModel.find({ timestamp: { $gte: startTime } })
-   *   .sort({ timestamp: 1 })
-   *   .exec();
-   *
-   *  const mpm = messagesPerMinute(messages).toFixed(2);
-   *
    */
 
   io.on('connection', socket => {

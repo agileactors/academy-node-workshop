@@ -17,7 +17,8 @@ npm start
 
 ## Branch Tasks
 
-1. Use socket.io to receive/send realtime messages
+1. Update analytics and notify the connected clients.
+2. Update the **messagesPerMinute** metric in regular intervals.
 
 ## Covers
 
