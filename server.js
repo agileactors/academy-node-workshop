@@ -54,9 +54,4 @@ const server = http.createServer((request, response) => {
   router.run(ctx);
 });
 
-process.on('uncaughtException', err => {
-  logger.log(err);
-  process.exit();
-});
-
 module.exports = server;
