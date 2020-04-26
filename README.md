@@ -30,7 +30,8 @@ We are going to build a chat app using Node.js and a real time board for chat an
 7. node--06--http-handlers
 8. node--07--http-middleware
 9. node--08--socket-io
-10. node--09--child-process
+10. node--09--socket-io-analytics
+11. node--10--final
 
 ## Getting started
 
