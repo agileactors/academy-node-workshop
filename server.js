@@ -23,7 +23,7 @@ const logger = require('./libraries/logger');
  *
  * Task 3: start the server
  *
- * Use the server.listen to start the server
+ * Use the server.listen method to start the server
  */
 
 // Do not edit
