@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { promisify } = require('util');
+const logger = require('../libraries/logger');
 const { MIMETYPES } = require('../constants');
 
 // promisify readFile utility
@@ -34,6 +35,7 @@ const middleware = async ({ request, response }, next) => {
     response.writeHead(200, { 'Content-Type': contentType });
     response.end(content);
   } catch (err) {
+    logger.log(err);
     next();
   }
 };
