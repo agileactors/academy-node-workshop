@@ -4,7 +4,7 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will introduce the Node.js module system. 
+In this branch we will introduce the Node.js module system.
 
 We will implement a custom module named **logger.js** to handle the logging of our application. The logger file exists in the libraries folder.
 
@@ -16,19 +16,22 @@ const logger = require('./libraries/logger');
 
 Documentation:
 
-* [modules](https://nodejs.org/api/modules.html)
+- [modules](https://nodejs.org/api/modules.html)
 
 ## Branch Tasks
 
 1. Continue the implementation of the logger.js module
-2. Use the logger in the __init.js__ file to handle logging
+2. Use the logger in the **init.js** file to handle logging
 
-Open the **logger.js** file placed in the libraries directory of the app to start writing your code.
+Open the **logger.js** file located in the libraries directory of the app to start writing your code.
+
 To start the application and test your code issue the following command in a terminal:
 
 ```
 npm run setup
 ```
+
+**Hint**: Use the chrome DevTools debugger to debug your code!
 
 **Note**: The functions which have a prefix `nws` are only for internal use. You do not have to edit them.
 
@@ -43,7 +46,6 @@ The project directory should be:
     |-- README.md
     |-- constants.js
     |-- init.js
-    |-- logs
 </pre>
 
 ## Covers
