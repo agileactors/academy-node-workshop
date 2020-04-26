@@ -32,7 +32,6 @@ We are going to build a chat app using Node.js and a real time board for chat an
 9. node--08--socket-io
 10. node--09--socket-io-analytics
 11. node--10--streams
-12. node--10--final
 
 ## Getting started
 
