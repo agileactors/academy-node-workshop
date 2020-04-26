@@ -13,16 +13,20 @@ const logger = require('./libraries/logger');
  *
  * Task 2: Create a simple http router
  *
- * Using the url module, get the 'pathname' from the request URL
- * and create the following endpoints:
+ * Using the request.url property create the following endpoints:
  *
- *  1. '/' => <h1>Index Page</h1>
- *  2. '/about' => <h1>About Page</h1>
+ *  1. '/' => <h1>Index Page</h1> (url = /)
+ *  2. '/about' => <h1>About Page</h1> (url = /about)
  *
  * Hint: The response should be in html format so you need to
  * set the appropriate headers before sending the response.
+ *
+ * Task 3: start the server
+ *
+ * Use the server.listen to start the server
  */
 
+// Do not edit
 process.on('uncaughtException', err => {
   logger.log(err);
   process.exit();

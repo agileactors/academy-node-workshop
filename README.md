@@ -18,10 +18,11 @@ Documentation:
 
 ## Branch Tasks
 
-1. Create an http server using the `http` module. When the server is up use the logger to
+1. Use the `process` global to get the `PORT` number from the **.env** file.
+2. Create an http server using the `http` module.
+3. Then start the server using the **listen** method and pass the **PORT** number. When the server is up use the logger to
    log the message `Server listening on port ${PORT}`.
-2. Use the `process` global to get the `PORT` number from the .env file. Then start the server at this `PORT`.
-3. Create a simple http router. The router should handle the following `HTTP GET` requests:
+4. Create a simple http router. The router should handle the following **HTTP GET** requests:
    - Route: `'/' => <h1>Index Page</h1>`
    - Route: `/about' => <h1>About Page</h1>`
 
