@@ -4,9 +4,7 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will learn about web-sockets
-
-In applications like a chat app realtime communication between the client and the server is a must have.
+In this branch we will learn about sockets. In applications like a chat app realtime communication between the client and the server is a must have.
 
 This kind of communications can be achieved by a technology called **Sockets**. In node.js we can easily work with sockets using a popular library called socket.io
 
@@ -45,4 +43,4 @@ npm start
 
 ## Covers
 
-- Web Sockets (socket.io)
+- Sockets (socket.io)
