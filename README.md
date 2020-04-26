@@ -12,6 +12,8 @@ Usage:
 const http = require('http');
 ```
 
+The util module supports the needs of Node.js internal APIs. Many of the utilities are useful for application and module developers as well.
+
 Usage:
 
 ```js
