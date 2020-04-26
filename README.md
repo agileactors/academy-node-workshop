@@ -4,11 +4,11 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will learn about web-sockets
+In this branch we will learn about sockets. In applications like a chat app realtime communication between the client and the server is a must have.
 
-In applications like a chat app realtime communication between the client and the server is a must have. This kind of communications can be achieved by a technology called **Web Sockets** (https://en.wikipedia.org/wiki/WebSocket). In node.js we can easily work with web-sockets using a popular library called socket.io
+This kind of communications can be achieved by a technology called **Sockets**. In node.js we can easily work with sockets using a popular library called socket.io
 
-- https://socket.io
+- [socket.io](https://socket.io)
 
 Usage:
 
@@ -29,10 +29,18 @@ io.on('connection', socket => {
 });
 ```
 
+Open the **sockets.js** file located in the root directory of the app to start writing your code.
+
+To start the application and test your code issue the following command in a terminal:
+
+```
+npm start
+```
+
 ## Branch Tasks
 
 1. Use socket.io to receive/send realtime messages
 
 ## Covers
 
-- Web Sockets (socket.io)
+- Sockets (socket.io)
