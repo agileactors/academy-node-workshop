@@ -8,9 +8,7 @@ In this branch we will introduce the **process** global object in Node.js and th
 
 The process object is a global that provides information and control over the current Node.js process.
 
-Usage:
-
-It is global so you can use it directly in the code.
+**It is global so you can use it directly in the code.**
 
 The path module provides utilities for working with file and directory paths.
 
