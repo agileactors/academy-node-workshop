@@ -22,3 +22,8 @@ const logger = require('./libraries/logger');
  * Hint: The response should be in html format so you need to
  * set the appropriate headers before sending the response.
  */
+
+process.on('uncaughtException', err => {
+  logger.log(err);
+  process.exit();
+});
