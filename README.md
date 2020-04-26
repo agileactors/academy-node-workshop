@@ -31,8 +31,6 @@ To start the application and test your code issue the following command in a ter
 npm run setup
 ```
 
-**Hint**: Use the chrome DevTools debugger to debug your code!
-
 **Note**: The functions which have a prefix `nws` are only for internal use. You do not have to edit them.
 
 The project directory should be:
