@@ -25,8 +25,8 @@ const os = require('os');
 
 Documentation:
 
-* [fs](https://nodejs.org/dist/latest-v13.x/docs/api/fs.html#fs_file_system)
-* [os](https://nodejs.org/api/os.html#os_os)
+* [fs_file_system](https://nodejs.org/dist/latest-v13.x/docs/api/fs.html#fs_file_system)
+* [os_os](https://nodejs.org/api/os.html#os_os)
 
 ## Branch Tasks
 
