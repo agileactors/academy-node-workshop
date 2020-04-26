@@ -3,7 +3,6 @@
  */
 
 const http = require('http');
-const url = require('url');
 
 const logger = require('./libraries/logger');
 const chatHandler = require('./handlers/chat');
@@ -14,9 +13,9 @@ const PORT = process.env.PORT || 8001;
 
 // server's handler function
 server.on('request', (request, response) => {
-  const { pathname } = url.parse(request.url);
+  const { url } = request;
 
-  switch (pathname) {
+  switch (url) {
     case '/':
       response.writeHead(200, { 'Content-Type': 'text/html' });
       response.end('<h1>Index Page</h1>');
