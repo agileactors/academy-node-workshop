@@ -6,15 +6,15 @@ const constants = {
     },
     {
       name: 'DB_HOST',
-      value: 'cluster0-diifo.mongodb.net/aa_chat_db',
+      value: 'cluster0-diifo.mongodb.net/aa_nws_db',
     },
     {
       name: 'DB_USER',
-      value: 'aa_user',
+      value: 'aa_nws_user',
     },
     {
       name: 'DB_PASSWORD',
-      value: 'lWjUsESlmmLxvaLg',
+      value: 'Y0x5gz85BfZMHkFW',
     },
     {
       name: 'PORT',
