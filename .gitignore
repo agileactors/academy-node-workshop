@@ -8,4 +8,5 @@ node_modules
 # MacOS
 .DS_Store
 
+debug.log
 notes.txt
