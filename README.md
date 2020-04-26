@@ -6,7 +6,9 @@ Node.js Workshop
 
 In this branch we will build a middleware that handles static files.
 
-Static files could be `.html`, `.js`, `.css` or `images (e.g .js, .html, .png, .svg, .jpg etc)` files. You can preview the __MIMETYPES__ in the `constants.js` file. 
+Static files could be `.html`, `.js`, `.css` or `images` e.g .js, .html, .png, .svg, .jpg file extension types. 
+
+_Note: You can preview the __MIMETYPES__ in the `constants.js` file._
 
 For example the __welcome.html__ file located in the __views__ folder needs the `styles.css` file.
 
