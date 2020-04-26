@@ -16,7 +16,11 @@ For example the __welcome.html__ file located in the __views__ folder needs the 
 
 So the request wants to access the file (`styles.css`) in the server and not hit an endpoint.
 
-HTTP GET Request: `http://localhost:8001/css/styles.css`
+HTTP GET Request: 
+
+```
+http://localhost:8001/css/styles.css
+```
 
 The static middleware is responsible to inspect the request, check if the request is for a file and if it is, return the file to the client otherwise continue with the next middleware in the pipeline.
 
