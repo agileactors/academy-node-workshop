@@ -4,7 +4,9 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will build a middleware that handles static files. Static files could be any file extension type such as  `.html`, `.js`, `.css`, `.png`, `.svg`, `.jpg` etc.
+In this branch we will build a middleware that handles static files. Static files could be any file extension type such as  `.js`, `.css`, `.png`, `.svg`, `.jpg` etc.
+
+You can check the available static files in the static folder.
 
 _Note: You can preview the __MIMETYPES__ in the `constants.js` file._
 
