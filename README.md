@@ -14,7 +14,7 @@ For example the __welcome.html__ file located in the __views__ folder needs the 
 <link rel="stylesheet" href="css/styles.css" />
 ```
 
-So the request wants to access the file (`styles.css`) in the servers and not hit an endpoint.
+So the request wants to access the file (`styles.css`) in the server and not hit an endpoint.
 
 HTTP GET Request: `http://localhost:8001/css/styles.css`
 
