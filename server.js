@@ -48,3 +48,8 @@ server.on('request', (request, response) => {
 server.listen(PORT, () => {
   logger.log(`Server listening on port ${PORT}`);
 });
+
+process.on('uncaughtException', err => {
+  logger.log(err);
+  process.exit();
+});
