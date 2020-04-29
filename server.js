@@ -28,10 +28,10 @@ router.use(async (ctx, next) => {
 router.use(staticMiddleware);
 
 // index route
-router.get('/', ({ response }) => {
+router.get('/home', ({ response }) => {
   response.setHeader('Content-Type', 'text/html');
   response.writeHead(200);
-  response.end(templateEngine.render('welcome'));
+  response.end(templateEngine.render('home'));
 });
 
 // chat routes
