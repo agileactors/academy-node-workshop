@@ -22,26 +22,3 @@ body {
   max-width: 767px;
   margin: 0 auto;
 }
-
-.welcome-container {
-  background-color: rgb(9, 69, 196);
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  flex-direction: column;
-  color: #fff;
-}
-
-.welcome-container a {
-  font-weight: bold;
-  text-decoration: underline;
-  color: #fff;
-}
-
-.welcome-container a:hover {
-  background-color: #fff;
-  color: rgb(9, 69, 196);
-  text-decoration: none;
-}
