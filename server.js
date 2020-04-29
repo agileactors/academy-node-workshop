@@ -17,7 +17,7 @@ const logger = require('./libraries/logger');
  * Using the request.url property create the following endpoints:
  *
  *  1. '/home' => <h1>Home Page</h1>
- *  2. '/about' => <h1>About Page</h1>
+ *  2. '/chat' => <h1>Chat Page</h1>
  *
  * Hint: The response should be in html format so you need to
  * set the appropriate headers before sending the response.
