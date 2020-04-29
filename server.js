@@ -10,20 +10,22 @@ const logger = require('./libraries/logger');
  * Use the http module to create an http server
  *
  * Hint: use the PORT env variable as the server's listening port
- *
+ 
+
  * Task 2: Create a simple http router
  *
  * Using the request.url property create the following endpoints:
  *
- *  1. '/' => <h1>Index Page</h1> (url = /)
- *  2. '/about' => <h1>About Page</h1> (url = /about)
+ *  1. '/home' => <h1>Home Page</h1>
+ *  2. '/about' => <h1>About Page</h1>
  *
  * Hint: The response should be in html format so you need to
  * set the appropriate headers before sending the response.
  *
+ 
  * Task 3: start the server
  *
- * Use the server.listen method to start the server
+ * start the server
  */
 
 // Do not edit

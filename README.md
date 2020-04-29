@@ -21,10 +21,21 @@ Documentation:
 1. Use the `process` global to get the `PORT` number from the **.env** file.
 2. Create an http server using the `http` module.
 3. Then start the server using the **listen** method and pass the **PORT** number. When the server is up use the logger to
-   log the message `Server listening on port ${PORT}`.
+   log the message:
+
+   `Server listening on port ${PORT}`.
+
 4. Create a simple http router. The router should handle the following **HTTP GET** requests:
-   - Route: `'/' => <h1>Index Page</h1>`
-   - Route: `/about' => <h1>About Page</h1>`
+
+   Route `/home`:
+
+   - method: GET
+   - response (html): \<h1>Home page</h1>
+
+   Route `/chat`:
+
+   - method: GET
+   - response (html): \<h1>Chat page</h1>
 
 Open the **server.js** file placed in the root directory of the app to start writing your code.
 
