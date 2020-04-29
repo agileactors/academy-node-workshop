@@ -21,6 +21,10 @@ server.on('request', (request, response) => {
       response.writeHead(200, { 'Content-Type': 'text/html' });
       response.end('<h1>Home Page</h1>');
       break;
+    case '/chat':
+      response.writeHead(200, { 'Content-Type': 'text/html' });
+      response.end('<h1>Chat Page</h1>');
+      break;
     //
     // Uncomment for next tasks
     //
