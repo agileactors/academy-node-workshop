@@ -9,7 +9,7 @@ const cwd = process.cwd();
 const ENV_PATH = path.join(cwd, '.env');
 const LOGS_DIR = path.join(cwd, 'logs');
 const args = process.argv.slice(2, process.argv.length);
-const bypassCheck = args.some(arg => arg === 'BYPASS');
+const bypassCheck = args.some(arg => arg === '--bypass');
 
 const createEnv = () => {
   const envFileContent = nwsGetEnvContent();
