@@ -57,6 +57,17 @@ const readEnv = () => {
 };
 
 const checkEnv = () => {
+  console.log(`Your Operating System: ${platform()} ${arch()} ${release()}`);
+  console.log(
+    `${((freemem() / totalmem()) * 100).toFixed(2)} % of your RAM is free.\n`
+  );
+
+  /**
+   * Task 3:
+   *
+   * If a command line argument with name 'BYPASS' passed skip the env configuration
+   */
+
   fs.open(ENV_PATH, 'r+', err => {
     if (err) {
       return createEnv();
@@ -70,11 +81,7 @@ const checkEnv = () => {
   }
 };
 
-/**
- * Task 3:
- *
- * If a command line argument with name 'BYPASS' passed skip the checkEnv
- */
+// starting point
 checkEnv();
 
 /**
@@ -82,11 +89,3 @@ checkEnv();
  *
  * Use the process to handle uncaught exception errors
  */
-
-// log some information about the operating system
-console.log(`Your Operating System: ${platform()} ${arch()} ${release()}`);
-
-// log some information about the memory (ram) (number is rounded to two decimals)
-console.log(
-  `${((freemem() / totalmem()) * 100).toFixed(2)} % of your RAM is free.\n`
-);
