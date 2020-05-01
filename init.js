@@ -1,18 +1,18 @@
 const fs = require('fs');
 const { platform, arch, release, totalmem, freemem } = require('os');
-const { ENVVALUES } = require('./constants');
+const { nwsGetEnvContent } = require('./utilities');
 
 /**
  * Task 1:
  *
- * Use the process global to get the current working directory (cwd)
- * Use the path api and update the paths using the cwd
+ * Use the process global to get the current working directory (cwd).
+ * Use the path module and update the paths using the cwd.
  */
 
-// path to the .env file
+// path to .env file
 const ENV_PATH = '.env';
 
-// path to the logs directory
+// path to logs directory
 const LOGS_DIR = './logs';
 
 /**
@@ -22,17 +22,6 @@ const LOGS_DIR = './logs';
  *
  */
 const args = [];
-
-// Do not edit
-const nwsGetEnvContent = () => {
-  const envValues = ENVVALUES.reduce((acc, envValue) => {
-    const { name, value } = envValue;
-
-    return [...acc, `${name}=${value}`];
-  }, []);
-
-  return envValues.join('\n');
-};
 
 const createEnv = () => {
   const envFileContent = nwsGetEnvContent();
