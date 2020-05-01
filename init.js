@@ -62,9 +62,12 @@ const checkEnv = () => {
     `${((freemem() / totalmem()) * 100).toFixed(2)} % of your RAM is free.\n`
   );
 
-  // create if not exists the logs folder
-  if (!fs.existsSync(LOGS_DIR)) {
-    fs.mkdirSync(LOGS_DIR);
+  try {
+    if (!fs.existsSync(LOGS_DIR)) {
+      fs.mkdirSync(LOGS_DIR);
+    }
+  } catch (error) {
+    console.log(error);
   }
 
   /**
