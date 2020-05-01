@@ -11,10 +11,23 @@
     <div class="container">
       <img src="images/la-landscape-white.png" />
       <h2>Welcome to the Node.JS Workshop</h2>
-      <p>
-        You can access the chat app
-        <a href="/chat">here</a>
-      </p>
+      <div>
+        <p>Enter your username to enter the chat room</p>
+        <input
+          class="username"
+          name="username"
+          type="text"
+          placeholder="username"
+          autocomplete="off"
+        />
+      </div>
+      <a class="btn-enter" href="/chat">
+        <svg>
+          <rect x="0" y="0" fill="none" width="100%" height="100%" />
+        </svg>
+        Join
+      </a>
     </div>
+    <script src="js/home.js"></script>
   </body>
 </html>
