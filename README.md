@@ -10,6 +10,8 @@ We will start from the very beginning, from "I don't even know how to use it..an
 
 We will learn all the logic and practice behind Node.js in different modules, and as we advance through the workshop we will be increasing the difficulty.
 
+Related slides [here](https://docs.google.com/presentation/d/10sWDlNEwzf_UryHCeKv3BT9NSRZtIA85GgrnSJZLZd4/edit#slide=id.g7ed340e6b1_0_237)
+
 ## What We'll build
 
 We are going to build a chat app using Node.js and a real time board for chat analytics. We have split the steps in several branches with each branch has its own tasks which you have to complete in order to proceed to the next branch.
