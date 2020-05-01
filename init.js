@@ -3,7 +3,7 @@ const path = require('path');
 const { platform, arch, release, totalmem, freemem } = require('os');
 
 const logger = require('./libraries/logger');
-const { nwsGetEnvContent } = require('./constants');
+const { nwsGetEnvContent } = require('./libraries/utilities');
 
 const cwd = process.cwd();
 const ENV_PATH = path.join(cwd, '.env');
