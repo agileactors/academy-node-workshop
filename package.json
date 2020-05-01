@@ -6,6 +6,7 @@
   "scripts": {
     "setup": "node init.js BYPASS",
     "start": "npm run setup && node -r dotenv/config startup.js",
+    "dev": "npm run setup && nodemon -r dotenv/config startup.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "compose": "docker-compose up",

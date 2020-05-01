@@ -17,10 +17,11 @@ const staticDir = path.join(rootDir, 'static');
 const middleware = async ({ request, response }, next) => {
   try {
     const { url: filepath } = request;
+
     const staticPath = path.join(staticDir, filepath);
     const stats = await stat(staticPath);
 
-    // if path is not file continue the chain
+    // if path is not file (e.g a route /home) continue the chain
     if (!stats.isFile()) {
       next();
       return;
@@ -35,6 +36,7 @@ const middleware = async ({ request, response }, next) => {
     response.writeHead(200, { 'Content-Type': contentType });
     response.end(content);
   } catch (err) {
+    logger.logToConsole = false;
     logger.log(err);
     next();
   }
