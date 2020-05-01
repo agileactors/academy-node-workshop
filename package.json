@@ -4,9 +4,7 @@
   "description": "Node.js Workshop",
   "main": "index.js",
   "scripts": {
-    "setup": "node init.js NODE_ENV=prod PORT=8001 BYPASS",
-    "start": "npm run setup && node -r dotenv/config startup.js",
-    "dev": "npm run init && nodemon --inspect -r dotenv/config startup.js",
+    "setup": "node init.js"
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "compose": "docker-compose up",
