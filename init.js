@@ -73,7 +73,7 @@ const checkEnv = () => {
   /**
    * Task 3:
    *
-   * If a command line argument with name 'BYPASS' passed skip the env configuration
+   * If a command line argument with name '--bypass' or '-b' passed skip the env configuration
    */
 
   fs.open(ENV_PATH, 'r+', err => {
