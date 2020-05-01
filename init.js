@@ -29,7 +29,7 @@ const readEnv = () => {
       throw err;
     }
 
-    console.log(`.env configuration: \n${data}\n`);
+    console.log(`Found .env configuration: \n${data}\n`);
   });
 };
 
@@ -55,7 +55,7 @@ process.on('uncaughtException', err => {
 if (!bypassCheck) {
   checkEnv();
 } else {
-  logger.log('Bypass configuration');
+  logger.log('Bypassing configuration...');
 }
 
 // log some information about the operating system
