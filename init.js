@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { platform, arch, release, totalmem, freemem } = require('os');
-const { nwsGetEnvContent } = require('./utilities');
+const { ENVVALUES } = require('./constants');
 
 /**
  * Task 1:
@@ -14,6 +14,17 @@ const ENV_PATH = '.env';
 
 // path to logs directory
 const LOGS_DIR = './logs';
+
+// Dont edit
+const nwsGetEnvContent = () => {
+  const envValues = ENVVALUES.reduce((acc, envValue) => {
+    const { name, value } = envValue;
+
+    return [...acc, `${name}=${value}`];
+  }, []);
+
+  return envValues.join('\n');
+};
 
 /**
  * Task 2:
