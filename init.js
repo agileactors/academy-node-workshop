@@ -30,9 +30,6 @@ const createEnv = () => {
       throw err;
     }
 
-    /**
-     * Task 3: Use the logger to log the message
-     */
     console.log('Finished .env configuration.');
   });
 };
@@ -81,9 +78,14 @@ const checkEnv = () => {
 };
 
 process.on('uncaughtException', err => {
+  console.log(err.stack);
+
+  /**
+   * Task 3: Use the logger to log the message
+   */
   console.log(`pid ${process.pid}\n${err}`);
   process.exit(0);
 });
 
-// startin point
+// starting point
 checkEnv();
