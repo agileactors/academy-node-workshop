@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "setup": "node init.js",
-    "start": "npm run setup && node -r dotenv/config startup.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "compose": "docker-compose up",
