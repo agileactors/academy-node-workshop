@@ -1,4 +1,4 @@
-const { formatDate } = require('./utilities');
+const { nwsFormatDate } = require('./utilities');
 
 /**
  * Task 2
