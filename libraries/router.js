@@ -19,11 +19,12 @@ const Router = () => {
 
   // find the appropriate route for the request
   const routesMiddleware = (ctx, next) => {
-    const { request } = ctx;
-    const { pathname } = new URL(request.url, 'http://example.com');
+    const {
+      request: { url: requestUrl, method: requestMethod },
+    } = ctx;
 
     const route = routes.find(
-      ({ method, path }) => method === request.method && path === pathname
+      ({ method, path }) => method === requestMethod && path === requestUrl
     );
 
     if (route) {
@@ -38,12 +39,14 @@ const Router = () => {
 
   // start the middleware chain
   const run = ctx => {
-    const dispatch = async i => {
-      const currentMiddleware = middleware[i];
+    const dispatch = async idx => {
+      const currentMiddleware = middleware[idx];
+
       if (currentMiddleware) {
-        currentMiddleware(ctx, () => dispatch(i + 1));
+        currentMiddleware(ctx, () => dispatch(idx + 1));
       }
     };
+
     dispatch(0);
   };
 
