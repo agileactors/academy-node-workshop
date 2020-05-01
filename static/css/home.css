@@ -9,14 +9,76 @@
   color: #fff;
 }
 
-.container a {
+a {
   font-weight: bold;
-  text-decoration: underline;
+  text-decoration: none;
   color: #fff;
 }
 
-.container a:hover {
-  background-color: #fff;
-  color: rgb(9, 69, 196);
+a:hover {
+  color: #ccc;
+}
+
+input {
+  background-color: transparent;
+  color: #fff;
+  margin-bottom: 0em;
+  padding: 0 16px;
+  width: 280px;
+  height: 40px;
+  font-size: 18px;
+  margin-bottom: 2em;
+  text-align: center;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #ccc;
+}
+
+input::placeholder {
+  color: #ccc;
+}
+
+a.btn-enter {
+  width: 286px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 45px;
+  margin: 0 0 1em;
+  max-width: 160px;
+  position: relative;
+  text-align: center;
   text-decoration: none;
+  text-transform: uppercase;
+}
+
+a.btn-enter > svg {
+  height: 45px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+a.btn-enter > svg > rect {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-dasharray: 422, 0;
+  transition: all 0.35s linear;
+}
+
+a.btn-enter:hover {
+  background: #f6ff;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+a.btn-enter:hover > svg > rect {
+  stroke-width: 5;
+  stroke-dasharray: 15, 310;
+  stroke-dashoffset: 48;
+  transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
 }
