@@ -1,6 +1,6 @@
 const socketIO = require('socket.io');
 const { Model: MessageModel } = require('./models/message');
-const { messagesPerMinute } = require('./utilities');
+const { messagesPerMinute } = require('./libraries/utilities');
 
 const init = async server => {
   // server start time
@@ -20,6 +20,8 @@ const init = async server => {
   const totalMessages = await MessageModel.countDocuments({}).exec();
   analytics.totalMessages = totalMessages;
 
+  // get messages from the database which are greater or equal from now timestamp
+  // and sort them by timestamp in a descending order
   const messages = await MessageModel.find({ timestamp: { $gte: startTime } })
     .sort({ timestamp: 1 })
     .exec();
@@ -36,7 +38,7 @@ const init = async server => {
    *
    *  Task 2: Update the 'messagesPerMinute' metric in regular intervals.
    *
-   *  Calculating the messagesPerMinute metric after every new message will
+   *  Note: Calculating the messagesPerMinute metric after every new message will
    *  probably decrease the server's performance. For that reason move the
    *  messagesPerMinute calculation into a 5 sec period and then broadcast
    *  the updated analytics to the clients.
