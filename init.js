@@ -1,10 +1,21 @@
-const { nwsGetEnvContent } = require('./utilities');
+const { ENVVALUES } = require('./constants');
 
 // path to the .env file
 const ENV_PATH = '.env';
 
 // path to the logs directory
 const LOGS_DIR = './logs';
+
+// Don't edit
+const nwsGetEnvContent = () => {
+  const envValues = ENVVALUES.reduce((acc, envValue) => {
+    const { name, value } = envValue;
+
+    return [...acc, `${name}=${value}`];
+  }, []);
+
+  return envValues.join('\n');
+};
 
 /**
  * Task 3: readEnv implementation
@@ -61,5 +72,5 @@ checkEnv();
  * Task 4:
  *
  * use the os module and print the following information to the console:
- * `running on darwin x64 v19.0.3 and you have 56% of your RAM is free. }`;
+ * `running on darwin x64 v19.0.3 and the 56% of your RAM is free. }`;
  */
