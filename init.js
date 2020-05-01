@@ -3,24 +3,13 @@ const path = require('path');
 const { platform, arch, release, totalmem, freemem } = require('os');
 
 const logger = require('./libraries/logger');
-const { ENVVALUES } = require('./constants');
+const { nwsGetEnvContent } = require('./constants');
 
 const cwd = process.cwd();
 const ENV_PATH = path.join(cwd, '.env');
 const LOGS_DIR = path.join(cwd, 'logs');
 const args = process.argv.slice(2, process.argv.length);
 const bypassCheck = args.some(arg => arg === 'BYPASS');
-
-// Do not edit
-const nwsGetEnvContent = () => {
-  const envValues = ENVVALUES.reduce((acc, envValue) => {
-    const { name, value } = envValue;
-
-    return [...acc, `${name}=${value}`];
-  }, []);
-
-  return envValues.join('\n');
-};
 
 const createEnv = () => {
   const envFileContent = nwsGetEnvContent();
@@ -40,7 +29,7 @@ const readEnv = () => {
       throw err;
     }
 
-    console.log(`.env configuration: \n${data}\n`);
+    console.log(`Found .env configuration: \n${data}\n`);
   });
 };
 
@@ -66,7 +55,7 @@ process.on('uncaughtException', err => {
 if (!bypassCheck) {
   checkEnv();
 } else {
-  logger.log('Bypass configuration');
+  logger.log('Bypassing configuration...');
 }
 
 // log some information about the operating system
