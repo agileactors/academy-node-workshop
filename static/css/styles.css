@@ -22,3 +22,7 @@ body {
   max-width: 767px;
   margin: 0 auto;
 }
+
+.error {
+  border-color: #f05;
+}
