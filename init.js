@@ -1,14 +1,13 @@
 const fs = require('fs');
 const { platform, arch, release, totalmem, freemem } = require('os');
 const path = require('path');
-const logger = require('./libraries/logger');
 const { ENVVALUES } = require('./constants');
 
 const cwd = process.cwd();
 const ENV_PATH = path.join(cwd, '.env');
 const LOGS_DIR = path.join(cwd, 'logs');
 const args = process.argv.slice(2, process.argv.length);
-const bypassCheck = args.some(arg => arg === 'BYPASS');
+const bypassCheck = args.some(arg => arg === '--bypass' || '-b');
 
 /**
  * Task 1: Move to /libraries/utilities.js
@@ -49,35 +48,42 @@ const readEnv = () => {
 };
 
 const checkEnv = () => {
-  fs.open(ENV_PATH, 'r+', err => {
-    if (err) {
-      return createEnv();
+  console.log(`Your Operating System: ${platform()} ${arch()} ${release()}`);
+  console.log(
+    `${((freemem() / totalmem()) * 100).toFixed(2)} % of your RAM is free.\n`
+  );
+
+  try {
+    if (!fs.existsSync(LOGS_DIR)) {
+      fs.mkdirSync(LOGS_DIR);
     }
+  } catch (error) {
+    console.log(error);
+  }
 
-    readEnv();
-  });
+  if (!bypassCheck) {
+    fs.open(ENV_PATH + 1, 'r+', err => {
+      if (err) {
+        const { code } = err;
 
-  if (!fs.existsSync(LOGS_DIR)) {
-    fs.mkdirSync(LOGS_DIR);
+        if (code === 'ENOENT') {
+          return createEnv();
+        }
+
+        throw err;
+      }
+
+      readEnv();
+    });
+  } else {
+    console.log('Bypassing configuration..');
   }
 };
 
-if (!bypassCheck) {
-  checkEnv();
-} else {
-  console.log('Bypassing configuration..');
-}
-
 process.on('uncaughtException', err => {
-  console.error(err);
-  console.error(err.stack);
+  console.log(`pid ${process.pid}\n${err}`);
   process.exit(0);
 });
 
-// log some information about the operating system
-console.log(`Your Operating System: ${platform()} ${arch()} ${release()}`);
-
-// log some information about the memory (ram) (number is rounded to two decimals)
-console.log(
-  `${((freemem() / totalmem()) * 100).toFixed(2)} % of your RAM is free.\n`
-);
+// startin point
+checkEnv();
