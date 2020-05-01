@@ -19,49 +19,58 @@ const createEnv = () => {
       throw err;
     }
 
-    console.log('Finished .env configuration');
+    logger.log('Finished .env configuration.');
   });
 };
 
 const readEnv = () => {
-  fs.readFile(ENV_PATH, 'utf8', (err, data) => {
-    if (err) {
-      throw err;
-    }
+  try {
+    const data = fs.readFileSync(ENV_PATH, 'utf8');
 
-    console.log(`Found .env configuration: \n${data}\n`);
-  });
+    console.log(`Found configuration: \n${data}\n`);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const checkEnv = () => {
-  fs.open(ENV_PATH, 'r+', err => {
-    if (err) {
-      return createEnv();
+  console.log(`Your Operating System: ${platform()} ${arch()} ${release()}`);
+  console.log(
+    `${((freemem() / totalmem()) * 100).toFixed(2)} % of your RAM is free.\n`
+  );
+
+  try {
+    if (!fs.existsSync(LOGS_DIR)) {
+      fs.mkdirSync(LOGS_DIR);
     }
+  } catch (error) {
+    console.log(error);
+  }
 
-    readEnv();
-  });
+  if (!bypassCheck) {
+    fs.open(ENV_PATH + 1, 'r+', err => {
+      if (err) {
+        const { code } = err;
 
-  if (!fs.existsSync(LOGS_DIR)) {
-    fs.mkdirSync(LOGS_DIR);
+        if (code === 'ENOENT') {
+          return createEnv();
+        }
+
+        throw err;
+      }
+
+      readEnv();
+    });
+  } else {
+    console.log('Bypassing configuration..');
   }
 };
 
 process.on('uncaughtException', err => {
-  logger.log(err);
-  process.exit();
+  console.log(err.stack);
+  logger.log(`pid ${process.pid}\n${err}`);
+  process.exit(0);
 });
 
-if (!bypassCheck) {
-  checkEnv();
-} else {
-  console.log('Bypassing configuration...');
-}
-
-// log some information about the operating system
-console.log(`Your Operating System: ${platform()} ${arch()} ${release()}`);
-
-// log some information about the memory (ram) (number is rounded to two decimals)
-console.log(
-  `${((freemem() / totalmem()) * 100).toFixed(2)} % of your RAM is free.\n`
-);
+// startin point
+checkEnv();
