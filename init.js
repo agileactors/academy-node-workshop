@@ -19,7 +19,7 @@ const createEnv = () => {
       throw err;
     }
 
-    logger.log('Finished .env configuration.');
+    console.log('Finished .env configuration.');
   });
 };
 
@@ -53,6 +53,7 @@ const checkEnv = () => {
         const { code } = err;
 
         if (code === 'ENOENT') {
+          throw err;
           return createEnv();
         }
 
@@ -72,5 +73,5 @@ process.on('uncaughtException', err => {
   process.exit(0);
 });
 
-// startin point
+// starting point
 checkEnv();
