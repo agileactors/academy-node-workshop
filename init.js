@@ -10,7 +10,9 @@ const LOGS_DIR = path.join(cwd, 'logs');
 const args = process.argv.slice(2, process.argv.length);
 const bypassCheck = args.some(arg => arg === 'BYPASS');
 
-// Do not edit
+/**
+ * Task 1: Move to /libraries/utilities.js
+ */
 const nwsGetEnvContent = () => {
   const envValues = ENVVALUES.reduce((acc, envValue) => {
     const { name, value } = envValue;
@@ -30,9 +32,9 @@ const createEnv = () => {
     }
 
     /**
-     * Task 1: Use the logger to log the message
+     * Task 3: Use the logger to log the message
      */
-    console.log('Finished .env configuration');
+    console.log('Finished .env configuration.');
   });
 };
 

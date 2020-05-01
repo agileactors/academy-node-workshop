@@ -1,5 +1,7 @@
+const { formatDate } = require('./utilities');
+
 /**
- * Task 1
+ * Task 2
  *
  * Implement the logger log function.
  *
@@ -17,22 +19,6 @@
  * e.g
  * ["day:month:year hours:minutes","some info" | { error: 'some error } | ['some item1', 'some item2']]
  */
-
-// Do not edit
-const nwsFormatDate = date => {
-  const dateFormat = [
-    date.getDate(),
-    date.getMonth() + 1,
-    date.getFullYear(),
-  ].join('/');
-  const timeFormat = [
-    date.getHours(),
-    date.getMinutes(),
-    date.getSeconds(),
-  ].join(':');
-
-  return [dateFormat, timeFormat].join(' ');
-};
 
 const logger = {
   logToFile: true,

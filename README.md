@@ -6,12 +6,14 @@ Node.js Workshop
 
 In this branch we will introduce the Node.js module system.
 
-We will implement a custom module named **logger.js** to handle the logging of our application. The logger file exists in the libraries folder.
+We will implement a custom module named **logger.js** to handle the logging of our application. Also we will move the **nwsGetEnvContent**
+into a separated module.
 
 Usage:
 
 ```js
 const logger = require('./libraries/logger');
+const { nwsGetEnvContent } = require('./libraries/utilities');
 ```
 
 Documentation:
@@ -20,12 +22,15 @@ Documentation:
 
 ## Branch Tasks
 
-1. Continue the implementation of the logger.js module
-2. Use the logger in the **init.js** file to handle logging
+1. Move the `nwsGetEnvContent` utility function to `/libraries/utilities.js` and use the **exports** object to export it. Then use it in the `init.js` file.
+
+2. Continue the implementation of the **logger.js** module in `/libraries/logger.js`.
+
+3. Use the logger in the **init.js** file to handle logging.
 
 Open the **logger.js** file located in the libraries directory of the app to start writing your code.
 
-To start the application and test your code issue the following command in a terminal:
+To start the application and test your code run the following command in a terminal:
 
 ```
 npm run setup
