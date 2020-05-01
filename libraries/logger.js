@@ -21,7 +21,7 @@ const logger = {
     const now = new Date();
     const nowFormat = nwsFormatDate(now);
 
-    args.unshift([nowFormat]);
+    args.unshift(`${nowFormat}: `);
 
     if (this.logToFile) {
       this.debug(args);
