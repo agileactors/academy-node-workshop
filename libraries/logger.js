@@ -9,37 +9,10 @@
 
 const fs = require('fs');
 const path = require('path');
+const { nwsFormatDate, nwsConcatValues } = require('./utilities');
 
 const cwd = process.cwd();
 const LOGS_PATH = path.join(cwd, 'logs');
-
-// Do not edit
-const nwsFormatDate = date => {
-  const dateFormat = [
-    date.getDate(),
-    date.getMonth() + 1,
-    date.getFullYear(),
-  ].join('/');
-  const timeFormat = [
-    date.getHours(),
-    date.getMinutes(),
-    date.getSeconds(),
-  ].join(':');
-
-  return [dateFormat, timeFormat].join(' ');
-};
-
-// Do not edit
-const nwsConcatValues = args => {
-  const values = Object.values(args);
-
-  return values.reduce((txt, element) => {
-    let result = txt;
-    result += String(JSON.stringify(element));
-
-    return result;
-  }, '');
-};
 
 const logger = {
   logToFile: true,
