@@ -14,11 +14,11 @@ Usage:
 const fs = require('fs');
 
 // synchronous api
-fs.unlink('/tmp/hello', (err) => {
+fs.unlink('/tmp/hello', err => {
   if (err) {
-   throw err;
+    throw err;
   }
-  
+
   console.log('successfully deleted /tmp/hello');
 });
 
@@ -51,10 +51,14 @@ Documentation:
 Use the fs apis (synchronous or asynchronous) to create a `.env` file for our application. The .env holds the environmental variables that our app needs to run such as `DB_USER`, `DB_PASSWORD`, `PORT` etc.
 
 1. Provide the **checkEnv** implementation which checks if a `.env` file exists.
-2. Also in the **checkEnv** implementation check if a directory with name `logs` exists at the root directory.
+
+- Subtask 1: Use the **os** module to print operating system information to the console.
+
+2. In the **checkEnv** implementation check if a directory with name `logs` exists at the root directory.
+
 3. Provide the **createEnv** implementation which creates the .env file if not exists.
+
 4. Provide the **readEnv** implementation which read the contents of .env if exists.
-5. Use the **os** module to print operating system information to the console.
 
 Open the **init.js** file placed in the root directory of the app to start writing your code.
 

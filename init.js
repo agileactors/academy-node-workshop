@@ -62,15 +62,14 @@ const createEnv = () => {
  */
 
 const checkEnv = () => {
+  /**
+   * Subtask 1:
+   *
+   * use the os module and print the following information to the console:
+   * `running on darwin x64 v19.0.3 and the 56% of your RAM is free. }`;
+   */
   // TODO: provide implementation
 };
 
 // starting point
 checkEnv();
-
-/**
- * Task 4:
- *
- * use the os module and print the following information to the console:
- * `running on darwin x64 v19.0.3 and the 56% of your RAM is free. }`;
- */
