@@ -48,12 +48,11 @@ const checkEnv = () => {
   }
 
   if (!bypassCheck) {
-    fs.open(ENV_PATH + 1, 'r+', err => {
+    fs.open(ENV_PATH, 'r+', err => {
       if (err) {
         const { code } = err;
 
         if (code === 'ENOENT') {
-          throw err;
           return createEnv();
         }
 
@@ -69,7 +68,7 @@ const checkEnv = () => {
 
 process.on('uncaughtException', err => {
   console.log(err.stack);
-  logger.log(`pid ${process.pid}\n${err}`);
+  logger.log(`pid ${process.pid}: ${err.message}`);
   process.exit(0);
 });
 

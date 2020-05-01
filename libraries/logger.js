@@ -16,7 +16,7 @@ const LOGS_PATH = path.join(cwd, 'logs');
 
 const logger = {
   logToFile: true,
-  logToConsole: true,
+  logToConsole: false,
   log(...args) {
     const now = new Date();
     const nowFormat = nwsFormatDate(now);
@@ -37,7 +37,7 @@ const logger = {
     const debugFile = path.join(LOGS_PATH, 'debug.log');
     const data = nwsConcatValues(args);
 
-    fs.writeFile(debugFile, `${data}\n`, { flag: 'a' }, err => {
+    fs.writeFile(debugFile, data, { flag: 'a' }, err => {
       if (err) {
         throw err;
       }
