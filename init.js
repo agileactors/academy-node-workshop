@@ -59,7 +59,7 @@ const checkEnv = () => {
   }
 
   if (!bypassCheck) {
-    fs.open(ENV_PATH + 1, 'r+', err => {
+    fs.open(ENV_PATH, 'r+', err => {
       if (err) {
         const { code } = err;
 
