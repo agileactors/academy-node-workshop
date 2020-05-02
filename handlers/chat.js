@@ -15,12 +15,13 @@ const get = ({ response }) => {
 };
 
 const getUsername = async ({ response }) => {
+  const randomUsername = await shortid.generate();
+  const data = JSON.stringify({
+    username: randomUsername,
+  });
+
   response.writeHead(200, { 'Content-Type': 'application/json' });
-  response.end(
-    await JSON.stringify({
-      username: `user_${shortid.generate()}`,
-    })
-  );
+  response.end(data);
 };
 
 module.exports = { get, getUsername };
