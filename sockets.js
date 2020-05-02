@@ -20,29 +20,17 @@ const init = async server => {
   const totalMessages = await MessageModel.countDocuments({}).exec();
   analytics.totalMessages = totalMessages;
 
-  // get messages from the database which are greater or equal from now timestamp
-  // and sort them by timestamp in a descending order
-  const messages = await MessageModel.find({ timestamp: { $gte: startTime } })
-    .sort({ timestamp: 1 })
-    .exec();
+  // calculate messages-per-minute in regular interval
+  setInterval(async () => {
+    // get messages from the database which are greater or equal from now timestamp
+    // and sort them by timestamp in a descending order
+    const messages = await MessageModel.find({ timestamp: { $gte: startTime } })
+      .sort({ timestamp: 1 })
+      .exec();
 
-  const perMinuteMessages = messagesPerMinute(messages).toFixed(2);
-
-  /**
-   *
-   *  Task 1: Update analytics and notify the connected clients.
-   *
-   *  The analytics object holds some metrics about the chat server.
-   *  When a client connects/disconnects or sends a new message
-   *  update the analytics and broadcast them to all clients.
-   *
-   *  Task 2: Update the 'messagesPerMinute' metric in regular intervals.
-   *
-   *  Note: Calculating the messagesPerMinute metric after every new message will
-   *  probably decrease the server's performance. For that reason move the
-   *  messagesPerMinute calculation into a 5 sec period and then broadcast
-   *  the updated analytics to the clients.
-   */
+    analytics.perMinute = messagesPerMinute(messages).toFixed(2);
+    io.emit('server:analytics', analytics);
+  }, 5000);
 
   io.on('connection', socket => {
     socket.on('client:message', async data => {
@@ -54,6 +42,10 @@ const init = async server => {
 
       // broadcast new message to everyone
       io.emit('server:message', message);
+
+      // update analytics
+      analytics.totalMessages += 1;
+      io.emit('server:analytics', analytics);
     });
   });
 };
