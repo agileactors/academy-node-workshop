@@ -17,7 +17,7 @@ const logger = require('./libraries/logger');
  * Using the request.url property create the following endpoints:
  *
  *  1. '/' => serves views/home.html
- *  2. '/chat' => serves views/chat.html
+ *  2. '/chat' => <h2>Chat page</h2>
  *  3. if the requested route not found return a http 404 with message 'Not found'
  * 
  * Hint: use utf8 encoding.
