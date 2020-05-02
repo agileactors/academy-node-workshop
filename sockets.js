@@ -1,5 +1,5 @@
 const socketIO = require('socket.io');
-const { Model: MessageModel } = require('./models/message');
+const { Model: MessageModel } = require('./models/Message');
 const { messagesPerMinute } = require('./libraries/utilities');
 
 const init = async server => {
