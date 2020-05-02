@@ -4,7 +4,7 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will learn about Node.js streams.
+In this branch we will learn about Node.js streams and how we can serve files using streams.
 
 Usage:
 
@@ -12,7 +12,7 @@ Usage:
 const fs = require('fs');
 
 const readStream = fs.createReadStream('some-file');
-const writeStream = fs.createWriteStream('some-file-copy');
+const writeStream = fs.createWriteStream('some-other-file');
 
 readStream.on('data', chunk => {
   writeStream.write(chunk);
