@@ -81,7 +81,7 @@ process.on('uncaughtException', err => {
   /**
    * Task 3: Use the logger to log the message
    */
-  console.log(`pid ${process.pid}\n${err}`);
+  console.log(`pid ${process.pid}\n${err.message}`);
   process.exit(0);
 });
 
