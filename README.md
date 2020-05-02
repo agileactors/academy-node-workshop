@@ -26,14 +26,14 @@ We are going to build a chat app using Node.js and a real time board for chat an
 
 1. node--01--repl
 2. node--02--fs
-4. node--03--globals
-5. node--04--modules
-6. node--05--http
-7. node--06--http-handlers
-8. node--07--http-middleware
-9. node--08--socket-io
-10. node--09--socket-io-analytics
-11. node--10--streams
+3. node--03--globals
+4. node--04--modules
+5. node--05--http
+6. node--06--http-handlers
+7. node--07--http-middleware
+8. node--08--socket-io
+9. node--09--socket-io-analytics
+10. node--10--streams
 
 ## Getting started
 
@@ -47,7 +47,7 @@ Ensure node.js is installed by running the following command in a terminal, simi
 
 Run the commands:
 
-```
+```sh
 node -v
 ```
 
@@ -55,7 +55,7 @@ node -v
 
 Run the command:
 
-```
+```sh
 git clone https://github.com/agileactors/academy-node-workshop/
 ```
 
@@ -63,15 +63,14 @@ _If you do not have git install follow this link [How to install Git](https://gi
 
 Then navigate into the project directory and install all the depedencies:
 
-```
+```sh
 cd academy-node-workshop
 ```
 
 using npm/yarn
 
+```sh
+npm install / yarn
 ```
-    npm install / yarn 
-```
-
 
 Lets get started! :tada:
