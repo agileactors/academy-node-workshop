@@ -1,3 +1,5 @@
+/* eslint-disable no-bitwise */
+
 const fs = require('fs');
 const { platform, arch, release, totalmem, freemem } = require('os');
 const { ENVVALUES } = require('./constants');
@@ -76,20 +78,29 @@ const checkEnv = () => {
    * If a command line argument with name '--bypass' or '-b' passed skip the env configuration
    */
 
-  fs.open(ENV_PATH, 'r+', err => {
+  // check if the file exists in the current directory and if it is writable
+  fs.access(ENV_PATH, fs.constants.F_OK | fs.constants.W_OK, err => {
     if (err) {
-      return createEnv();
-    }
+      const { code } = err;
 
-    readEnv();
+      if (code === 'ENOENT') {
+        console.log('Creating env configuration...');
+        createEnv();
+      } else {
+        throw err; // .env file is readonly
+      }
+    } else {
+      console.log('Reading env configuration...');
+      readEnv();
+    }
   });
 };
-
-// starting point
-checkEnv();
 
 /**
  * Task 4:
  *
  * Use the process to handle uncaught exception errors
  */
+
+// starting point
+checkEnv();
