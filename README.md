@@ -1,13 +1,18 @@
+# academy-node-workshop
+
+Node.js Workshop
+
 ## Branch description
 
-In this branch we will introduce the `child_process` module. The _child_process_ module provides the ability to spawn child processes.
+In this branch we will dig deeper into Node.js **streams**. We will demonstrate how we can create streams and pipelines.
 
 Run the command:
 
 ```
-npm start
+npm run pack
 ```
 
 ## Covers
 
-- Node.js Child processes
+- Node.js Streams
+
