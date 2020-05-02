@@ -9,6 +9,22 @@ const socket = io(socketURI);
 
 let usernameFromLocalStorage = localStorage.getItem('academy_chat_username');
 
+const nwsFormatDate = date => {
+  const dateFormat = [
+    date.getDate(),
+    date.getMonth() + 1,
+    date.getFullYear(),
+  ].join('/');
+
+  const timeFormat = [
+    date.getHours(),
+    date.getMinutes(),
+    date.getSeconds(),
+  ].join(':');
+
+  return [dateFormat, timeFormat].join(' ');
+};
+
 function createElement(options) {
   let el, a, i;
 
@@ -64,9 +80,8 @@ async function init() {
 
   function renderMessage(message) {
     const { username, text: messageText, timestamp } = message;
-    // const messagesLength = messagesElement.querySelectorAll('.msg').length;
     const messageTimestamp = new Date(timestamp * 1000);
-    const messageTimeFormat = `${messageTimestamp.getHours()}:${messageTimestamp.getMinutes()}`;
+    const messageTimeFormat = nwsFormatDate(messageTimestamp);
     const position = username === usernameFromLocalStorage ? 'left' : 'right';
 
     const messageElement = createElement({
