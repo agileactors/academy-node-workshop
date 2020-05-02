@@ -30,7 +30,7 @@ Documentation:
    Route `/home`:
 
    - method: GET
-   - response (html): \<h1>Home page</h1>
+   - response (html): views/index.html file
 
    Route `/chat`:
 
