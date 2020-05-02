@@ -17,7 +17,7 @@ server.on('request', (request, response) => {
   const { url } = request;
 
   switch (url) {
-    case '/home':
+    case '/':
       response.writeHead(200, { 'Content-Type': 'text/html' });
       response.end('<h1>Home Page</h1>');
       break;
@@ -49,7 +49,8 @@ server.listen(PORT, () => {
   logger.log(`Server listening on port ${PORT}`);
 });
 
+// Do not edit
 process.on('uncaughtException', err => {
-  logger.log(err);
-  process.exit();
+  logger.log(`pid ${process.pid}: ${err.message}`);
+  process.exit(0);
 });
