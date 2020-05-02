@@ -1,9 +1,8 @@
 const socketIO = require('socket.io');
-const { Model: MessageModel } = require('./models/message');
+const { Model: MessageModel } = require('./models/Message');
 
 const init = async server => {
-  // initialize socket.io
-  const io = socketIO(server);
+  const io = socketIO(server); // initialize socket.io
 
   /**
    * Task 1: Use socket.io to receive/send realtime messages
