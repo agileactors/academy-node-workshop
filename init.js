@@ -48,18 +48,16 @@ const checkEnv = () => {
   }
 
   if (!bypassCheck) {
-    fs.open(ENV_PATH, 'r+', err => {
+    fs.open(ENV_PATH, 'wx', err => {
       if (err) {
-        const { code } = err;
-
-        if (code === 'ENOENT') {
-          return createEnv();
+        if (err.code === 'EEXIST') {
+          return readEnv();
         }
 
         throw err;
       }
 
-      readEnv();
+      createEnv();
     });
   } else {
     console.log('Bypassing configuration..');
