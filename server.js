@@ -30,6 +30,6 @@ const logger = require('./libraries/logger');
 
 // Do not edit
 process.on('uncaughtException', err => {
-  logger.log(err);
-  process.exit();
+  logger.log(`pid ${process.pid}: ${err.message}`);
+  process.exit(0);
 });
