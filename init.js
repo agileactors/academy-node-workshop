@@ -1,10 +1,7 @@
 const { ENVVALUES } = require('./constants');
 
-// path to the .env file
-const ENV_PATH = '.env';
-
-// path to the logs directory
-const LOGS_DIR = './logs';
+const ENV_PATH = '.env'; // path to the .env file
+const LOGS_DIR = './logs'; // path to the logs directory
 
 // Don't edit
 const nwsGetEnvContent = () => {

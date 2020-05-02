@@ -1,8 +1,7 @@
 {
   "name": "academy-node-workshop",
   "version": "1.0.0",
-  "description": "Node.js Workshop",
-  "main": "index.js",
+  "description": "Node.js Workshop - Chat application",
   "scripts": {
     "setup": "node init.js",
     "lint": "eslint .",
@@ -15,7 +14,7 @@
     "url": "git+https://github.com/agileactors/academy-node-workshop.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Agile Actors",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/agileactors/academy-node-workshop/issues"
