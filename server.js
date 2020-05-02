@@ -28,7 +28,7 @@ router.use(async (ctx, next) => {
 router.use(staticMiddleware);
 
 // index route
-router.get('/home', ({ response }) => {
+router.get('/', ({ response }) => {
   response.setHeader('Content-Type', 'text/html');
   response.writeHead(200);
   response.end(templateEngine.render('home'));
