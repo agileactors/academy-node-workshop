@@ -33,6 +33,7 @@ const getUsername = async ({ response }) => {
 const getMessages = async ({ response }) => {
   try {
     const data = await MessageModel.find({}).exec();
+
     response.writeHead(200, { 'Content-Type': 'application/json' });
     response.end(await JSON.stringify(data));
   } catch (err) {
