@@ -78,21 +78,16 @@ const checkEnv = () => {
    * If a command line argument with name '--bypass' or '-b' passed skip the env configuration
    */
 
-  // check if the file exists in the current directory and if it is writable
-  fs.access(ENV_PATH, fs.constants.F_OK | fs.constants.W_OK, err => {
+  fs.open(ENV_PATH, 'wx', err => {
     if (err) {
-      const { code } = err;
-
-      if (code === 'ENOENT') {
-        console.log('Creating env configuration...');
-        createEnv();
-      } else {
-        throw err; // .env file is readonly
+      if (err.code === 'EEXIST') {
+        return readEnv();
       }
-    } else {
-      console.log('Reading env configuration...');
-      readEnv();
+
+      throw err;
     }
+
+    createEnv();
   });
 };
 
