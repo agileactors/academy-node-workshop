@@ -3,7 +3,7 @@ const path = require('path');
 const shortid = require('shortid');
 
 const logger = require('../libraries/logger');
-const { Model: MessageModel } = require('../models/Message');
+const MessageModel = require('../models/Message');
 
 const rootDir = process.cwd();
 

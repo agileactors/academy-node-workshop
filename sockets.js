@@ -1,6 +1,25 @@
 const socketIO = require('socket.io');
-const { Model: MessageModel } = require('./models/Message');
-const { messagesPerMinute } = require('./libraries/utilities');
+const path = require('path');
+const { fork } = require('child_process');
+const logger = require('./libraries/logger');
+const MessageModel = require('./models/Message');
+
+const messagesPerMinutePath = path.join(
+  __dirname,
+  '/scripts/messagesPerMinute.js'
+);
+
+const runChildProcess = (module, cb, options = []) => {
+  const child = fork(module, options);
+
+  child.on('message', result => cb(null, result));
+  child.on('error', cb);
+  child.on('exit', code => {
+    if (code !== 0) {
+      cb(new Error(`Process has stopped with code ${code}`));
+    }
+  });
+};
 
 const init = async server => {
   // server start time
@@ -16,32 +35,35 @@ const init = async server => {
     perMinute: 0,
   };
 
-  // get total messages when server starts
-  const totalMessages = await MessageModel.countDocuments({}).exec();
-  analytics.totalMessages = totalMessages;
+  // update totalMessages
+  analytics.totalMessages = await MessageModel.countDocuments({}).exec();
 
-  // calculate messages-per-minute in regular interval
-  setInterval(async () => {
-    // get messages from the database which are greater or equal from now timestamp
-    // and sort them by timestamp in a descending order
-    const messages = await MessageModel.find({ timestamp: { $gte: startTime } })
-      .sort({ timestamp: 1 })
-      .exec();
+  const callback = (err, result) => {
+    if (err) {
+      logger.log(err);
+      return;
+    }
 
-    analytics.perMinute = messagesPerMinute(messages).toFixed(2);
+    // update analytics
+    analytics.perMinute = result.toFixed(2);
+
+    // send new analytics to connected users
     io.emit('server:analytics', analytics);
-  }, 5000);
+  };
+
+  // run heavy task on different thread
+  runChildProcess(messagesPerMinutePath, callback, [startTime]);
 
   io.on('connection', socket => {
     socket.on('client:message', async data => {
       // create and save new message to database
-      const message = await MessageModel.create({
+      const newMessage = await MessageModel.create({
         text: data.text,
         username: data.username,
       });
 
       // broadcast new message to everyone
-      io.emit('server:message', message);
+      io.emit('server:message', newMessage);
 
       // update analytics
       analytics.totalMessages += 1;

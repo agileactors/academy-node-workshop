@@ -12,18 +12,21 @@ sockets.init(server);
 // start the server
 server.listen(PORT, () => {
   logger.log(`Server listening on port ${PORT}`);
+
   // connect to database
   connect()
     .then(message => logger.log(message))
     .catch(error => logger.log('DB_CONNECTION_ERROR', error.message));
 });
 
-process.on('uncaughtException', error => {
-  logger.log(error);
+process.on('uncaughtException', err => {
+  console.log(err.stack);
+  logger.log(`pid ${process.pid}: ${err.message}`);
   process.exit(0);
 });
 
-process.on('unhandledRejection', error => {
-  logger.log(error);
+process.on('unhandledRejection', err => {
+  console.log(err.stack);
+  logger.log(`pid ${process.pid}: ${err.message}`);
   process.exit(0);
 });
