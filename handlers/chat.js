@@ -8,10 +8,10 @@ const { Model: MessageModel } = require('../models/Message');
 const rootDir = process.cwd();
 
 const get = ({ response }) => {
-  const $html = fs.createReadStream(path.join(rootDir, 'views', 'chat.html'));
+  const html$ = fs.createReadStream(path.join(rootDir, 'views', 'chat.html'));
 
-  $html.pipe(response);
-  $html.on('error', err => {
+  html$.pipe(response);
+  html$.on('error', err => {
     logger.log(err);
   });
 };
