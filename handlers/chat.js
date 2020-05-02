@@ -8,26 +8,32 @@ const { Model: MessageModel } = require('../models/message');
 const rootDir = process.cwd();
 
 const get = ({ response }) => {
-  const stream = fs.createReadStream(path.join(rootDir, 'views', 'chat.html'));
-  stream.pipe(response);
-  stream.on('error', err => {
+  const $html = fs.createReadStream(path.join(rootDir, 'views', 'chat.html'));
+
+  $html.pipe(response);
+  $html.on('error', err => {
     logger.log(err);
   });
 };
 
 const getUsername = async ({ response }) => {
-  const randomUsername = await shortid.generate();
-  const data = JSON.stringify({
-    username: randomUsername,
-  });
+  try {
+    const randomUsername = shortid.generate();
+    const data = await JSON.stringify({
+      username: randomUsername,
+    });
 
-  response.writeHead(200, { 'Content-Type': 'application/json' });
-  response.end(data);
+    response.writeHead(200, { 'Content-Type': 'application/json' });
+    response.end(data);
+  } catch (err) {
+    logger.log(err);
+  }
 };
 
 const getMessages = async ({ response }) => {
   try {
     const data = await MessageModel.find({}).exec();
+
     response.writeHead(200, { 'Content-Type': 'application/json' });
     response.end(await JSON.stringify(data));
   } catch (err) {
