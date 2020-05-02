@@ -16,10 +16,12 @@ const logger = require('./libraries/logger');
  *
  * Using the request.url property create the following endpoints:
  *
- *  1. '/home' => <h1>Home Page</h1>
- *  2. '/chat' => <h1>Chat Page</h1>
- *
- * Hint: The response should be in html format so you need to
+ *  1. '/' => serves views/home.html
+ *  2. '/chat' => serves views/chat.html
+ *  3. if the requested route not found return a http 404 with message 'Not found'
+ * 
+ * 
+ * Hint: The response should be in html or text format so you need to
  * set the appropriate headers before sending the response.
  *
  
