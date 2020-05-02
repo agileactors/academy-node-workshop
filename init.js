@@ -1,5 +1,3 @@
-/* eslint-disable no-bitwise */
-
 const fs = require('fs');
 const { platform, arch, release, totalmem, freemem } = require('os');
 const { ENVVALUES } = require('./constants');
