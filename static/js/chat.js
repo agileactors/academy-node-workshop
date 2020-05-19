@@ -16,11 +16,7 @@ const nwsFormatDate = date => {
     date.getFullYear(),
   ].join('/');
 
-  const timeFormat = [
-    date.getHours(),
-    date.getMinutes(),
-    date.getSeconds(),
-  ].join(':');
+  const timeFormat = [date.getHours(), date.getMinutes()].join(':');
 
   return [dateFormat, timeFormat].join(' ');
 };
