@@ -24,7 +24,7 @@ setInterval(async () => {
     .exec();
 
   // simulate long running task
-  // delay(5000);
+  delay(5000);
 
   if (messages.length === 0) {
     process.send(0);

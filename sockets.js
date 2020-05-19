@@ -51,10 +51,22 @@ const init = async server => {
     io.emit('server:analytics', analytics);
   };
 
-  // run heavy task on different thread
+  // run heavy task on different process
   runChildProcess(messagesPerMinutePath, callback, [startTime]);
 
   io.on('connection', socket => {
+    // update connected clients
+    analytics.connected += 1;
+
+    // send updated analytics to everyone
+    io.emit('server:analytics', analytics);
+
+    // when a socket disconnects update analytics
+    socket.on('disconnect', () => {
+      analytics.connected -= 1;
+      io.emit('server:analytics', analytics);
+    });
+
     socket.on('client:message', async data => {
       // create and save new message to database
       const newMessage = await MessageModel.create({
