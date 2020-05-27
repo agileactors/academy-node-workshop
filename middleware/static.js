@@ -1,11 +1,8 @@
-const fs = require('fs');
+const { stat, readFile } = require('fs').promises;
 const path = require('path');
 const { promisify } = require('util');
-const { MIMETYPES } = require('../constants');
 
-// promisify readFile utility
-const stat = promisify(fs.stat);
-const readFile = promisify(fs.readFile);
+const { MIMETYPES } = require('../constants');
 
 // get root directory
 const rootDir = process.cwd();
