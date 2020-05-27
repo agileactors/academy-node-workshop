@@ -1,6 +1,5 @@
 const { stat, readFile } = require('fs').promises;
 const path = require('path');
-const { promisify } = require('util');
 
 const { MIMETYPES } = require('../constants');
 
