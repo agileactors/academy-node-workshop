@@ -6,9 +6,19 @@ Node.js Workshop
 
 In this branch we will introduce the basic usage of Node.js.
 
-We will run a JavaScript file from the console and use the REPL to execute JavaScript code. 
+We will run a JavaScript file from the console and use the **REPL** to execute JavaScript code. 
 
-__REPL stands for Read-Evaluate-Print-Loop__
+__Read-Evaluate-Print-Loop__
+
+Node.js comes bundled with a REPL environment. It performs the following tasks:
+
+ - **Read** − Reads user's input, parses the input into JavaScript data-structure, and stores in memory.
+
+ - **Eval** − Takes and evaluates the data structure.
+
+ - **Print** − Prints the result.
+
+ - **Loop** − Loops the above command until the user presses ctrl-c twice.
 
 ## Branch Tasks
 
