@@ -1,7 +1,7 @@
 {
   "name": "academy-node-workshop",
   "version": "1.0.0",
-  "description": "Node.js Workshop",
+  "description": "Node.JS: Looking under the hood",
   "main": "index.js",
   "scripts": {
     "setup": "node init.js --bypass",
@@ -16,7 +16,7 @@
     "url": "git+https://github.com/agileactors/academy-node-workshop.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Agile Actors",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/agileactors/academy-node-workshop/issues"
