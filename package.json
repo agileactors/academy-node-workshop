@@ -1,7 +1,7 @@
 {
   "name": "academy-node-workshop",
   "version": "1.0.0",
-  "description": "Node.js Workshop",
+  "description": "Node.JS: Looking under the hood",
   "scripts": {
     "setup": "node init.js --bypass",
     "start": "npm run setup && node --inspect -r dotenv/config startup.js",
