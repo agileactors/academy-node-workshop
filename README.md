@@ -4,9 +4,9 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will introduce the `fs`, and `os` build-in modules. The **fs module** provides an API for interacting with the file system while the **os module** provides operating system-related utility methods and properties.
+In this branch we will introduce the `fs`, `path` and `os` build-in modules.
 
-All file system operations have synchronous and asynchronous forms.
+The **fs module** provides an API for interacting with the file system. All file system operations have synchronous and asynchronous forms.
 
 Usage:
 
@@ -31,6 +31,8 @@ try {
 }
 ```
 
+The **os module** provides operating system-related utility methods and properties.
+
 Usage:
 
 ```js
@@ -41,10 +43,21 @@ const { platform, arch, release, totalmem, freemem } = os;
 console.log(`Your Operating System: ${platform()} ${arch()} ${release()}`);
 ```
 
+The **path module** provides utilities for working with file and directory paths.
+
+Usage:
+
+```js
+const path = require('path');
+
+const logsPath = path.join(__dirname, 'logs');
+```
+
 Documentation:
 
-- [fs_file_system](https://nodejs.org/dist/latest-v13.x/docs/api/fs.html#fs_file_system)
-- [os_os](https://nodejs.org/api/os.html#os_os)
+- [fs](https://nodejs.org/dist/latest-v13.x/docs/api/fs.html#fs_file_system)
+- [os](https://nodejs.org/api/os.html#os_os)
+- [path](https://nodejs.org/api/path.html)
 
 ## Branch Tasks
 
