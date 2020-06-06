@@ -43,7 +43,7 @@ const checkEnv = () => {
 };
 
 /**
- * Task 2: readEnv implementation
+ * Task 3: readEnv implementation
  *
  * Use the fs apis to read the content of the .env file and print it to
  * the console. Each value has to be printed in a new line.
@@ -57,7 +57,7 @@ const readEnv = () => {
 };
 
 /**
- * Task 3: createEnv implementation
+ * Task 4: createEnv implementation
  *
  * Use the fs apis to write the content values (envFileContent variable) 
  * to a file with name .env in the root directory.
