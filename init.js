@@ -1,19 +1,10 @@
 const fs = require('fs');
+const path = require('path');
 const { platform, arch, release, totalmem, freemem } = require('os');
 const { ENVVALUES } = require('./constants');
 
-/**
- * Task 1:
- *
- * Use the process global to get the current working directory (cwd).
- * Use the path module and update the paths using the cwd.
- */
-
-// path to .env file
-const ENV_PATH = '.env';
-
-// path to logs directory
-const LOGS_DIR = './logs';
+const ENV_PATH = path.join(__dirname, '.env');
+const LOGS_DIR = path.join(__dirname, 'logs');
 
 // Dont edit
 const nwsGetEnvContent = () => {
