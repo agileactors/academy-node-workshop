@@ -37,11 +37,11 @@ const logger = {
     const debugFile = path.join(LOGS_PATH, 'debug.log');
     const data = nwsConcatValues(args);
 
-    fs.writeFile(debugFile, data, { flag: 'a' }, err => {
-      if (err) {
-        throw err;
-      }
-    });
+    try {
+      fs.writeFileSync(debugFile, data, { flag: 'a' });
+    } catch (error) {
+      console.log(error);
+    }
   },
 };
 
