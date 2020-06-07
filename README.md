@@ -10,9 +10,16 @@ The process object is a global that provides information and control over the cu
 
 **It is global so you can use it directly in the code.**
 
+The **path** module provides utilities for working with file and directory paths. It can be accessed using:
+
+```
+const path = require('path');
+```
+
 Documentation:
 
 - [process](https://nodejs.org/api/process.html)
+- [path](https://nodejs.org/api/path.html)
 
 Open the **init.js** file located in the root directory of the app to start writing your code.
 
@@ -26,10 +33,15 @@ npm run setup
 
 ## Branch Tasks
 
-1. Use the **process** global to get the current working directory.
+1. Use the **process** global to get the current working directory and update the **.env** and **logs** paths using the **path** module.
+
 2. Use the **process** global to read the command line arguments passed.
+
+- Subtask 1: If a command line argument with name '--bypass' or '-b' passed skip the env configuration
+
 3. Use the **process** global object to handle uncaught exception errors.
 
 ## Covers
 
 - Globals (process/console)
+- Path (build in module)

@@ -3,9 +3,6 @@ const path = require('path');
 const { platform, arch, release, totalmem, freemem } = require('os');
 const { ENVVALUES } = require('./constants');
 
-const ENV_PATH = path.join(__dirname, '.env');
-const LOGS_DIR = path.join(__dirname, 'logs');
-
 // Dont edit
 const nwsGetEnvContent = () => {
   const envValues = ENVVALUES.reduce((acc, envValue) => {
@@ -16,6 +13,15 @@ const nwsGetEnvContent = () => {
 
   return envValues.join('\n');
 };
+
+/**
+ * Task 1:
+ *
+ * Use path module to update the paths below based on the current working directory
+ *
+ */
+const ENV_PATH = '.env';
+const LOGS_DIR = './logs';
 
 /**
  * Task 2:
@@ -62,7 +68,7 @@ const checkEnv = () => {
   }
 
   /**
-   * Task 3:
+   * Subtask 1:
    *
    * If a command line argument with name '--bypass' or '-b' passed skip the env configuration
    */
@@ -81,7 +87,7 @@ const checkEnv = () => {
 };
 
 /**
- * Task 4:
+ * Task 3:
  *
  * Use the process to handle uncaught exception errors
  */
