@@ -6,8 +6,10 @@ Node.js Workshop
 
 In this branch we will introduce the Node.js module system.
 
-We will implement a custom module named **logger.js** to handle the logging of our application. Also we will move the **nwsGetEnvContent**
-into a separated module.
+We will implement two custom modules.
+
+- **logger.js** for handling the logging of our application.
+- **utilities.js** for implementing utilities functions.
 
 Usage:
 
