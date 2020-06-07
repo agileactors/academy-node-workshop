@@ -56,4 +56,3 @@ The project directory should be:
 ## Covers
 
 - Node.js module system
-- Node.js debugging
