@@ -1,11 +1,5 @@
 const { ENVVALUES } = require('./constants');
 
-/**
- * Task 1:
- *
- * Use the path module and update the paths using the cwd.
- */
-
 const ENV_PATH = '.env'; // path to the .env file
 const LOGS_DIR = './logs'; // path to the logs directory
 
@@ -21,7 +15,7 @@ const nwsGetEnvContent = () => {
 };
 
 /**
- * Task 2: checkEnv implementation
+ * Task 1: checkEnv implementation
  *
  * Use the fs apis to check if the .env file exists in the root directory.
  * If the file does not exists call the createEnv function.
@@ -43,7 +37,7 @@ const checkEnv = () => {
 };
 
 /**
- * Task 3: readEnv implementation
+ * Task 2: readEnv implementation
  *
  * Use the fs apis to read the content of the .env file and print it to
  * the console. Each value has to be printed in a new line.
@@ -57,7 +51,7 @@ const readEnv = () => {
 };
 
 /**
- * Task 4: createEnv implementation
+ * Task 3: createEnv implementation
  *
  * Use the fs apis to write the content values (envFileContent variable) 
  * to a file with name .env in the root directory.
