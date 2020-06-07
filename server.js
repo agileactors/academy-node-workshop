@@ -8,13 +8,14 @@ const path = require('path');
 const logger = require('./libraries/logger');
 const chatHandler = require('./handlers/chat');
 
+// get the PORT from .env
 const PORT = process.env.PORT || 8001;
-
-// create a server instance
-const server = http.createServer();
 
 // get the views directory
 const VIEWS_DIR = path.join(__dirname, 'views');
+
+// create a server instance
+const server = http.createServer();
 
 // request handlers
 server.on('request', (request, response) => {
