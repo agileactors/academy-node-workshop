@@ -1,9 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const { platform, arch, release, totalmem, freemem } = require('os');
-
 const logger = require('./libraries/logger');
-const { nwsGetEnvContent } = require('./libraries/utilities');
+const { nwsGetEnvContent, printSystem } = require('./libraries/utilities');
 
 const cwd = process.cwd();
 const ENV_PATH = path.join(cwd, '.env');
@@ -29,22 +27,19 @@ const readEnv = () => {
 
     console.log(`Found configuration: \n${data}\n`);
   } catch (error) {
-    console.error(error);
+    logger.log(error.message);
   }
 };
 
 const checkEnv = () => {
-  console.log(`Your Operating System: ${platform()} ${arch()} ${release()}`);
-  console.log(
-    `${((freemem() / totalmem()) * 100).toFixed(2)} % of your RAM is free.\n`
-  );
+  printSystem();
 
   try {
     if (!fs.existsSync(LOGS_DIR)) {
       fs.mkdirSync(LOGS_DIR);
     }
   } catch (error) {
-    console.log(error);
+    logger.log(error.message);
   }
 
   if (!bypassCheck) {
