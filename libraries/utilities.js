@@ -1,8 +1,6 @@
 /**
  * App utilities
  */
-
-const { platform, arch, release, totalmem, freemem } = require('os');
 const { ENVVALUES } = require('../constants');
 
 const nwsFormatDate = date => {
@@ -46,12 +44,4 @@ const nwsConcatValues = args => {
   }, '');
 };
 
-const printSystem = () => {
-  console.log(`Your Operating System: ${platform()} ${arch()} ${release()}`);
-  console.log(
-    `${((freemem() / totalmem()) * 100).toFixed(2)} % of your RAM is free.\n`
-  );
-};
-
-exports.printSystem = printSystem;
 exports.nwsConcatValues = nwsConcatValues;
