@@ -6,10 +6,9 @@ const { nwsFormatDate } = require('./utilities');
  * Implement the logger log function.
  *
  * 1. It should writes debug statements to the console
- * 2. it should writes debug statements to the debug.log file
+ * 2. it should writes debug statements to the debug.log file located in the logs directory.
  * 3. It should writes the timestamp at the beggining of each line
- * 4. It should write the current working directory path
- * 5. Can handle multiple values and types such as <string | object | array> (bonus)
+ * 4. Can handle multiple values and types such as <string | object | array> (bonus)
  *
  * Usage:
  * logger.log(value1<string | object | array>, value2)
@@ -28,6 +27,9 @@ const logger = {
     const now = new Date();
     const nowFormat = nwsFormatDate(now);
 
+    /**
+     * Hint: use the process api to get the path of the logs directory
+     */
     /** TODO: provide implementation */
   },
 };
