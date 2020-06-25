@@ -21,6 +21,8 @@ const middleware = async ({ request, response }, next) => {
    * a file with the URL as the filename. If the file exists send the contents to the
    * client else call the next middleware
    *
+   * Subtask: if path is not file (e.g a route /home) continue the chain..
+   *
    */
 
   next(); // remove before start the task
