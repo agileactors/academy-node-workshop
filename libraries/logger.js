@@ -20,27 +20,23 @@ const logger = {
   log(...args) {
     const now = new Date();
     const nowFormat = nwsFormatDate(now);
+    const debugFile = path.join(LOGS_PATH, 'debug.log');
+    const data = nwsConcatValues(args);
 
     args.unshift(`${nowFormat}: `);
 
     if (this.logToFile) {
-      this.debug(args);
+      try {
+        fs.writeFileSync(debugFile, data, { flag: 'a' });
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     args.unshift('\n');
 
     if (this.logToConsole) {
       console.log.apply(null, args);
-    }
-  },
-  debug(args) {
-    const debugFile = path.join(LOGS_PATH, 'debug.log');
-    const data = nwsConcatValues(args);
-
-    try {
-      fs.writeFileSync(debugFile, data, { flag: 'a' });
-    } catch (error) {
-      console.log(error);
     }
   },
 };
