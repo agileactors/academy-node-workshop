@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Academy - Chat App</title>
+    <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/analytics.css" />
     <link rel="stylesheet" href="css/chat.css" />
-    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <div class="app">
@@ -17,40 +17,42 @@
             <span>connected</span>
           </div>
         </div>
-        <div class="stati turquoise ">
+        <div class="stati turquoise">
           <div>
             <b class="total-messages">0</b>
             <span>messages</span>
           </div>
         </div>
-        <div class="stati turquoise ">
+        <div class="stati turquoise">
           <div>
             <b class="per-minute">0</b>
             <span>average/minute</span>
           </div>
         </div>
       </div>
-      <div class="chat-container">
-        <section class="msger">
-          <header class="msger-header">
-            <div class="msger-header-title">
+      <div class="container">
+        <section class="messages">
+          <header class="messages__header">
+            <div class="messages__header-title">
               <i class="fas fa-comment-alt"></i> Academy Node.js chat
             </div>
-            <div class="msger-header-options">
+            <div class="messages__header-options">
               <span><i class="fas fa-cog"></i></span>
             </div>
           </header>
-          <main class="msger-chat"></main>
-          <form class="msger-input-area">
+          <div class="messages__chat"></div>
+          <form class="messages__input-area">
             <input
               type="text"
-              class="msger-input"
+              class="messages__input"
               placeholder="Enter your message..."
             />
-            <button class="msger-send-btn">Send</button>
+            <button class="messages__send-btn">Send</button>
           </form>
         </section>
       </div>
     </div>
+    <script src="https://kit.fontawesome.com/efeb466a56.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
   </body>
 </html>
