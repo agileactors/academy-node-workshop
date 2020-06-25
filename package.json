@@ -2,7 +2,7 @@
   "name": "academy-node-workshop",
   "version": "1.0.0",
   "description": "Node.JS: Looking under the hood",
-  "main": "index.js",
+  "main": "init.js",
   "scripts": {
     "setup": "node init.js --bypass",
     "lint": "eslint .",
