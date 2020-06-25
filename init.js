@@ -26,7 +26,7 @@ const nwsGetEnvContent = () => {
  * Note: if an error occurs throw an exception.
  */
 
-const checkEnv = () => {
+function checkEnv() {
   /**
    * Subtask 1:
    *
@@ -34,7 +34,7 @@ const checkEnv = () => {
    * `running on darwin x64 v19.0.3 and the 56% of your RAM is free. }`;
    */
   // TODO: provide implementation
-};
+}
 
 /**
  * Task 2: readEnv implementation
@@ -46,9 +46,9 @@ const checkEnv = () => {
  * Note: if an error occurs throw an exception.
  */
 
-const readEnv = () => {
+function readEnv() {
   // TODO: provide implementation
-};
+}
 
 /**
  * Task 3: createEnv implementation
@@ -62,11 +62,11 @@ const readEnv = () => {
  * Note: if an error occurs throw an exception.
  */
 
-const createEnv = () => {
+function createEnv() {
   const envFileContent = nwsGetEnvContent();
 
   // TODO: provide implementation
-};
+}
 
 // starting point
 checkEnv();
