@@ -1,6 +1,4 @@
-/* eslint-disable */
-
-const fetch = window.fetch;
+const { fetch } = window;
 const { href: URI } = window.location;
 const socketURI = URI.split('/')
   .slice(0, -1)
@@ -22,7 +20,9 @@ const nwsFormatDate = date => {
 };
 
 function createElement(options) {
-  let el, a, i;
+  let el;
+  let key;
+  let i;
 
   if (!options.tagName) {
     el = document.createDocumentFragment();
@@ -34,8 +34,10 @@ function createElement(options) {
     }
 
     if (options.attributes) {
-      for (a in options.attributes) {
-        el.setAttribute(a, options.attributes[a]);
+      for (key in options.attributes) {
+        if (Object.prototype.hasOwnProperty.call(options.attributes, key)) {
+          el.setAttribute(key, options.attributes[key]);
+        }
       }
     }
 
@@ -49,7 +51,7 @@ function createElement(options) {
   }
 
   if (options.childs && options.childs.length) {
-    for (i = 0; i < options.childs.length; i++) {
+    for (i = 0; i < options.childs.length; i += 1) {
       el.appendChild(
         options.childs[i] instanceof window.HTMLElement
           ? options.childs[i]
@@ -166,7 +168,7 @@ async function init() {
 
 document.addEventListener(
   'DOMContentLoaded',
-  function() {
+  function start() {
     init();
   },
   false
