@@ -65,7 +65,7 @@ function createElement(options) {
 
 async function init() {
   const messagesElement = document.querySelector('div.messages__chat');
-  const textElement = document.querySelector('div.messages__input');
+  const textElement = document.querySelector('input.messages__input');
   const buttonElement = document.querySelector('button.messages__send-btn');
   const usersConnectedElement = document.querySelector('b.connected-users');
   const perMinnuteElement = document.querySelector('b.per-minute');
