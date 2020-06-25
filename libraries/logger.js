@@ -1,4 +1,4 @@
-const { nwsFormatDate } = require('./utilities');
+const { nwsFormatDate, nwsConcatValues } = require('./utilities');
 
 /**
  * Task 2
@@ -26,6 +26,7 @@ const logger = {
   log(...args) {
     const now = new Date();
     const nowFormat = nwsFormatDate(now);
+    const data = nwsConcatValues(args);
 
     /**
      * Hint: use the process api to get the path of the logs directory
