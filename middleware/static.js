@@ -4,7 +4,7 @@ const path = require('path');
 const logger = require('../libraries/logger');
 const { MIMETYPES } = require('../constants');
 
-// get root directory
+// get current working directory (root)
 const rootDir = process.cwd();
 
 // get static-files folder
