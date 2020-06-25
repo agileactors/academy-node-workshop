@@ -22,32 +22,12 @@ const nwsGetEnvContent = () => {
   return envValues.join('\n');
 };
 
-const createEnv = () => {
-  const envFileContent = nwsGetEnvContent();
-
-  fs.writeFile(ENV_PATH, envFileContent, 'utf8', err => {
-    if (err) {
-      throw err;
-    }
-
-    console.log('Finished .env configuration.');
-  });
-};
-
-const readEnv = () => {
-  try {
-    const data = fs.readFileSync(ENV_PATH, 'utf8');
-
-    console.log(`Found configuration: \n${data}\n`);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const checkEnv = () => {
-  console.log(`Your Operating System: ${platform()} ${arch()} ${release()}`);
+function checkEnv() {
   console.log(
-    `${((freemem() / totalmem()) * 100).toFixed(2)} % of your RAM is free.\n`
+    `Your Operating System: ${platform()} ${arch()} ${release()}\n${(
+      (freemem() / totalmem()) *
+      100
+    ).toFixed(2)} % of your RAM is free.`
   );
 
   try {
@@ -62,26 +42,44 @@ const checkEnv = () => {
     fs.open(ENV_PATH, 'wx', err => {
       if (err) {
         if (err.code === 'EEXIST') {
-          return readEnv();
+          return readEnv(); // eslint-disable-line
         }
 
         throw err;
       }
 
-      createEnv();
+      createEnv(); // eslint-disable-line
     });
   } else {
     console.log('Bypassing configuration..');
   }
-};
+}
+
+function createEnv() {
+  const envFileContent = nwsGetEnvContent();
+
+  fs.writeFile(ENV_PATH, envFileContent, 'utf8', err => {
+    if (err) {
+      throw err;
+    }
+
+    console.log('Finished .env configuration.');
+  });
+}
+
+function readEnv() {
+  try {
+    const data = fs.readFileSync(ENV_PATH, 'utf8');
+
+    console.log(`Found configuration: \n${data}\n`);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 process.on('uncaughtException', err => {
   console.log(err.stack);
-
-  /**
-   * Task 3: Use the logger to log the message
-   */
-  console.log(`pid ${process.pid}\n${err.message}`);
+  logger.log(`pid ${process.pid}\n${err.message}`);
   process.exit(0);
 });
 
