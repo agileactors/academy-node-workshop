@@ -32,9 +32,11 @@ const LOGS_DIR = './logs';
 const args = [];
 
 function checkEnv() {
-  console.log(`Your Operating System: ${platform()} ${arch()} ${release()}`);
   console.log(
-    `${((freemem() / totalmem()) * 100).toFixed(2)} % of your RAM is free.\n`
+    `Your Operating System: ${platform()} ${arch()} ${release()}\n${(
+      (freemem() / totalmem()) *
+      100
+    ).toFixed(2)} % of your RAM is free.\n `
   );
 
   try {

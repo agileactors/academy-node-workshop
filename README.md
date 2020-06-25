@@ -19,6 +19,7 @@ const path = require('path');
 Documentation:
 
 - [process](https://nodejs.org/api/process.html)
+- [__dirname](https://nodejs.org/docs/latest/api/modules.html#modules_dirname)
 - [path](https://nodejs.org/api/path.html)
 
 Open the **init.js** file located in the root directory of the app to start writing your code.
