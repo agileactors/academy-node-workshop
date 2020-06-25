@@ -4,9 +4,8 @@ const path = require('path');
 const { ENVVALUES } = require('./constants');
 const logger = require('./libraries/logger');
 
-const cwd = process.cwd();
-const ENV_PATH = path.join(cwd, '.env');
-const LOGS_DIR = path.join(cwd, 'logs');
+const ENV_PATH = path.join(__dirname, '.env');
+const LOGS_DIR = path.join(__dirname, 'logs');
 const args = process.argv.slice(2, process.argv.length);
 const bypassCheck = args.some(arg => arg === '--bypass' || '-b');
 
