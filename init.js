@@ -2,6 +2,7 @@ const fs = require('fs');
 const { platform, arch, release, totalmem, freemem } = require('os');
 const path = require('path');
 const { ENVVALUES } = require('./constants');
+const logger = require('./libraries/logger');
 
 const cwd = process.cwd();
 const ENV_PATH = path.join(cwd, '.env');
@@ -78,7 +79,6 @@ function readEnv() {
 }
 
 process.on('uncaughtException', err => {
-  console.log(err.stack);
   logger.log(`pid ${process.pid}\n${err.message}`);
   process.exit(0);
 });
