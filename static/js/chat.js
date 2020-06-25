@@ -62,9 +62,9 @@ function createElement(options) {
 }
 
 async function init() {
-  const messagesElement = document.querySelector('.msger-chat');
-  const textElement = document.querySelector('.msger-input');
-  const buttonElement = document.querySelector('button.msger-send-btn');
+  const messagesElement = document.querySelector('div.messages__chat');
+  const textElement = document.querySelector('div.messages__input');
+  const buttonElement = document.querySelector('button.messages__send-btn');
   const usersConnectedElement = document.querySelector('b.connected-users');
   const perMinnuteElement = document.querySelector('b.per-minute');
   const totalMessagesElement = document.querySelector('b.total-messages');
@@ -78,42 +78,41 @@ async function init() {
     const { username, text: messageText, timestamp } = message;
     const messageTimestamp = new Date(timestamp * 1000);
     const messageTimeFormat = nwsFormatDate(messageTimestamp);
-    const position = username === usernameFromLocalStorage ? 'left' : 'right';
 
     const messageElement = createElement({
       tagName: 'div',
-      className: `msg ${position}-msg`,
+      className: 'message',
       childs: [
         {
           tagName: 'div',
-          className: 'msg-img',
+          className: 'message__img',
           attributes: {
             style: 'background-image: url(images/avatar.svg)',
           },
         },
         {
           tagName: 'div',
-          className: 'msg-bubble',
+          className: 'message__bubble',
           childs: [
             {
               tagName: 'div',
-              className: 'msg-info',
+              className: 'message__info',
               childs: [
                 {
                   tagName: 'div',
-                  className: 'msg-info-name',
+                  className: 'message__info-name',
                   html: username,
                 },
                 {
                   tagName: 'div',
-                  className: 'msg-info-time',
+                  className: 'message__info-time',
                   html: messageTimeFormat,
                 },
               ],
             },
             {
               tagName: 'div',
-              className: 'msg-text',
+              className: 'message__text',
               html: messageText,
             },
           ],
