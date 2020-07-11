@@ -15,29 +15,6 @@ const nwsGetEnvContent = () => {
 };
 
 /**
- * Task 1: checkEnv implementation
- *
- * Use the fs apis to check if a .env file exists in the root directory.
- *
- * If the file does not exists call the createEnv function and create a .env file.
- * If the file exists call the readEnv function to read the contents of the file.
- * Finally check if a folder with name "logs" exists (LOGS_DIR) in the root directory. If not exists create it.
- *
- * Note: use appropriate flag for read and writing.
- * Note: if an error occurs throw an exception.
- */
-
-function checkEnv() {
-  /**
-   * Subtask 1:
-   *
-   * use the os module and print the following information to the console:
-   * `running on darwin x64 v19.0.3 and the 56% of your RAM is free. }`;
-   */
-  // TODO: provide implementation
-}
-
-/**
  * Task 2: readEnv implementation
  *
  * Use the fs apis to read the content of the .env file and print it to
@@ -64,6 +41,29 @@ function readEnv() {
 
 function createEnv() {
   const envFileContents = nwsGetEnvContent();
+  // TODO: provide implementation
+}
+
+/**
+ * Task 1: checkEnv implementation
+ *
+ * Use the fs apis to check if a .env file exists in the root directory.
+ *
+ * If the file does not exists call the createEnv function and create a .env file.
+ * If the file exists call the readEnv function to read the contents of the file.
+ * Finally check if a folder with name "logs" exists (LOGS_DIR) in the root directory. If not exists create it.
+ *
+ * Note: use appropriate flag for read and writing.
+ * Note: if an error occurs throw an exception.
+ */
+
+function checkEnv() {
+  /**
+   * Subtask 1:
+   *
+   * use the os module and print the following information to the console:
+   * `running on darwin x64 v19.0.3 and the 56% of your RAM is free. }`;
+   */
   // TODO: provide implementation
 }
 
