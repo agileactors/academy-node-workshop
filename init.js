@@ -17,9 +17,10 @@ const nwsGetEnvContent = () => {
 /**
  * Task 1: checkEnv implementation
  *
- * Use the fs apis to check if the .env file exists in the root directory.
- * If the file does not exists call the createEnv function.
- * If the file exists call the readEnv function.
+ * Use the fs apis to check if a .env file exists in the root directory.
+ *
+ * If the file does not exists call the createEnv function and create a .env file.
+ * If the file exists call the readEnv function to read the contents of the file.
  * Finally check if a folder with name "logs" exists (LOGS_DIR) in the root directory. If not exists create it.
  *
  * Note: use appropriate flag for read and writing.
@@ -53,18 +54,16 @@ function readEnv() {
 /**
  * Task 3: createEnv implementation
  *
- * Use the fs apis to write the content values (envFileContent variable) 
+ * Use the fs apis to write the content values (envFileContents variable) 
  * to a file with name .env in the root directory.
  * When the operation completes print the message 'Finish configuration.' to the console.
- * If an error occurs throw an exception.
  
  * Note: use utf8 encoding.
  * Note: if an error occurs throw an exception.
  */
 
 function createEnv() {
-  const envFileContent = nwsGetEnvContent();
-
+  const envFileContents = nwsGetEnvContent();
   // TODO: provide implementation
 }
 
