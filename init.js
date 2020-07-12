@@ -31,41 +31,6 @@ const LOGS_DIR = './logs';
  */
 const args = [];
 
-function checkEnv() {
-  console.log(
-    `Your Operating System: ${platform()} ${arch()} ${release()}\n${(
-      (freemem() / totalmem()) *
-      100
-    ).toFixed(2)} % of your RAM is free.\n `
-  );
-
-  try {
-    if (!fs.existsSync(LOGS_DIR)) {
-      fs.mkdirSync(LOGS_DIR);
-    }
-  } catch (error) {
-    console.log(error);
-  }
-
-  /**
-   * Subtask 1:
-   *
-   * If a command line argument with name '--bypass' or '-b' passed skip the env configuration
-   */
-
-  fs.open(ENV_PATH, 'wx', err => {
-    if (err) {
-      if (err.code === 'EEXIST') {
-        return readEnv(); // eslint-disable-line
-      }
-
-      throw err;
-    }
-
-    createEnv(); // eslint-disable-line
-  });
-}
-
 function createEnv() {
   const envFileContent = nwsGetEnvContent();
 
@@ -88,6 +53,40 @@ function readEnv() {
   }
 }
 
+function checkEnv() {
+  console.log(
+    `Your Operating System: ${platform()} ${arch()} ${release()}\n${(
+      (freemem() / totalmem()) *
+      100
+    ).toFixed(2)} % of your RAM is free.\n `
+  );
+
+  try {
+    if (!fs.existsSync(LOGS_DIR)) {
+      fs.mkdirSync(LOGS_DIR);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+
+  /**
+   * Subtask 1:
+   *
+   * If a command line argument with name '--bypass' or '-b' passed skip the env configuration.
+   */
+
+  fs.open(ENV_PATH, 'wx', err => {
+    if (err) {
+      if (err.code === 'EEXIST') {
+        return readEnv();
+      }
+
+      throw err;
+    }
+
+    createEnv();
+  });
+}
 /**
  * Task 3:
  *
