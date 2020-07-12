@@ -1,7 +1,7 @@
 /**
  * Logger module
  *
- * Desc: Writes debug statements in console or in debug.log file
+ * Writes debug statements in console or in debug.log file
  * Usage: logger.log(value<string> | <object> | <array>)
  * Return: void
  *
@@ -16,15 +16,21 @@ const LOGS_PATH = path.join(cwd, 'logs');
 
 const logger = {
   logToFile: true,
-  logToConsole: true,
+  logToConsole: false,
   log(...args) {
     const now = new Date();
     const nowFormat = nwsFormatDate(now);
 
-    args.unshift(`${nowFormat}: `);
+    args.unshift(`${nowFormat}:`);
+    const debugFile = path.join(LOGS_PATH, 'debug.log');
+    const data = nwsConcatValues(args);
 
     if (this.logToFile) {
-      this.debug(args);
+      try {
+        fs.writeFileSync(debugFile, `${data}\n`, { flag: 'a' });
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     args.unshift('\n');
@@ -32,16 +38,6 @@ const logger = {
     if (this.logToConsole) {
       console.log.apply(null, args);
     }
-  },
-  debug(args) {
-    const debugFile = path.join(LOGS_PATH, 'debug.log');
-    const data = nwsConcatValues(args);
-
-    fs.writeFile(debugFile, `${data}\n`, { flag: 'a' }, err => {
-      if (err) {
-        throw err;
-      }
-    });
   },
 };
 
