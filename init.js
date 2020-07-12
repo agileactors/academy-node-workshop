@@ -22,6 +22,28 @@ const nwsGetEnvContent = () => {
   return envValues.join('\n');
 };
 
+function createEnv() {
+  const envFileContent = nwsGetEnvContent();
+
+  fs.writeFile(ENV_PATH, envFileContent, 'utf8', err => {
+    if (err) {
+      throw err;
+    }
+
+    console.log('Finished .env configuration.');
+  });
+}
+
+function readEnv() {
+  try {
+    const data = fs.readFileSync(ENV_PATH, 'utf8');
+
+    console.log(`Found configuration: \n${data}\n`);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 function checkEnv() {
   console.log(
     `Your Operating System: ${platform()} ${arch()} ${release()}\n${(
@@ -42,38 +64,16 @@ function checkEnv() {
     fs.open(ENV_PATH, 'wx', err => {
       if (err) {
         if (err.code === 'EEXIST') {
-          return readEnv(); // eslint-disable-line
+          return readEnv();
         }
 
         throw err;
       }
 
-      createEnv(); // eslint-disable-line
+      createEnv();
     });
   } else {
     console.log('Bypassing configuration..');
-  }
-}
-
-function createEnv() {
-  const envFileContent = nwsGetEnvContent();
-
-  fs.writeFile(ENV_PATH, envFileContent, 'utf8', err => {
-    if (err) {
-      throw err;
-    }
-
-    console.log('Finished .env configuration.');
-  });
-}
-
-function readEnv() {
-  try {
-    const data = fs.readFileSync(ENV_PATH, 'utf8');
-
-    console.log(`Found configuration: \n${data}\n`);
-  } catch (error) {
-    console.error(error);
   }
 }
 
