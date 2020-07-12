@@ -1,7 +1,7 @@
 /**
  * Logger module
  *
- * Desc: Writes debug statements in console or in debug.log file
+ * Writes debug statements in console or in debug.log file
  * Usage: logger.log(value<string> | <object> | <array>)
  * Return: void
  *
