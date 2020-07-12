@@ -20,14 +20,14 @@ const logger = {
   log(...args) {
     const now = new Date();
     const nowFormat = nwsFormatDate(now);
+
+    args.unshift(`${nowFormat}:`);
     const debugFile = path.join(LOGS_PATH, 'debug.log');
     const data = nwsConcatValues(args);
 
-    args.unshift(`${nowFormat}: `);
-
     if (this.logToFile) {
       try {
-        fs.writeFileSync(debugFile, data, { flag: 'a' });
+        fs.writeFileSync(debugFile, `${data}\n`, { flag: 'a' });
       } catch (error) {
         console.log(error);
       }
