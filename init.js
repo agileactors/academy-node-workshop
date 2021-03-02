@@ -7,10 +7,8 @@ const { ENVVALUES } = require('./constants');
 const nwsGetEnvContent = () => {
   const envValues = ENVVALUES.reduce((acc, envValue) => {
     const { name, value } = envValue;
-
     return [...acc, `${name}=${value}`];
   }, []);
-
   return envValues.join('\n');
 };
 
@@ -21,7 +19,6 @@ const nwsGetEnvContent = () => {
  *
  */
 const ENV_PATH = '.env';
-const LOGS_DIR = './logs';
 
 /**
  * Task 2:
@@ -33,12 +30,10 @@ const args = [];
 
 function createEnv() {
   const envFileContent = nwsGetEnvContent();
-
   fs.writeFile(ENV_PATH, envFileContent, 'utf8', err => {
     if (err) {
       throw err;
     }
-
     console.log('Finished .env configuration');
   });
 }
@@ -46,7 +41,6 @@ function createEnv() {
 function readEnv() {
   try {
     const data = fs.readFileSync(ENV_PATH, 'utf8');
-
     console.log(`Found configuration: \n${data}\n`);
   } catch (error) {
     console.error(error);
@@ -61,32 +55,20 @@ function checkEnv() {
     ).toFixed(2)} % of your RAM is free.\n `
   );
 
-  try {
-    if (!fs.existsSync(LOGS_DIR)) {
-      fs.mkdirSync(LOGS_DIR);
-    }
-  } catch (error) {
-    console.log(error);
-  }
-
   /**
    * Subtask 1:
    *
    * If a command line argument with name '--bypass' or '-b' passed skip the env configuration.
    */
 
-  fs.open(ENV_PATH, 'wx', err => {
-    if (err) {
-      if (err.code === 'EEXIST') {
-        return readEnv();
-      }
-
-      throw err;
-    }
-
+  const fileExists = fs.existsSync(ENV_PATH);
+  if (!fileExists) {
     createEnv();
-  });
+    return;
+  }
+  readEnv();
 }
+
 /**
  * Task 3:
  *
