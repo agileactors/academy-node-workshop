@@ -1,7 +1,6 @@
 const { ENVVALUES } = require('./constants');
 
 const ENV_PATH = '.env'; // path to the .env file
-const LOGS_DIR = './logs'; // path to the logs directory
 
 // Don't edit
 const nwsGetEnvContent = () => {
@@ -49,22 +48,22 @@ function createEnv() {
  *
  * Use the fs apis to check if a .env file exists in the root directory.
  *
+ * Subtask 1:
+ *
+ * use the os module and print the following information to the console:
+ * `running on darwin x64 v19.0.3 and the 56% of your RAM is free. }`;
+ *
+ * Subtask 2:
+ *
  * If the file does not exists call the createEnv function and create a .env file.
  * If the file exists call the readEnv function to read the contents of the file.
- * Finally check if a folder with name "logs" exists (LOGS_DIR) in the root directory. If not exists create it.
  *
- * Note: use appropriate flag for read and writing.
  * Note: if an error occurs throw an exception.
  */
 
 function checkEnv() {
-  /**
-   * Subtask 1:
-   *
-   * use the os module and print the following information to the console:
-   * `running on darwin x64 v19.0.3 and the 56% of your RAM is free. }`;
-   */
   // TODO: provide implementation
+  // HINT: use the `existsSync` method from the fs module
 }
 
 // starting point

@@ -11,25 +11,50 @@ The **fs module** provides an API for interacting with the file system. All file
 Usage:
 
 ```js
+// The Node.js File System (fs) module can be imported using the following syntax.
+
 const fs = require('fs');
 
-// synchronous api
-fs.unlink('/tmp/hello', err => {
+/**
+ * Reading a file with node.js
+ *
+ * fs.readFile(file, callback)
+ */
+
+fs.readFile('example.txt', (err, data) => {
   if (err) {
     throw err;
   }
-
-  console.log('successfully deleted /tmp/hello');
+  console.log(data.toString());
 });
 
-// asynchronous api
-try {
-  fs.unlinkSync('/tmp/hello');
-  console.log('successfully deleted /tmp/hello');
-} catch (err) {
-  // handle the error..
-}
+// synchronous version (blocks the event-loop)
+
+const data = fs.readFileSync('example.txt', { encoding: 'utf-8' });
+
+/**
+ * Writing a file with node.js
+ *
+ * fs.writeFile(file, data, callback)
+ */
+
+fs.writeFile('example.txt', 'Learn Teach Code Seoul', err => {
+  if (err) {
+    throw err;
+  }
+  console.log('Data written successfully!');
+});
 ```
+
+## Synchronous vs Asynchronous
+
+- Every method in the fs module has synchronous as well as asynchronous forms.
+
+- Asynchronous methods take the last parameter as the completion function callback and the first parameter of the callback function as error.
+
+- It is better to use an asynchronous method instead of a synchronous method, as the former never blocks a program during its execution, whereas the second one does.
+
+- **Asynchronous programming will likely take some time to grasp and master.**
 
 The **os module** provides operating system-related utility methods and properties.
 
@@ -80,7 +105,6 @@ The project directory should be:
     |-- README.md
     |-- constants.js
     |-- init.js
-    |-- logs
 </pre>
 
 ## Covers
