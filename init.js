@@ -2,7 +2,6 @@ const fs = require('fs');
 const { platform, arch, release, totalmem, freemem } = require('os');
 const path = require('path');
 const { ENVVALUES } = require('./constants');
-const logger = require('./libraries/logger');
 
 const ENV_PATH = path.join(__dirname, '.env');
 
@@ -12,6 +11,7 @@ const bypassCheck = args.some(arg => arg === '--bypass' || '-b');
 /**
  * Task 1: Move to /libraries/utilities.js
  */
+
 const nwsGetEnvContent = () => {
   const envValues = ENVVALUES.reduce((acc, envValue) => {
     const { name, value } = envValue;
@@ -60,8 +60,12 @@ function checkEnv() {
   readEnv();
 }
 
+/**
+ * Task 3: Use the logger module to handle logging
+ */
+
 process.on('uncaughtException', err => {
-  logger.log(`pid ${process.pid}\n${err.message}`);
+  console.log(`pid ${process.pid}\n${err.message}`);
   process.exit(0);
 });
 

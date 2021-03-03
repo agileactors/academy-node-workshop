@@ -24,11 +24,9 @@ exports.nwsFormatDate = nwsFormatDate;
 
 const nwsConcatValues = args => {
   const values = Object.values(args);
-
   return values.reduce((txt, element) => {
     let result = txt;
     result += String(JSON.stringify(element));
-
     return result;
   }, '');
 };
