@@ -24,10 +24,8 @@ exports.nwsFormatDate = nwsFormatDate;
 const nwsGetEnvContent = () => {
   const envValues = ENVVALUES.reduce((acc, envValue) => {
     const { name, value } = envValue;
-
     return [...acc, `${name}=${value}`];
   }, []);
-
   return envValues.join('\n');
 };
 
@@ -35,11 +33,9 @@ exports.nwsGetEnvContent = nwsGetEnvContent;
 
 const nwsConcatValues = args => {
   const values = Object.values(args);
-
   return values.reduce((txt, element) => {
     let result = txt;
     result += String(JSON.stringify(element));
-
     return result;
   }, '');
 };
