@@ -3,7 +3,7 @@ const path = require('path');
 const { platform, arch, release, totalmem, freemem } = require('os');
 const { ENVVALUES } = require('./constants');
 
-// Dont edit
+// Don't edit
 const nwsGetEnvContent = () => {
   const envValues = ENVVALUES.reduce((acc, envValue) => {
     const { name, value } = envValue;
