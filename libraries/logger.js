@@ -20,6 +20,23 @@ const { nwsFormatDate, nwsConcatValues } = require('./utilities');
  * ["day:month:year hours:minutes","some info" | { error: 'some error } | ['some item1', 'some item2'], directory]
  */
 
+/**
+ * Uncomment the following lines of code before implementing the
+ * task. (implement what's needed)
+ */
+
+//
+// const LOGS_PATH = ...
+//
+// try {
+//   if (!fs.existsSync(LOGS_PATH)) {
+//     fs.mkdirSync(LOGS_PATH);
+//   }
+// } catch (err) {
+//   console.log(err);
+// }
+//
+
 const logger = {
   logToFile: true,
   logToConsole: true,
