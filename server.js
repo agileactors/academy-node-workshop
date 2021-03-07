@@ -2,36 +2,30 @@
  * Node.js HTTP server
  */
 const http = require('http');
-const logger = require('./libraries/logger');
 
 /**
- * Task 1: create a simple http server
+ * Task 1: Create a simple http server that responds with the text "Hello World!"
  *
  * Use the http module to create an http server
+ * Hint: use the PORT env variable as the server's listening port (if PORT is not defined, default to 8001)
  *
- * Hint: use the PORT env variable as the server's listening port
- 
-
  * Task 2: Create a simple http router
  *
  * Using the request.url property create the following endpoints:
+ * Hint: use the `url` module to extract the pathname from the url
+ *       [url.parse(someUrl).pathname]
  *
- *  1. '/' => serves views/home.html
- *  2. '/chat' => <h2>Chat page</h2>
- *  3. if the requested route not found return a http 404 with message 'Not found'
- * 
- * Hint: use utf8 encoding.
+ *  1. '/' => <h1>Index Page</h1>
+ *  2. '/chat' => <h1>Chat page</h1>
+ *  3. If the requested route not found return a http 404 with message 'Not found'
+ *
  * Hint: The response should be in html or text format so you need to
  * set the appropriate headers before sending the response.
  *
- 
+ * Task 3: Catch unhandled errors
  *
- * Task 3: start the server
+ * Use the global process object and catch the 'uncaughtException' and
+ * 'unhandledRejection' errors, use the logger to log them to the console
+ * and exit the process.
  *
  */
-
-// Do not edit
-process.on('uncaughtException', err => {
-  logger.log(`pid ${process.pid}: ${err.message}`);
-  process.exit(0);
-});

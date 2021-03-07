@@ -18,24 +18,21 @@ Documentation:
 
 ## Branch Tasks
 
-1. Use the `process` global to get the `PORT` number from the **.env** file.
-2. Create an http server using the `http` module.
-3. Then start the server using the **listen** method and pass the **PORT** number. When the server is up use the logger to
-   log the message:
+1. Create a simple http server that responds with the text "Hello World!".
 
-   `Server listening on port ${PORT}`.
+2. Create a simple http router. The router should handle the following **HTTP GET** requests:
 
-4. Create a simple http router. The router should handle the following **HTTP GET** requests:
-
-   Route `/home`:
+   Route `/`:
 
    - method: GET
-   - response (html): views/index.html file
+   - response (html): \<h1>Index Page\</h1>
 
    Route `/chat`:
 
    - method: GET
-   - response (html): \<h1>Chat page</h1>
+   - response (html): \<h1>Chat page\</h1>
+
+3. Catch unhandled errors
 
 Open the **server.js** file placed in the root directory of the app to start writing your code.
 
@@ -52,9 +49,9 @@ npm start
 - Use the `DevTools` to debug your code.
 
 - Use your favorite browser to test the requests
-  `e.g http://localhost:8001/about`
+  `e.g http://localhost:8001/chat`
 
 ## Covers
 
 - http module
-- debugging
+- url module
