@@ -4,7 +4,7 @@
 
 const http = require('http');
 const logger = require('./libraries/logger');
-// const chatHandler = require('./handlers/chat'); // uncomment for next task
+const chatHandler = require('./handlers/chat');
 
 // get the PORT from .env
 const PORT = process.env.PORT || 8001;
@@ -15,15 +15,14 @@ const server = http.createServer();
 // request handlers
 server.on('request', (request, response) => {
   const { pathname } = new URL(request.url);
-
   switch (pathname) {
     case '/':
       response.writeHead(200, { 'Content-Type': 'text/html' });
       response.end('<h1>Index Page</h1>');
       break;
-    case '/chat':
+    case '/about':
       response.writeHead(200, { 'Content-Type': 'text/html' });
-      response.end('<h1>Chat Page</h1>');
+      response.end('<h1>About Page</h1>');
       break;
     //
     // Uncomment for next tasks

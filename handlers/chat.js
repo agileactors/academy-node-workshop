@@ -10,9 +10,10 @@ const rootDir = process.cwd();
  * Task 1: Create a handler that responds with html
  *
  * Use the fs module to read the chat.html file as a stream and send it
- * as the response.
+ * as the response. (try first with the fs.readFile API)
  *
  * Hint: Use the pipe operator between the fs and response streams
+ *       (Fun-Fact: The response object is also a stream thus pipeable)
  *
  */
 
