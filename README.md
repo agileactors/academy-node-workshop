@@ -28,8 +28,7 @@ The static middleware is responsible to inspect the request, check if the reques
 
 ## Branch Tasks
 
-1. Get the static files folder
-2. Middlewares
+1. Implement the static middleware
 
 **Note**: We will use the **Util.promisify** which takes a function following the common error-first callback style and returns a version that returns promises.
 
@@ -40,5 +39,4 @@ const readFile = promisify(fs.readFile);
 
 ## Covers
 
-- File System Module
-- Util Module
+- Middleware

@@ -7,11 +7,8 @@ const rootDir = process.cwd();
 
 const get = ({ response }) => {
   const html$ = fs.createReadStream(path.join(rootDir, 'views', 'chat.html'));
-
   html$.pipe(response);
-  html$.on('error', err => {
-    logger.log(err);
-  });
+  html$.on('error', err => logger.log(err));
 };
 
 const getUsername = async ({ response }) => {
