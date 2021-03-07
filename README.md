@@ -27,10 +27,10 @@ Documentation:
    - method: GET
    - response (html): \<h1>Index Page\</h1>
 
-   Route `/chat`:
+   Route `/about`:
 
    - method: GET
-   - response (html): \<h1>Chat page\</h1>
+   - response (html): \<h1>About page\</h1>
 
 3. Catch unhandled errors
 
@@ -49,7 +49,7 @@ npm start
 - Use the `DevTools` to debug your code.
 
 - Use your favorite browser to test the requests
-  `e.g http://localhost:8001/chat`
+  `e.g http://localhost:8001/about`
 
 ## Covers
 

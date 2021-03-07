@@ -16,7 +16,7 @@ const http = require('http');
  *       [url.parse(someUrl).pathname]
  *
  *  1. '/' => <h1>Index Page</h1>
- *  2. '/chat' => <h1>Chat page</h1>
+ *  2. '/about' => <h1>About page</h1>
  *  3. If the requested route not found return a http 404 with message 'Not found'
  *
  * Hint: The response should be in html or text format so you need to
