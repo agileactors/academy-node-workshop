@@ -3,44 +3,27 @@
  */
 
 const http = require('http');
-const fs = require('fs');
-const path = require('path');
 const logger = require('./libraries/logger');
-const chatHandler = require('./handlers/chat');
+// const chatHandler = require('./handlers/chat'); // uncomment for next task
 
 // get the PORT from .env
 const PORT = process.env.PORT || 8001;
-
-// get the views directory
-const VIEWS_DIR = path.join(__dirname, 'views');
 
 // create a server instance
 const server = http.createServer();
 
 // request handlers
 server.on('request', (request, response) => {
-  const { url } = request;
+  const { pathname } = new URL(request.url);
 
-  switch (url) {
+  switch (pathname) {
     case '/':
-      fs.readFile(path.join(VIEWS_DIR, 'home.html'), 'utf8', (err, data) => {
-        if (err) {
-          response.writeHead(404, {
-            'Content-Type': 'text/plain',
-          });
-
-          return response.end('Whoops! File not found.');
-        }
-
-        response.writeHead(200, {
-          'Content-Type': 'text/html',
-        });
-        response.end(data);
-      });
+      response.writeHead(200, { 'Content-Type': 'text/html' });
+      response.end('<h1>Index Page</h1>');
       break;
     case '/chat':
       response.writeHead(200, { 'Content-Type': 'text/html' });
-      response.end('<h2>Chat Page</h2>');
+      response.end('<h1>Chat Page</h1>');
       break;
     //
     // Uncomment for next tasks
