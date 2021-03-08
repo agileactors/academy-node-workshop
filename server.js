@@ -31,7 +31,7 @@ router.use(staticMiddleware);
 router.get('/', ({ response }) => {
   response.setHeader('Content-Type', 'text/html');
   response.writeHead(200);
-  response.end(templateEngine.render('home'));
+  response.end(templateEngine.render('welcome'));
 });
 
 // chat routes
