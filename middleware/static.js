@@ -17,7 +17,7 @@ const middleware = async ({ request, response }, next) => {
     const staticPath = path.join(staticDir, filepath);
     const stats = await stat(staticPath);
 
-    // if path is not file (e.g a route /home) continue the chain
+    // if path is not file (e.g a route /welcome) continue the chain
     if (!stats.isFile()) {
       next();
       return;
