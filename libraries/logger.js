@@ -14,6 +14,15 @@ const { nwsFormatDate, nwsConcatValues } = require('./utilities');
 const cwd = process.cwd();
 const LOGS_PATH = path.join(cwd, 'logs');
 
+// Check if a `logs` directory exists
+try {
+  if (!fs.existsSync(LOGS_PATH)) {
+    fs.mkdirSync(LOGS_PATH);
+  }
+} catch (err) {
+  console.log(err);
+}
+
 const logger = {
   logToFile: true,
   logToConsole: false,
