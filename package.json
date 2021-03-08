@@ -4,7 +4,7 @@
   "description": "Node.JS: Looking under the hood",
   "main": "init.js",
   "scripts": {
-    "setup": "node init.js --bypass",
+    "setup": "node init.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "compose": "docker-compose up",
