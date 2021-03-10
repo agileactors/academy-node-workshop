@@ -19,12 +19,11 @@ const Router = () => {
 
   // find the appropriate route for the request
   const routesMiddleware = (ctx, next) => {
-    const {
-      request: { url: requestUrl, method: requestMethod },
-    } = ctx;
+    const { request } = ctx;
+    const { pathname } = new URL(request.url, `http://${request.headers.host}`);
 
     const route = routes.find(
-      ({ method, path }) => method === requestMethod && path === requestUrl
+      ({ method, path }) => method === request.method && path === pathname
     );
 
     if (route) {

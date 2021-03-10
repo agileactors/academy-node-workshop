@@ -4,9 +4,9 @@
   "description": "Node.JS: Looking under the hood",
   "main": "index.js",
   "scripts": {
-    "setup": "node init.js --bypass",
+    "setup": "node init.js",
     "start": "npm run setup && node -r dotenv/config startup.js",
-    "dev": "npm run setup && nodemon --inspect=9300 -r dotenv/config startup.js",
+    "dev": "npm run setup && nodemon -r dotenv/config startup.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "compose": "docker-compose up",
@@ -34,9 +34,9 @@
   },
   "dependencies": {
     "dotenv": "^8.2.0",
-    "lodash": "^4.17.15",
-    "mongoose": "^5.9.2",
-    "shortid": "^2.2.15",
-    "socket.io": "^2.3.0"
+    "lodash": "^4.17.21",
+    "mongoose": "^5.11.19",
+    "shortid": "^2.2.16",
+    "socket.io": "^2.4.1"
   }
 }
