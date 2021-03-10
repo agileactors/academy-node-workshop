@@ -1,4 +1,6 @@
-const { fetch } = window;
+/* eslint-disable */
+
+const fetch = window.fetch;
 const { href: URI } = window.location;
 const socketURI = URI.split('/')
   .slice(0, -1)
@@ -20,9 +22,7 @@ const nwsFormatDate = date => {
 };
 
 function createElement(options) {
-  let el;
-  let key;
-  let i;
+  let el, a, i;
 
   if (!options.tagName) {
     el = document.createDocumentFragment();
@@ -34,10 +34,8 @@ function createElement(options) {
     }
 
     if (options.attributes) {
-      for (key in options.attributes) {
-        if (Object.prototype.hasOwnProperty.call(options.attributes, key)) {
-          el.setAttribute(key, options.attributes[key]);
-        }
+      for (a in options.attributes) {
+        el.setAttribute(a, options.attributes[a]);
       }
     }
 
@@ -51,7 +49,7 @@ function createElement(options) {
   }
 
   if (options.childs && options.childs.length) {
-    for (i = 0; i < options.childs.length; i += 1) {
+    for (i = 0; i < options.childs.length; i++) {
       el.appendChild(
         options.childs[i] instanceof window.HTMLElement
           ? options.childs[i]
@@ -64,9 +62,9 @@ function createElement(options) {
 }
 
 async function init() {
-  const messagesElement = document.querySelector('div.messages__chat');
-  const textElement = document.querySelector('input.messages__input');
-  const buttonElement = document.querySelector('button.messages__send-btn');
+  const messagesElement = document.querySelector('.msger-chat');
+  const textElement = document.querySelector('.msger-input');
+  const buttonElement = document.querySelector('button.msger-send-btn');
   const usersConnectedElement = document.querySelector('b.connected-users');
   const perMinnuteElement = document.querySelector('b.per-minute');
   const totalMessagesElement = document.querySelector('b.total-messages');
@@ -80,41 +78,42 @@ async function init() {
     const { username, text: messageText, timestamp } = message;
     const messageTimestamp = new Date(timestamp * 1000);
     const messageTimeFormat = nwsFormatDate(messageTimestamp);
+    const position = username === usernameFromLocalStorage ? 'left' : 'right';
 
     const messageElement = createElement({
       tagName: 'div',
-      className: 'message',
+      className: `msg ${position}-msg`,
       childs: [
         {
           tagName: 'div',
-          className: 'message__img',
+          className: 'msg-img',
           attributes: {
             style: 'background-image: url(images/avatar.svg)',
           },
         },
         {
           tagName: 'div',
-          className: 'message__bubble',
+          className: 'msg-bubble',
           childs: [
             {
               tagName: 'div',
-              className: 'message__info',
+              className: 'msg-info',
               childs: [
                 {
                   tagName: 'div',
-                  className: 'message__info-name',
+                  className: 'msg-info-name',
                   html: username,
                 },
                 {
                   tagName: 'div',
-                  className: 'message__info-time',
+                  className: 'msg-info-time',
                   html: messageTimeFormat,
                 },
               ],
             },
             {
               tagName: 'div',
-              className: 'message__text',
+              className: 'msg-text',
               html: messageText,
             },
           ],
@@ -168,7 +167,7 @@ async function init() {
 
 document.addEventListener(
   'DOMContentLoaded',
-  function start() {
+  function() {
     init();
   },
   false
