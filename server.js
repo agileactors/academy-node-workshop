@@ -14,7 +14,7 @@ const server = http.createServer();
 
 // request handlers
 server.on('request', (request, response) => {
-  const { pathname } = new URL(request.url);
+  const { pathname } = new URL(request.url, `http://${request.headers.host}`);
   switch (pathname) {
     case '/':
       response.writeHead(200, { 'Content-Type': 'text/html' });
