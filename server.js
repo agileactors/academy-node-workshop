@@ -12,8 +12,8 @@ const http = require('http');
  * Task 2: Create a simple http router
  *
  * Using the request.url property create the following endpoints:
- * Hint: use the `url` module to extract the pathname from the url
- *       [url.parse(someUrl).pathname]
+ * Hint: use the JavaScript's `URL` global object to extract the pathname from the url
+ *       [https://developer.mozilla.org/en-US/docs/Web/API/URL/pathname]
  *
  *  1. '/' => <h1>Index Page</h1>
  *  2. '/about' => <h1>About page</h1>

@@ -16,21 +16,21 @@ function createEnv() {
     if (err) {
       throw err;
     }
-    console.log('Finished .env configuration');
+    logger.log('Finished .env configuration');
   });
 }
 
 function readEnv() {
   try {
     const data = fs.readFileSync(ENV_PATH, 'utf8');
-    console.log(`Found configuration: \n${data}\n`);
+    logger.log(`Found configuration: \n${data}\n`);
   } catch (error) {
-    console.error(error);
+    logger.error(error);
   }
 }
 
 function checkEnv() {
-  console.log(
+  logger.log(
     `Your Operating System: ${platform()} ${arch()} ${release()}\n${(
       (freemem() / totalmem()) *
       100
@@ -38,7 +38,7 @@ function checkEnv() {
   );
 
   if (bypassCheck) {
-    console.log('Bypassing configuration..');
+    logger.log('Bypassing configuration..');
     return;
   }
 
