@@ -32,9 +32,9 @@
   },
   "dependencies": {
     "dotenv": "^8.2.0",
-    "lodash": "^4.17.15",
-    "mongoose": "^5.9.2",
-    "shortid": "^2.2.15",
-    "socket.io": "^2.3.0"
+    "lodash": "^4.17.21",
+    "mongoose": "^5.11.19",
+    "shortid": "^2.2.16",
+    "socket.io": "^2.4.1"
   }
 }
