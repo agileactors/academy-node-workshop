@@ -25,7 +25,7 @@ try {
 
 const logger = {
   logToFile: true,
-  logToConsole: false,
+  logToConsole: true,
   log(...args) {
     const now = new Date();
     const nowFormat = nwsFormatDate(now);
