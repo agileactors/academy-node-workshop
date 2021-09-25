@@ -20,7 +20,7 @@ try {
     fs.mkdirSync(LOGS_PATH);
   }
 } catch (err) {
-  console.log(err);
+  throw new Error(err);
 }
 
 const logger = {
@@ -38,7 +38,7 @@ const logger = {
       try {
         fs.writeFileSync(debugFile, `${data}\n`, { flag: 'a' });
       } catch (error) {
-        console.log(error);
+        throw new Error(error);
       }
     }
 
