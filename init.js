@@ -62,10 +62,12 @@ function checkEnv() {
    */
 
   const fileExists = fs.existsSync(ENV_PATH);
+
   if (!fileExists) {
     createEnv();
     return;
   }
+
   readEnv();
 }
 
@@ -75,5 +77,5 @@ function checkEnv() {
  * Use the process to handle uncaught exception errors
  */
 
-// starting point
+// start here
 checkEnv();
