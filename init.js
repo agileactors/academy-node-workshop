@@ -14,7 +14,7 @@ const nwsGetEnvContent = () => {
 };
 
 /**
- * Task 2: readEnv implementation
+ * Task 3: readEnv implementation
  *
  * Use the fs apis to read the content of the .env file and print it to
  * the console. Each value has to be printed in a new line.
@@ -23,12 +23,12 @@ const nwsGetEnvContent = () => {
  * Note: if an error occurs throw an exception.
  */
 
-function readEnv() {
+ function readEnv() {
   // TODO: provide implementation
 }
 
 /**
- * Task 3: createEnv implementation
+ * Task 2: createEnv implementation
  *
  * Use the fs apis to write the content values (envFileContents variable) 
  * to a file with name .env in the root directory.
@@ -66,5 +66,5 @@ function checkEnv() {
   // HINT: use the `existsSync` method from the fs module
 }
 
-// starting point
+// start here
 checkEnv();

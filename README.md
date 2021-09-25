@@ -83,9 +83,9 @@ Use the fs apis (synchronous or asynchronous) to create a `.env` file for our ap
 
 - Subtask 2: In the **checkEnv** implementation check if a directory with name `logs` exists at the root directory.
 
-2. Provide the **readEnv** implementation which read the contents of .env if exists.
+2. Provide the **createEnv** implementation which creates the .env file if not exists.
 
-3. Provide the **createEnv** implementation which creates the .env file if not exists.
+3. Provide the **readEnv** implementation which read the contents of .env if exists.
 
 Open the **init.js** file placed in the root directory of the app to start writing your code.
 
