@@ -40,7 +40,7 @@ function readEnv() {
 
 function createEnv() {
   const envFileContents = nwsGetEnvContent();
-  // TODO: provide implementation
+  //TODO: provide implementation
 }
 
 /**
