@@ -4,10 +4,10 @@ const path = require('path');
 const { ENVVALUES } = require('./constants');
 
 const ENV_PATH = path.join(__dirname, '.env');
+const LOG_DIR = path.join(__dirname, './logs');
 
 const args = process.argv.slice(2, process.argv.length);
 const bypassCheck = args.some(arg => arg === '--bypass' || '-b');
-const LOG_DIR = './logs';
 
 /**
  * Task 1: Move to /libraries/utilities.js
