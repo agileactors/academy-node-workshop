@@ -9,6 +9,7 @@ const ENV_PATH = path.join(__dirname, '.env');
 
 const args = process.argv.slice(2, process.argv.length);
 const bypassCheck = args.some(arg => arg === '--bypass' || '-b');
+const LOG_DIR = './logs';
 
 function createEnv() {
   const envFileContent = nwsGetEnvContent();
@@ -42,11 +43,22 @@ function checkEnv() {
     return;
   }
 
-  const fileExists = fs.existsSync(ENV_PATH);
-  if (!fileExists) {
-    createEnv();
-    return;
+  fs.stat(LOG_DIR, err => {
+    if (!err) {
+      console.log('file or directory exists');
+    } else if (err.code === 'ENOENT') {
+      fs.mkdirSync(LOG_DIR);
+    }
+  });
+
+  try {
+    fs.statSync(ENV_PATH);
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      createEnv();
+    }
   }
+
   readEnv();
 }
 
@@ -55,5 +67,5 @@ process.on('uncaughtException', err => {
   process.exit(0);
 });
 
-// starting point
+// start here
 checkEnv();
