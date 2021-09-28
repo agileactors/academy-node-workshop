@@ -3,6 +3,8 @@ const path = require('path');
 const { platform, arch, release, totalmem, freemem } = require('os');
 const { ENVVALUES } = require('./constants');
 
+const LOG_DIR = './logs';
+
 // Don't edit
 const nwsGetEnvContent = () => {
   const envValues = ENVVALUES.reduce((acc, envValue) => {
@@ -55,11 +57,14 @@ function checkEnv() {
       100
     ).toFixed(2)} % of your RAM is free.\n `
   );
-  const LOG_DIR = './logs';
 
-  if (!fs.existsSync(LOG_DIR)) {
-    fs.mkdirSync(LOG_DIR);
-  }
+  fs.stat(LOG_DIR, err => {
+    if (!err) {
+      console.log('file or directory exists');
+    } else if (err.code === 'ENOENT') {
+      fs.mkdirSync(LOG_DIR);
+    }
+  });
 
   /**
    * Subtask 1:
@@ -67,11 +72,12 @@ function checkEnv() {
    * If a command line argument with name '--bypass' or '-b' passed skip the env configuration.
    */
 
-  const fileExists = fs.existsSync(ENV_PATH);
-
-  if (!fileExists) {
-    createEnv();
-    return;
+  try {
+    fs.statSync(ENV_PATH);
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      createEnv();
+    }
   }
 
   readEnv();
