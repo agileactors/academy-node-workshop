@@ -30,6 +30,7 @@ const args = [];
 
 function createEnv() {
   const envFileContent = nwsGetEnvContent();
+
   fs.writeFile(ENV_PATH, envFileContent, 'utf8', err => {
     if (err) {
       throw err;
@@ -54,6 +55,11 @@ function checkEnv() {
       100
     ).toFixed(2)} % of your RAM is free.\n `
   );
+  const LOG_DIR = './logs';
+
+  if (!fs.existsSync(LOG_DIR)) {
+    fs.mkdirSync(LOG_DIR);
+  }
 
   /**
    * Subtask 1:
