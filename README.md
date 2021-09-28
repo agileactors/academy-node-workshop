@@ -81,7 +81,7 @@ Use the fs apis (synchronous or asynchronous) to create a `.env` file for our ap
 
 - Subtask 1: Use the **os** module to print operating system information to the console.
 
-- Subtask 2: In the **checkEnv** implementation check if a directory with name `logs` exists at the root directory.
+- Subtask 2: In the **checkEnv** implementation check if a directory with name `logs` exists at the root directory. if not create it.
 
 2. Provide the **createEnv** implementation which creates the .env file if not exists.
 
