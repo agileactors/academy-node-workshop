@@ -13,11 +13,6 @@ const http = require('http');
  *
  * Using the request.url property create the following endpoints:
  *
- * Hint 1: use the JavaScript's `URL` global object to extract the pathname from the url
- *       [https://developer.mozilla.org/en-US/docs/Web/API/URL]
- *
- * Hint 2: use `request.headers.host` as base to the URL constructor]
- *
  *
  *  1. '/' => <h1>Index Page</h1>
  *  2. '/about' => <h1>About page</h1>
