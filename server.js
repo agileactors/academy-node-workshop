@@ -7,7 +7,7 @@ const logger = require('./libraries/logger');
 const chatHandler = require('./handlers/chat');
 
 // get the PORT from .env
-const PORT = process.env.PORT || 8001;
+const PORT = process.env.PORT || 1234;
 
 // create a server instance
 const server = http.createServer();
