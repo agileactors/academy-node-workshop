@@ -14,8 +14,9 @@ const server = http.createServer();
 
 // request handlers
 server.on('request', (request, response) => {
-  const { pathname } = new URL(request.url, `http://${request.headers.host}`);
-  switch (pathname) {
+  const { url } = request;
+
+  switch (url) {
     case '/':
       response.writeHead(200, { 'Content-Type': 'text/html' });
       response.end('<h1>Index Page</h1>');
@@ -43,12 +44,12 @@ server.on('request', (request, response) => {
   }
 });
 
-// start server
+// start the server
 server.listen(PORT, () => {
   logger.log(`Server listening on port ${PORT}`);
 });
 
-// Do not edit
+// catch uncaught exceptions
 process.on('uncaughtException', err => {
   logger.log(`pid ${process.pid}: ${err.message}`);
   process.exit(0);
