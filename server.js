@@ -13,7 +13,7 @@ const chatHandler = require('./handlers/chat');
 // initialize router
 const router = Router();
 
-// watcher middleware - TODO: move middleware to another folder
+// watcher middleware
 router.use(async (ctx, next) => {
   const { request } = ctx;
 
