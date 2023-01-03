@@ -4,7 +4,7 @@ Node.js Workshop
 
 ## Branch description
 
-In this branch we will introduce the basic usage of Node.js.
+In this branch we will introduce the basic usage of Node.js
 
 We will run a JavaScript file from the console and use the **REPL** to execute JavaScript code. 
 
