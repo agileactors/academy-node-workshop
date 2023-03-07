@@ -1,13 +1,16 @@
 {
   "name": "academy-node-workshop",
   "version": "1.0.0",
-  "description": "Node.JS: Looking under the hood",
+  "description": "Node.js Workshop",
+  "main": "init.js",
   "scripts": {
     "setup": "node init.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "compose": "docker-compose up",
-    "compose:clean": "docker-compose down"
+    "compose:clean": "docker-compose down",
+    "update": "npm-check-updates",
+    "update:auto": "npm-check-updates -u && npm i"
   },
   "repository": {
     "type": "git",
