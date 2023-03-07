@@ -1,16 +1,17 @@
 {
   "name": "academy-node-workshop",
   "version": "1.0.0",
-  "description": "Node.JS: Looking under the hood",
-  "main": "startup.js",
+  "description": "Node.js Workshop",
   "scripts": {
     "setup": "node init.js",
-    "start": "node -r dotenv/config startup.js",
-    "dev": "nodemon -r dotenv/config startup.js",
+    "start": "npm run setup && node -r dotenv/config startup.js",
+    "dev": "npm run setup && nodemon -r dotenv/config startup.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "compose": "docker-compose up",
-    "compose:clean": "docker-compose down"
+    "compose:clean": "docker-compose down",
+    "update": "npm-check-updates",
+    "update:auto": "npm-check-updates -u && npm i"
   },
   "repository": {
     "type": "git",
@@ -23,20 +24,21 @@
     "url": "https://github.com/agileactors/academy-node-workshop/issues"
   },
   "homepage": "https://github.com/agileactors/academy-node-workshop#readme",
-  "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-prettier": "^3.1.2",
-    "nodemon": "^2.0.2",
-    "prettier": "^1.19.1"
-  },
   "dependencies": {
-    "dotenv": "^8.2.0",
+    "dotenv": "^16.0.3",
     "lodash": "^4.17.21",
-    "mongoose": "^5.11.19",
+    "mongoose": "^7.0.1",
     "shortid": "^2.2.16",
-    "socket.io": "^2.4.1"
+    "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.35.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.21",
+    "npm-check-updates": "^16.7.10",
+    "prettier": "^2.8.4"
   }
 }
